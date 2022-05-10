@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)http://getbootstrap.com/2.3.2/scaffolding.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Anton Milan - Multi-Target Tracking Ground Truth and Detections</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Anton Milan">
+	<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
+
+    <!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/docs.css" rel="stylesheet">
+    <link href="css/prettify.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        background-color: #FAFAFA;
+      }
+      
+      .topbar {
+		  font-size: 1.5em;
+	  }
+	  
+	  
+	  .container-fluid > .sidebar li {
+		  padding: 0.5em;
+	  }
+	  
+	  section {
+		  margin-top: 48px;
+	  }
+	  
+	  .master-head h1 {
+		  margin-bottom: 0px;
+		  /*color: #C33;*/
+	  }
+	  
+	  .master-head p.lead {
+		 margin-top: 18px;
+		 font-size: 18px;
+	  }
+	  
+	  
+	  .shadow-title {
+		  text-shadow: 0 1px 2px rgba(0, 0, 0, .5);
+	  }
+	  
+	  img.thumbnail {
+		  width: 150px;
+		  /*height: 150px;*/
+	  }
+	  
+	  
+	div.container-fluid a:link, div.container-fluid a:visited {
+		color: #09c;
+		text-decoration: none;
+	}
+		
+	div.container-fluid a:hover {
+		color: #c33;
+	}
+	
+	a.paper_link {
+		display:inline-block;
+		background: url("img/pdf.png") center right no-repeat;
+		padding-right: 22px;
+	}		
+	
+	a.youtube_link {
+		display:inline-block;
+		background: url("img/youtube_sb.png") center right no-repeat;
+		padding-right: 22px;
+	}
+	a.data_link {
+		display:inline-block;
+		background: url("img/opendata.png") center right no-repeat;
+		padding-right: 22px;
+	}		
+	
+	img.bibtex_link {
+		cursor:pointer;
+	}
+	
+	a.bibtex_link {
+		cursor:pointer;
+		background: url("img/bibtex.png") center right no-repeat;
+		padding-right: 22px;		
+	}
+	a.abstract_link {
+		cursor:pointer;
+	}	
+	pre.invisible_bibtex {
+		display: none;
+		font-size: 12px;
+	}
+	pre.invisible_abstract {
+		display: none;
+		font-size: 12px;
+	}
+
+        a.source_code_link {
+                font-family: Courier New, Courrier;
+        }
+    </style>
+
+	<!-- Place this tag in your head or just before your close body tag. -->
+	<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+
+	
+	</head>
+  	<script language="javascript" type="text/javascript">
+	function toggle(element) {
+		if(element.style.display=="block") {
+			element.style.display="none";
+		} else {
+			element.style.display="block";
+		}
+	}
+	</script>
+	
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+  
+  <!-- Facebook button -->
+  <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+    <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="">
+                <a href="./index.html">Home</a>
+              </li>
+              <li class="">
+                <a href="./index.html#publications">Publications</a>
+              </li>
+              <li class="">
+                <a href="./index.html#projects">Projects</a>
+              </li>
+              <li class="">
+                <a href="./index.html#code">Code</a>
+              </li>
+              <li class="">
+                <a href="./index.html#data">Data</a>
+              </li>  
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="container">
+  
+      <!-- Docs nav
+    ================================================== -->
+    <div class="row">
+      <div class="span3 bs-docs-sidebar">
+        <ul class="nav nav-list bs-docs-sidenav affix-top">
+          <li><a href="#data"><i class="icon-chevron-right"></i> Data</a></li>
+          <li><a href="#gt"><i class="icon-chevron-right"></i> Ground Truth</a></li>
+          <li><a href="#detections"><i class="icon-chevron-right"></i> Detections</a></li>
+          <li><a href="#afl"><i class="icon-chevron-right"></i>  AFL Dataset</a></li>
+		  </ul>
+      </div>
+	  <div class="span9">
+	  <div class="page-header">
+	    <h1>Data</h1>
+	  </div>
+	  
+	  <div class="row">
+	  <div class="span9">
+	  Download all data: <a href="files/data-tud.zip">data-tud.zip</a> (2.7 MB)<br />
+	  </div>
+	  </div>
+
+	  <!-- Ground Truth
+        ================================================== -->
+        <section id="gt">	  
+		  <div>
+			<h2>Ground Truth</h2>
+		  </div>
+		  <hr>
+	  <div class="row">
+	  <div class="span9">
+
+All annotations were done by manually placing bounding
+boxes around pedestrians and interpolating their trajectories between
+key frames.
+The trajectories were then smoothed to avoid discontinuous or jittery
+movements. <i>All</i>
+targets were annotated in all sequences, even
+in case of total occlusion. Each person entering the field of view
+acquires a unique ID, i.e. if a person leaves the screen and later
+reappears again, a new ID is assigned. Please note that bounding boxes
+are not always perfectly aligned due to articulation, interpolation
+and mistakes made by the annotator.
+<br />
+
+The annotations are saved in xml files using the <a href="http://homepages.inf.ed.ac.uk/tlist/cvml/spec.html">CVML Specification</a>,
+similar to the ground truth of the <a href="http://homepages.inf.ed.ac.uk/rbf/CAVIARDATA1/">CAVIAR dataset</a>.
+
+<br />For each dataset there are two ground truth files. One (complete)
+contains annotations for all visible targets, the other one (cropped)
+only contains targets within the predefined tracking area used in our
+experiments.
+<br />
+
+Please cite our work if you use the provided ground truth.
+
+<h3><a name="PETS-GT">PETS 2009</a></h3>
+
+
+All annotations were done in View001. The PETS 2009 dataset is available <a href="http://www.cvg.reading.ac.uk/PETS2009/">here</a>.
+<br />
+
+
+<img src="img/PETS-S2L1.jpg" alt="PETS-S2L1 Ground Truth" height="192" width="256" />
+
+
+
+
+
+<br />
+
+Tracking Area in world coordinates (xmin, xmax, ymin, ymax): (-14069.6,   4981.3,  -14274.0,   1733.5)
+
+<br />
+
+
+<table border="1" cellpadding="10" cellspacing="0">
+<tbody><tr>
+
+<td align="center"><h4>S2.L1 (12-34)</h4></td>
+
+
+
+<td><h4>S2.L2 (14-55)</h4></td>
+
+
+
+
+<td><h4>S2.L3 (14-41)</h4></td>
+
+
+<td><h4>S1.L1-1 (13-57)</h4></td>
+
+
+
+<td><h4>S1.L1-2 (13-59)</h4></td>
+
+
+
+
+<td><h4>S1.L2-1 (14-06)</h4></td>
+
+
+
+<td><h4>S1.L2-2 (14-31)</h4></td>
+
+<td><h4>S3.MF1 (12-43)</h4></td>
+
+</tr>
+<tr>
+
+<td>
+
+
+
+<a href="files/gt/PETS2009/PETS2009-S2L1.xml">complete</a><br />
+
+<a href="files/gt/PETS2009/PETS2009-S2L1-cropped.xml">cropped</a>
+
+
+
+</td>
+
+<td>
+
+<a href="files/gt/PETS2009/PETS2009-S2L2.xml">complete</a><br />
+
+
+<a href="files/gt/PETS2009/PETS2009-S2L2-cropped.xml">cropped</a>
+
+
+
+
+</td>
+
+<td>
+
+<a href="files/gt/PETS2009/PETS2009-S2L3.xml">complete</a><br />
+<a href="files/gt/PETS2009/PETS2009-S2L3-cropped.xml">cropped</a>
+
+
+
+</td>
+<td>
+
+
+
+<a href="files/gt/PETS2009/PETS2009-S1L1-1.xml">complete</a><br />
+
+<a href="files/gt/PETS2009/PETS2009-S1L1-1-cropped.xml">cropped</a>
+
+</td>
+
+
+<td>
+
+
+
+<a href="files/gt/PETS2009/PETS2009-S1L1-2.xml">complete</a><br />
+
+<a href="files/gt/PETS2009/PETS2009-S1L1-2-cropped.xml">cropped</a>
+
+</td>
+<td>
+
+
+<a href="files/gt/PETS2009/PETS2009-S1L2-1.xml">complete</a><br />
+
+<a href="files/gt/PETS2009/PETS2009-S1L2-1-cropped.xml">cropped</a>
+
+</td>
+
+
+<td>
+
+
+<a href="files/gt/PETS2009/PETS2009-S1L2-2.xml">complete</a><br />
+
+<a href="files/gt/PETS2009/PETS2009-S1L2-2-cropped.xml">cropped</a>
+
+</td>
+
+<td>
+
+
+<a href="files/gt/PETS2009/PETS2009-S3MF1.xml">complete</a><br />
+
+<a href="files/gt/PETS2009/PETS2009-S3MF1-cropped.xml">cropped</a>
+
+</td>
+
+</tr>
+</tbody></table>
+
+<br />
+<br />
+
+<h3><a name="TUD-Stadtmitte-GT">TUD-Stadtmitte</a></h3>We here provide our own annotations for the
+widely used TUD-Stadtmitte sequence, where bounding boxes for all
+targets inside the field of view (even the ones entirely occluded) are
+annotated. The TUD dataset is available <a href="http://www.d2.mpi-inf.mpg.de/node/428">here</a>.
+
+<br />
+
+<img src="img/TUD-Stadtmitte.jpg" alt="TUD-Stadtmitte Ground Truth" height="120" width="160" />
+
+
+
+<br />
+
+Tracking Area in world coordinates (xmin, xmax, ymin, ymax): (-19, 12939, -48, 10053)
+
+<br />
+
+
+<table border="1" cellpadding="10" cellspacing="0">
+
+
+<tbody><tr>
+<td align="center"><h4>TUD-Stadtmitte</h4></td>
+
+
+</tr>
+<tr>
+<td>
+<a href="files/gt/TUD/TUD-Stadtmitte.xml">complete</a><br />
+
+
+
+
+
+
+<a href="files/gt/TUD/TUD-Stadtmitte-cropped.xml">cropped</a>
+
+</td>
+
+
+
+</tr>
+</tbody></table><br />The camera calibration for the TUD-Stadtmitte sequence is <a href="files/gt/TUD/TUD-Stadtmitte-calib.xml">here</a>. 
+It has the same format as the calibration for the 
+
+<a href="http://www.cvg.reading.ac.uk/PETS2009/a.html#calib">PETS dataset</a>.
+
+<br /><br /><br />
+<h3><a name="TUD-GT">TUD-Campus and TUD-Crossing</a></h3>
+We extend the <a href="https://www.d2.mpi-inf.mpg.de/node/382">original</a>
+ground truth for these two sequences by providing correct association
+of people identities across frames. The bounding boxes positions and
+sizes are kept unchanged. Additionally, we linearly interpolate the
+annotations through occlusions, such that, again, all targets are
+annotated, regardless of their visibility fraction.<br /><img style="width: 160px; height: 120px;" alt="TUD-Campus" src="img/TUD-Campus.png" /> <img style="width: 160px; height: 120px;" alt="TUD-Crossing" src="img/TUD-Crossing.png" /><br /><br />
+
+
+<table border="1" cellpadding="10" cellspacing="0">
+
+
+<tbody><tr>
+<td style="text-align: center;"><h4>TUD-Campus</h4></td><td style="vertical-align: top;"><h4>TUD-Crossing</h4></td>
+</tr>
+<tr>
+
+<td>
+<a href="files/gt/TUD/TUD-Campus-orig.xml">original</a>
+<br />
+<a href="files/gt/TUD/TUD-Campus-interp.xml">interpolated</a>
+</td>
+
+<td>
+<a href="files/gt/TUD/TUD-Crossing-orig.xml">original</a>
+<br />
+<a href="files/gt/TUD/TUD-Crossing-interp.xml">interpolated</a>
+
+</td>
+
+
+
+</tr>
+</tbody></table><br />
+
+<h3><a name="ETH-Person-GT">ETH-Person</a></h3>
+Similar to TUD, we extend the <a href="http://www.vision.ee.ethz.ch/~aess/dataset/">original</a>
+ground truth for several ETH sequences by providing correct association
+of people identities across frames. The bounding boxes positions and
+sizes are kept unchanged. The interpolated version for occluded pedestrians will appear shortly.
+<br />
+<img style="width: 160px; height: 120px;" alt="ETH-Person-seq00" src="img/ETH-Person-seq00.jpg" />
+<img style="width: 160px; height: 120px;" alt="ETH-Person-bahnhof" src="img/ETH-Person-bahnhof.jpg" />
+<img style="width: 160px; height: 120px;" alt="ETH-Person-jelmoli" src="img/ETH-Person-jelmoli.jpg" />
+<img style="width: 160px; height: 120px;" alt="ETH-Person-sunnyday" src="img/ETH-Person-sunnyday.jpg" />
+<br /><br />
+
+<table border="1" cellpadding="10" cellspacing="0">
+<tbody><tr>
+	<td style="text-align: center;"><h4><a href="http://www.vision.ee.ethz.ch/~aess/iccv2007/">Sequence #0</a></h4></td>
+	<td style="vertical-align: top;"><h4>Bahnhof</h4></td>
+	<td style="vertical-align: top;"><h4>Jelmoli</h4></td>
+	<td style="vertical-align: top;"><h4>Sunny Day</h4></td>
+</tr>
+<tr>
+	<td>
+	<a href="files/gt/ETH-Person/seq0_assc_gt.xml">original</a>
+	<br />
+	<a href="files/gt/ETH-Person/seq0_assc_gt-interp.xml">interpolated</a>
+	</td>
+
+	<td>
+	<a href="files/gt/ETH-Person/bahnhof_assc_gt.xml">original</a>
+	</td>
+
+	<td>
+	<a href="files/gt/ETH-Person/jelmoli_assc_gt.xml">original</a>
+	</td>
+
+	<td>
+	<a href="files/gt/ETH-Person/sunnyday_assc_gt.xml">original</a>
+	</td>
+</tr>
+</tbody></table><br />
+
+</div>
+</div>		  
+		  
+</section>
+
+
+        <!-- Detections
+        ================================================== -->
+        <section id="detections">	  
+		  <div>
+			<h2>Detections</h2>
+		  </div>
+ 		  <hr>
+			To facilitate the comparison between tracking methods, we also provide
+			the individual detections that we use for our tracking-by-detection
+			approach.
+			<br />Similar to the ground truth data, the detection bounding boxes
+			are stored in xml files with the only difference, that the target id is
+			missing. Instead, the detector's confidence for each bounding box is
+			provided.
+			<br /><br /><h3>PETS 2009</h3><br />
+
+			<table border="1" cellpadding="10" cellspacing="0">
+			<tbody>
+			<tr>
+				<td align="center"><h4>S2.L1 (12-34)</h4></td>
+				<td><h4>S2.L2 (14-55)</h4></td>
+				<td><h4>S2.L3 (14-41)</h4></td>
+				<td><h4>S1.L1-1 (13-57)</h4></td>
+				<td><h4>S1.L1-2 (13-59)</h4></td>
+				<td><h4>S1.L2-1 (14-06)</h4></td>
+				<td><h4>S1.L2-2 (14-31)</h4></td>
+				<td><h4>S3.MF1 (12-43)</h4></td>
+			</tr>
+			
+			<tr>
+				<td>
+				<a href="files/det/PETS2009/PETS2009-S2L1-c1-det.xml">detections</a>
+				</td>
+				<td>
+				<a href="files/det/PETS2009/PETS2009-S2L2-c1-det.xml">detections</a>
+				</td>
+				<td>
+				<a href="files/det/PETS2009/PETS2009-S2L3-c1-det.xml">detections</a>
+				</td>
+				<td>
+				<a href="files/det/PETS2009/PETS2009-S1L1-1-c1-det.xml">detections</a>
+				</td>
+				<td>
+				<a href="files/det/PETS2009/PETS2009-S1L1-2-c1-det.xml">detections</a>
+				</td>
+				<td>
+				<a href="files/det/PETS2009/PETS2009-S1L2-1-c1-det.xml">detections</a>
+				</td>
+				<td>
+				<a href="files/det/PETS2009/PETS2009-S1L2-2-c1-det.xml">detections</a>
+				</td>
+				<td>
+				<a href="files/det/PETS2009/PETS2009-S3-MF1-c1-det.xml">detections</a>
+				</td>
+			</tr>
+			</tbody></table><br /><br />
+			
+			<h3>TUD</h3>
+			<table border="1" cellpadding="10" cellspacing="0">
+			<tbody>
+			<tr>
+				<td style="text-align: center;"><h4>Campus</h4></td><td style="vertical-align: top;"><h4>Crossing</h4></td><td style="vertical-align: top;"><h4>Stadtmitte</h4></td>
+				</tr>
+				<tr>
+				<td>
+				<a href="files/det/TUD/TUD-Campus-det.xml">detections</a>
+				</td>
+				<td>
+				<a href="files/det/TUD/TUD-Crossing-det.xml">detections</a>
+				</td>
+				<td>
+				<a href="files/det/TUD/TUD-Stadtmitte-det.xml">detections</a>
+				</td>
+			</tr>
+			</tbody>
+			</table><br />
+			
+			<h3>EPFL<br />
+			</h3>dataset <a href="http://cvlab.epfl.ch/data/pom/#terrace">here</a><br />
+			<table border="1" cellpadding="10" cellspacing="0">
+			<tbody>
+			<tr>
+			<td style="text-align: center;"><h4>terrace1</h4></td><td style="vertical-align: top;"><h4>terrace2</h4></td>
+			</tr>
+				<tr>
+				<td>
+				<a href="files/det/EPFL/EPFL-terrace1-c0-det.xml">detections c0</a>
+				<br />
+				<a href="files/det/EPFL/EPFL-terrace1-c1-det.xml">detections c1</a>
+				<br />
+				<a href="files/det/EPFL/EPFL-terrace1-c2-det.xml">detections c2</a>
+				<br />
+				<a href="files/det/EPFL/EPFL-terrace1-c3-det.xml">detections c3</a>
+				</td>
+				<td>
+				<a href="files/det/EPFL/EPFL-terrace2-c0-det.xml">detections c0</a>
+				<br />
+				<a href="files/det/EPFL/EPFL-terrace2-c1-det.xml">detections c1</a>
+				<br />
+				<a href="files/det/EPFL/EPFL-terrace2-c2-det.xml">detections c2</a>
+				<br />
+				<a href="files/det/EPFL/EPFL-terrace2-c3-det.xml">detections c3</a>
+				</td>
+				</tr>
+			</tbody></table>
+
+		</section> <!-- / Detections -->
+
+
+        <!-- AFL
+        ================================================== -->
+        <section id="afl">	  
+		  <div>
+			<h2>AFL Dataset</h2>
+		  </div>
+ 		  <hr>
+ 		  <img style="height: 160px;" alt="AFL1" src="img/AFL1.jpg" />
+ 		  <img style="height: 160px;" alt="AFL2" src="img/AFL2.jpg" />
+ 		  <br>
+ 		  The AFL Dataset accompanies our ECCV Workshop 
+ 		  <a class="paper_link" href="files/eccvws2014/eccvws2014-anton.pdf">paper</a> 
+ 		  and contains the two video sequences, ground truth annotations and the detections used.
+ 		  <br><a href="files/AFL/AFL.zip">Download</a>
+ 		  
+		</section> 		<!-- / AFL -->
+		
+			
+		</div>
+	  </div>
+	  
+	</div>
+	
+  </div>
+
+  
+  
+
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="./js/widgets.js"></script>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/bootstrap-transition.js"></script>
+    <script src="./js/bootstrap-alert.js"></script>
+    <script src="./js/bootstrap-modal.js"></script>
+    <script src="./js/bootstrap-dropdown.js"></script>
+    <script src="./js/bootstrap-scrollspy.js"></script>
+    <script src="./js/bootstrap-tab.js"></script>
+    <script src="./js/bootstrap-tooltip.js"></script>
+    <script src="./js/bootstrap-popover.js"></script>
+    <script src="./js/bootstrap-button.js"></script>
+    <script src="./js/bootstrap-collapse.js"></script>
+    <script src="./js/bootstrap-carousel.js"></script>
+    <script src="./js/bootstrap-typeahead.js"></script>
+    <script src="./js/bootstrap-affix.js"></script>
+
+    <script src="./js/holder.js"></script>
+    <script src="./js/prettify.js"></script>
+
+    <script src="./js/application.js"></script>
+
+
+
+
+  
+
+<autoscroll_cursor hidden=""></autoscroll_cursor>
+</body>
+</html>

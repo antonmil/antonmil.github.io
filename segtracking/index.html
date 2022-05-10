@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Anton Milan - Joint Tracking and Segmentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Anton Milan">
+	<link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico" />
+
+    <!-- Le styles -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="../css/docs.css" rel="stylesheet">
+    <link href="../css/prettify.css" rel="stylesheet">
+    <link href="../css/gh-fork-ribbon.css" rel="stylesheet">
+    
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        background-color: #FAFAFA;
+      }
+      
+      .topbar {
+		  font-size: 1.5em;
+	  }
+	  
+	  
+	  .container-fluid > .sidebar li {
+		  padding: 0.5em;
+	  }
+	  
+	  section {
+		  margin-top: 48px;
+	  }
+	  
+	  .master-head h1 {
+		  margin-bottom: 0px;
+		  /*color: #C33;*/
+	  }
+	  
+	  .master-head p.lead {
+		 margin-top: 18px;
+		 font-size: 18px;
+	  }
+	  
+	  
+	  .shadow-title {
+		  text-shadow: 0 1px 2px rgba(0, 0, 0, .5);
+	  }
+	  
+	  img.thumbnail {
+		  width: 150px;
+		  /*height: 150px;*/
+	  }
+	  
+	  
+	div.container-fluid a:link, div.container-fluid a:visited {
+		color: #09c;
+		text-decoration: none;
+	}
+		
+	div.container-fluid a:hover {
+		color: #c33;
+	}
+	
+	a.paper_link {
+		display:inline-block;
+		background: url("../img/pdf.png") center right no-repeat;
+		padding-right: 22px;
+	}		
+	
+	a.youtube_link {
+		display:inline-block;
+		background: url("../img/youtube_sb.png") center right no-repeat;
+		padding-right: 22px;
+	}
+	a.data_link {
+		display:inline-block;
+		background: url("../img/opendata.png") center right no-repeat;
+		padding-right: 22px;
+	}		
+	
+	img.bibtex_link {
+		cursor:pointer;
+	}
+	
+	a.bibtex_link {
+		cursor:pointer;
+		background: url("../img/bibtex.png") center right no-repeat;
+		padding-right: 22px;		
+	}
+	a.abstract_link {
+		cursor:pointer;
+	}	
+	pre.invisible_bibtex {
+		display: none;
+		font-size: 12px;
+	}
+	pre.invisible_abstract {
+		display: none;
+		font-size: 12px;
+	}
+
+        a.source_code_link {
+                font-family: Courier New, Courrier;
+        }
+    </style>
+
+	<!-- Place this tag in your head or just before your close body tag. -->
+	<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+
+	
+	</head>
+  	<script language="javascript" type="text/javascript">
+	function toggle(element) {
+		if(element.style.display=="block") {
+			element.style.display="none";
+		} else {
+			element.style.display="block";
+		}
+	}
+	</script>
+	
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+  
+  <!-- Facebook button -->
+  <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+    <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="">
+                <a href="../index.html">Home</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="container">
+  
+      <!-- Docs nav
+    ================================================== -->
+    <div class="row">
+      <div class="span3 bs-docs-sidebar">
+        <ul class="nav nav-list bs-docs-sidenav affix-top">
+          <li><a href="#seg"><i class="icon-chevron-right"></i> Segmentation-Tracking</a></li>
+          <li><a href="#code"><i class="icon-chevron-right"></i> Code</a></li>
+          <li><a href="#detections"><i class="icon-chevron-right"></i> Detections</a></li>
+          <li><a href="#results"><i class="icon-chevron-right"></i> Tracking Output</a></li>
+          <li><a href="#videos"><i class="icon-chevron-right"></i> Videos</a></li>		            
+		  </ul>
+      </div>
+      
+
+    <div class="github-fork-ribbon-wrapper right">
+        <div class="github-fork-ribbon">
+            <a href="https://bitbucket.org/amilan/segtracking">Fork me on Bitbucket</a>
+        </div>
+    </div> 
+
+    
+	  <div class="span9">
+	  <div class="page-header">
+	    <h1>Joint Tracking and Segmentation of Multiple Targets</h1>
+	  </div>
+	  <section id="seg">
+	  
+
+	  <div class="row text-center">
+	    <div class="span9">	    
+	      <img src="../img/logos/cvpr2015-logo.svg" width="150" alt="CVPR 2015">
+	    </div>	    
+	  </div>
+
+	  <div class="row text-center">
+	    <div class="span9">	    
+	      <img src="s25-orig-f0069.jpg" width="250" alt="Joint Tracking and Segmentation">
+	      <img src="crf3.jpg" width="300" alt="Joint Tracking and Segmentation">	    
+	      <img src="s25-seg-f0069.jpg" width="250" alt="Joint Tracking and Segmentation">
+	      
+	    </div>	    
+	  </div>
+
+	  </section>
+	  
+	  
+	  <div class="row">
+	  <div class="span9">
+	  <hr>
+	  <br>
+	  <b>Abstract</b>
+	  <br>
+	  <div class="span7">
+Tracking-by-detection has proven to be the most successful strategy to address the task of tracking multiple targets in
+unconstrained scenarios. Traditionally, a
+set of sparse detections, generated in a preprocessing step,
+serves as input to a high-level tracker whose goal is to correctly associate these “dots” over time. An obvious shortcoming of this approach is that most information available
+in image sequences is simply ignored by thresholding weak
+detection responses and applying non-maximum suppression. We propose a multi-target tracker that exploits low
+level image information and associates every (super)-pixel
+to a specific target or classifies it as background. As a result, we obtain a video segmentation in addition to the classical bounding-box representation in unconstrained, realworld videos. Our method shows encouraging results on
+many standard benchmark sequences and significantly outperforms state-of-the-art tracking-by-detection approaches
+in crowded scenes with long-term partial occlusions.
+
+</div>
+	    </div>
+	    </div>
+		
+	  <div class="row">
+	  <div class="span9">
+	  <br>
+	  <b>References</b>
+	  <br>
+		
+		
+	<div class="span9">
+			<h4>
+
+			<a class="paper_link" href="../files/cvpr2015/cvpr2015-anton.pdf">
+				Joint Tracking and Segmentation of Multiple Targets
+				</a>
+			</h4>
+			<p>
+			<a href="http://www.milanton.de">A. Milan</a>,
+			<a href="https://sites.google.com/site/lealtaixe/home">L. Leal-Taixé</a>,
+			<a href="http://www.igp.ethz.ch/photogrammetry/people/Schindler">K. Schindler</a> and
+			<a href="http://cs.adelaide.edu.au/~ianr/">I. Reid</a>
+			<br><a href="http://www.pamitc.org/cvpr15/">CVPR 2015</a>
+			<br>						
+			<a class="bibtex_link" onclick="javascript:toggle(Milan2015CVPR);" />bibtex</a> |
+			<a class="paper_link" href="files/cvpr2015/cvpr2015-anton.pdf">paper</a> |
+			<a class="youtube_link" target="_blank" href="http://www.youtube.com/watch?v=_0WrLy641F0">video</a>
+			<a href="../files/cvpr2015/cvpr2015.mp4"><img src="../img/vdload.png"/></a>
+			<!--
+			<a class="paper_link" href="../files/cvpr2015/cvpr2015-poster.pdf">poster</a> |
+			<a class="data_link" href="../files/cvpr2015/evaluation.zip">data</a>
+			-->
+			<br>
+			<pre id="Milan2015CVPR" class="invisible_bibtex">
+@inproceedings{Milan:2015:CVPR,
+	Author = {Anton Milan and Laura Leal-Taixé and Konrad Schindler and Ian Reid},
+	Booktitle = {CVPR},
+	Title = {Joint Tracking and Segmentation of Multiple Targets},
+	Year = {2015}
+}
+			</pre>
+			</p>
+
+			</div>
+		
+	<br>	
+
+</div>
+
+
+        <!-- Code
+        ================================================== -->
+        <section id="code">	  
+		  <div>
+			<h2>Code</h2>
+		  </div>		  
+<img src="../img/new.png" alt="tracking code" width="25"/> 
+Current version is on <a href="https://bitbucket.org/amilan/segtracking">bitbucket</a>
+
+</section>
+
+
+        <!-- Detections
+        ================================================== -->
+        <section id="detections">	 
+		  <div>
+			<h2>Detections</h2>
+		  </div>
+		  <hr>
+You can download the same detector output that we used for our tracker from <a href="../data.html">here</a>.
+		
+
+		</section> <!-- / detections -->
+
+        <!-- Results
+        ================================================== -->
+        <section id="results">	  
+		  <div>
+			<h2>Tracking output</h2>
+		  </div>
+		  
+		All ground truth and our results (bounding boxes and segmentation masks) as well as the evaluation scripts can be downloaded <a href="../files/cvpr2015/evaluationCVPR2015.zip">here</a>.
+		<br>
+		Here is the <a href="evaluateCVPR2015.html">output</a> of the evaluation script and more detailed results than present in the paper.
+		</section> <!-- / Results -->
+
+        <!-- Videos
+        ================================================== -->
+        <section id="videos">	  
+		  <div>
+			<h2>Videos</h2>
+		  </div>
+		  <hr>
+		  
+		<iframe width="420" height="315" src="http://www.youtube.com/embed/_0WrLy641F0" frameborder="0" allowfullscreen></iframe>		
+
+		</section> <!-- / videos -->
+		
+
+		
+		</div>
+	  </div>
+	  
+	</div>
+	
+  </div>
+
+  
+  
+    <!-- Footer
+    ================================================== -->
+    <footer class="footer">
+      <div class="container">
+        <p>Back to <a href="../index.html">main page</a></p>
+      </div>
+    </footer>
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="./js/widgets.js"></script>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/bootstrap-transition.js"></script>
+    <script src="./js/bootstrap-alert.js"></script>
+    <script src="./js/bootstrap-modal.js"></script>
+    <script src="./js/bootstrap-dropdown.js"></script>
+    <script src="./js/bootstrap-scrollspy.js"></script>
+    <script src="./js/bootstrap-tab.js"></script>
+    <script src="./js/bootstrap-tooltip.js"></script>
+    <script src="./js/bootstrap-popover.js"></script>
+    <script src="./js/bootstrap-button.js"></script>
+    <script src="./js/bootstrap-collapse.js"></script>
+    <script src="./js/bootstrap-carousel.js"></script>
+    <script src="./js/bootstrap-typeahead.js"></script>
+    <script src="./js/bootstrap-affix.js"></script>
+
+    <script src="./js/holder.js"></script>
+    <script src="./js/prettify.js"></script>
+
+    <script src="./js/application.js"></script>
+
+
+
+
+  
+
+<autoscroll_cursor hidden=""></autoscroll_cursor>
+</body>
+</html>

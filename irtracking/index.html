@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Privacy Preserving Multi-Target Tracking</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Anton Milan">
+	<link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico" />
+
+    <!-- Le styles -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="../css/docs.css" rel="stylesheet">
+    <link href="../css/prettify.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        background-color: #FAFAFA;
+      }
+      
+      .topbar {
+		  font-size: 1.5em;
+	  }
+	  
+	  
+	  .container-fluid > .sidebar li {
+		  padding: 0.5em;
+	  }
+	  
+	  section {
+		  margin-top: 48px;
+	  }
+	  
+	  .master-head h1 {
+		  margin-bottom: 0px;
+		  /*color: #C33;*/
+	  }
+	  
+	  .master-head p.lead {
+		 margin-top: 18px;
+		 font-size: 18px;
+	  }
+	  
+	  
+	  .shadow-title {
+		  text-shadow: 0 1px 2px rgba(0, 0, 0, .5);
+	  }
+	  
+	  img.thumbnail {
+		  width: 150px;
+		  /*height: 150px;*/
+	  }
+	  
+	  
+	div.container-fluid a:link, div.container-fluid a:visited {
+		color: #09c;
+		text-decoration: none;
+	}
+		
+	div.container-fluid a:hover {
+		color: #c33;
+	}
+	
+	a.paper_link {
+		display:inline-block;
+		background: url("../img/pdf.png") center right no-repeat;
+		padding-right: 22px;
+	}		
+	
+	a.youtube_link {
+		display:inline-block;
+		background: url("../img/youtube_sb.png") center right no-repeat;
+		padding-right: 22px;
+	}
+	a.data_link {
+		display:inline-block;
+		background: url("../img/opendata.png") center right no-repeat;
+		padding-right: 22px;
+	}		
+	
+	img.bibtex_link {
+		cursor:pointer;
+	}
+	
+	a.bibtex_link {
+		cursor:pointer;
+		background: url("../img/bibtex.png") center right no-repeat;
+		padding-right: 22px;		
+	}
+	a.abstract_link {
+		cursor:pointer;
+	}	
+	pre.invisible_bibtex {
+		display: none;
+		font-size: 12px;
+	}
+	pre.invisible_abstract {
+		display: none;
+		font-size: 12px;
+	}
+
+        a.source_code_link {
+                font-family: Courier New, Courrier;
+        }
+    </style>
+
+	<!-- Place this tag in your head or just before your close body tag. -->
+	<script type="text/javascript" src="https://apis.google.com/js/platform.js"></script>
+
+	
+	</head>
+  	<script language="javascript" type="text/javascript">
+	function toggle(element) {
+		if(element.style.display=="block") {
+			element.style.display="none";
+		} else {
+			element.style.display="block";
+		}
+	}
+	</script>
+	
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+  
+  <!-- Facebook button -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+    <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="">
+                <a href="../index.html">Home</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="container">
+  
+      <!-- Docs nav
+    ================================================== -->
+    <div class="row">
+      <div class="span3 bs-docs-sidebar">
+        <ul class="nav nav-list bs-docs-sidenav affix-top">
+          <li><a href="#mp"><i class="icon-chevron-right"></i>Project Main</a></li>
+          <li><a href="#code"><i class="icon-chevron-right"></i> Code</a></li>
+          <li><a href="#data"><i class="icon-chevron-right"></i> Data</a></li>
+          <li><a href="#videos"><i class="icon-chevron-right"></i> Videos</a></li>            		  
+		  </ul>
+      </div>
+	  <div class="span9">
+	  <div class="page-header">
+	    <h1>Privacy Preserving Multi-Target Tracking</h1>
+	  </div>
+	  <section id="mp">
+	  <div class="row.text-center">
+	    <div class="span9">	    
+	      <img src="../img/sensor.jpg" alt="Infrared Sensor" width="200"/>
+	      <img src="../img/lab_layout.jpg" alt="Infrared Sensor Tracking" width="300"/>	      
+	    </div>	    
+	  </div>
+	  </section>
+	  
+	  
+	  <div class="row">
+	  <div class="span9">
+	  <hr>
+	  <br>
+	  <b>Abstract</b>
+	  <br>
+	  <div class="span7">
+Automated people tracking is important for a wide range
+of applications. However, typical surveillance cameras are controversial
+in their use, mainly due to the harsh intrusion of the tracked individuals’ privacy. In this paper, we explore a privacy-preserving alternative
+for multi-target tracking. A network of infrared sensors attached to the
+ceiling acts as a low-resolution, monochromatic camera in an indoor environment. Using only this low-level information about the presence of
+a target, we are able to reconstruct entire trajectories of several people. Inspired by the recent success of offline approaches to multi-target
+tracking, we apply an energy minimization technique to the novel
+setting of infrared motion sensors. To cope with the very weak data term
+from the infrared sensor network we track in a continuous state space
+with soft, implicit data association. Our experimental evaluation on both
+synthetic and real-world data shows that our principled method clearly
+outperforms previous techniques.
+</div>
+	    </div>
+	    </div>
+		
+	  <div class="row">
+	  <div class="span9">
+	  <br>
+	  <b>Reference</b>
+	  <br>
+		
+			<div class="span7">
+			<h4><a class="paper_link" href="../files/accvws2014/accvws2014-anton.pdf">
+				Privacy Preserving Multi-target Tracking
+				</a>
+			</h4>
+			<p>
+			<a href="http://research.milanton.net">A. Milan</a>,
+			<a href="http://www.gris.informatik.tu-darmstadt.de/~sroth/">S. Roth</a>,
+			<a href="http://www.igp.ethz.ch/photogrammetry/people/Schindler">K. Schindler</a> and
+			<a href="http://www.gcoe.ist.hokudai.ac.jp/arts/english/member/research06.html">M. Kudo</a>
+			<br><a href="http://vipl.ict.ac.cn/homepage/accv14his/HIS.htm">Workshop on Human Identification for Surveillance (HIS)</a>
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(Milan2014PPM);" />bibtex</a>
+			<br>
+			<pre id="Milan2014PPM" class="invisible_bibtex">
+@INPROCEEDINGS{Milan:2014:ACCVWS,
+  author = {A.Milan and S. Roth and K. Schindler and M. Kudo},
+  title = {Privacy Preserving Multi-target Tracking},
+  booktitle = {Workshop on Human Identification for Surveillance},
+  year = {2014}
+}
+			</pre>
+			</p>
+		</div>
+	
+</div>
+</div>
+
+
+        <!-- Code
+        ================================================== -->
+        <section id="code">	  
+		  <div>
+			<h2>Code</h2>
+		  </div>
+		  <hr>
+ 		  <p><img src="../img/new.png" alt="irtracking code" width="25"/>
+		  A version of the code is now on <a href="https://bitbucket.org/amilan/irtracking" target="_blank">bitbucket</a>
+		  </p>
+	</section>
+
+
+        <!-- Data
+        ================================================== -->
+        <section id="data">	  
+		  <div>
+			<h2>Data</h2>
+		  </div>
+ 		  <hr>
+		  coming soon...
+
+
+	</section> <!-- / Data -->
+
+        <!-- Videos
+        ================================================== -->
+        <section id="videos">	  
+		  <div>
+			<h2>Videos</h2>
+		  </div>
+		  <hr>
+		<iframe width="420" height="315" src="http://www.youtube.com/embed/3Pzz6y8NieA" frameborder="0" allowfullscreen></iframe>		
+	      <br />
+
+		</section> <!-- / videos -->
+
+		
+		</div>
+	  </div>
+	  
+	</div>
+	
+  </div>
+
+  
+  
+    <!-- Footer
+    ================================================== -->
+    <footer class="footer">
+      <div class="container">
+        <p>Back to <a href="../index.html">main page</a></p>
+      </div>
+    </footer>
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="./js/widgets.js"></script>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/bootstrap-transition.js"></script>
+    <script src="./js/bootstrap-alert.js"></script>
+    <script src="./js/bootstrap-modal.js"></script>
+    <script src="./js/bootstrap-dropdown.js"></script>
+    <script src="./js/bootstrap-scrollspy.js"></script>
+    <script src="./js/bootstrap-tab.js"></script>
+    <script src="./js/bootstrap-tooltip.js"></script>
+    <script src="./js/bootstrap-popover.js"></script>
+    <script src="./js/bootstrap-button.js"></script>
+    <script src="./js/bootstrap-collapse.js"></script>
+    <script src="./js/bootstrap-carousel.js"></script>
+    <script src="./js/bootstrap-typeahead.js"></script>
+    <script src="./js/bootstrap-affix.js"></script>
+
+    <script src="./js/holder.js"></script>
+    <script src="./js/prettify.js"></script>
+
+    <script src="./js/application.js"></script>
+
+
+
+
+  
+
+<autoscroll_cursor hidden=""></autoscroll_cursor>
+</body>
+</html>

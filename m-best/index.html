@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Anton Milan - Joint Tracking and Segmentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Anton Milan">
+	<link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico" />
+
+    <!-- Le styles -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="../css/docs.css" rel="stylesheet">
+    <link href="../css/prettify.css" rel="stylesheet">
+    <link href="../css/gh-fork-ribbon.css" rel="stylesheet">
+    
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        background-color: #FAFAFA;
+      }
+      
+      .topbar {
+		  font-size: 1.5em;
+	  }
+	  
+	  
+	  .container-fluid > .sidebar li {
+		  padding: 0.5em;
+	  }
+	  
+	  section {
+		  margin-top: 48px;
+	  }
+	  
+	  .master-head h1 {
+		  margin-bottom: 0px;
+		  /*color: #C33;*/
+	  }
+	  
+	  .master-head p.lead {
+		 margin-top: 18px;
+		 font-size: 18px;
+	  }
+	  
+	  
+	  .shadow-title {
+		  text-shadow: 0 1px 2px rgba(0, 0, 0, .5);
+	  }
+	  
+	  img.thumbnail {
+		  width: 150px;
+		  /*height: 150px;*/
+	  }
+	  
+	  
+	div.container-fluid a:link, div.container-fluid a:visited {
+		color: #09c;
+		text-decoration: none;
+	}
+		
+	div.container-fluid a:hover {
+		color: #c33;
+	}
+	
+	a.paper_link {
+		display:inline-block;
+		background: url("../img/pdf.png") center right no-repeat;
+		padding-right: 22px;
+	}		
+	a.slides_link {
+		display:inline-block;
+		background: url("../img/pres.png") center right no-repeat;
+		padding-right: 22px;
+	}		
+	
+	a.youtube_link {
+		display:inline-block;
+		background: url("../img/youtube_sb.png") center right no-repeat;
+		padding-right: 22px;
+	}
+	a.data_link {
+		display:inline-block;
+		background: url("../img/opendata.png") center right no-repeat;
+		padding-right: 22px;
+	}		
+	
+	img.bibtex_link {
+		cursor:pointer;
+	}
+	
+	a.bibtex_link {
+		cursor:pointer;
+		background: url("../img/bibtex.png") center right no-repeat;
+		padding-right: 22px;		
+	}
+	a.abstract_link {
+		cursor:pointer;
+	}	
+	pre.invisible_bibtex {
+		display: none;
+		font-size: 12px;
+	}
+	pre.invisible_abstract {
+		display: none;
+		font-size: 12px;
+	}
+
+        a.source_code_link {
+                font-family: Courier New, Courrier;
+        }
+    </style>
+
+	<!-- Place this tag in your head or just before your close body tag. -->
+	<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+
+	
+	</head>
+  	<script language="javascript" type="text/javascript">
+	function toggle(element) {
+		if(element.style.display=="block") {
+			element.style.display="none";
+		} else {
+			element.style.display="block";
+		}
+	}
+	</script>
+	
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+  
+  <!-- Facebook button -->
+  <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+    <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="">
+                <a href="../index.html">Home</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="container">
+  
+      <!-- Docs nav
+    ================================================== -->
+    <div class="row">
+      <div class="span3 bs-docs-sidebar">
+        <ul class="nav nav-list bs-docs-sidenav affix-top">
+          <li><a href="#matching"><i class="icon-chevron-right"></i>Matching</a></li>
+          <li><a href="#tracking"><i class="icon-chevron-right"></i>Tracking</a></li>
+        </ul>
+      </div> <!--sidebar-->
+      
+
+    
+	  <div class="span9">
+	  <div class="page-header">
+	    <h1>Joint Probabilistic Matching Using m-Best Solutions</h1>
+	  </div> <!--header-->
+	  
+	  <section id="matching">
+	  
+
+<!--	  <div class="row text-center">
+	    <div class="span9">	    
+	      <img src="../img/logos/cvpr2016-logo.jpg" width="150" alt="CVPR 2016">
+	      <br>
+	    </div>	    
+	  </div>-->
+
+	  
+	  <div class="row text-center">
+	    <div class="span9">	    	      
+	      <img src="birds.jpg" width="200" alt="Matching two sets" hspace="10">
+	      <img src="marginals.jpg" width="250" alt="Joint matching space" hspace="10">
+	      <img src="results.jpg" width="180" alt="Matching results" hspace="10">
+	      
+	    </div>	    
+	  </div> <!--row--> 
+
+	  </section>
+	  
+	  
+	  <div class="row">
+	  <div class="span9">
+	  <hr>
+	  <br>
+	  <b>Abstract</b>
+	  <br>
+	  <div class="span7">
+Matching between two sets of objects is typically approached by finding the 
+object pairs that collectively maximize the joint matching score. In this paper, 
+we argue that this single solution does not necessarily lead to the optimal 
+matching accuracy and that general one-to-one assignment problems can be 
+improved by considering multiple hypotheses before computing the final 
+similarity measure. To that end, we propose to utilize the marginal 
+distributions for each entity. Previously, this idea has been neglected mainly 
+because exact marginalization is intractable due to a combinatorial number of 
+all possible matching permutations. Here, we propose a generic approach to 
+efficiently approximate the marginal distributions by exploiting the $m$-best 
+solutions of the original problem. This approach not only improves the matching 
+solution, but also provides more accurate ranking of the results, because of the 
+extra information included in the marginal distribution. We validate our claim 
+on two distinct objectives: (i) person re-identification and temporal matching 
+modeled as an integer linear program, and % (ii) multi-target 
+tracking-by-visual-matching, and (ii) feature point matching using a quadratic 
+cost function. Our experiments confirm that marginalization indeed leads to 
+superior performance compared to the single (nearly) optimal solution, yielding 
+state-of-the-art results in both applications on standard benchmarks.
+</div> <!--span7-->
+	    </div> <!--span9-->
+	    </div> <!--row-->
+		
+	  <div class="row">
+	  <div class="span9">
+	  <br>
+	  <b>References</b>
+	  <br>
+		
+		
+			<h4>
+
+			<h4> <a class="paper_link" href="../files/cvpr2016/cvpr2016-hamid.pdf">
+				Joint Probabilistic Matching Using <i>m</i>-Best Solutions
+				</a>
+			</h4>
+			<p>
+			<a href="http://users.cecs.anu.edu.au/~hrezatofighi/index.htm">S. H. Rezatofighi</a>,
+			<a href="http://www.milanton.de">A. Milan</a>,
+			<a href="https://scholar.google.de/citations?user=4X6Hqg0AAAAJ&hl=en">Z. Zhang</a>,						
+			<a href="http://cs.adelaide.edu.au/~ard/">A. Dick</a>,
+			<a href="http://cs.adelaide.edu.au/~javen/">Q. Shi</a>,
+			<a href="http://cs.adelaide.edu.au/~ianr/">I. Reid</a>
+			<br><a href="http://cvpr2016.thecvf.com">CVPR 2016</a> (oral presentation)
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(Rezatofighi2016CVPRbibtex);" />bibtex</a> |
+			<a class="paper_link" href="../files/cvpr2016/cvpr2016-hamid.pdf">paper</a> |
+			<a class="paper_link" href="../files/cvpr2016/cvpr2016-hamid-suppmat.pdf">supplemental</a> |
+			<a class="slides_link" href="../files/cvpr2016/cvpr2016-hamid-slides.pdf">slides</a> |
+			<a class="paper_link" href="../files/cvpr2016/cvpr2016-hamid-poster.pdf">poster</a> |
+			<a class="youtube_link" target="_blank" href="https://youtu.be/rvgrTteb4xQ">video</a>
+			<br>
+			<pre id="Rezatofighi2016CVPRbibtex" class="invisible_bibtex">
+@inproceedings{Rezatofighi:2016:CVPR,
+	Author = {Rezatofighi, S. H. and Milan, A. and Zhang, Z. and Shi, Q. and Dick, A. and Reid, I.},
+	Booktitle = {CVPR},
+	Title = {Joint Probabilistic Matching Using m-Best Solutions},
+	Year = {2016}
+}
+			</pre>
+			</p>
+
+			</div> <!--span9-->
+		
+	<br>	
+
+</div> <!--row-->
+
+	  <div class="row">
+	  <div class="span9">	  
+	  <h2>Code</h2>	  
+		  <p><a href="https://bitbucket.org/amilan/m-best">here</a></p>
+
+	  </div> <!--span9-->
+	  </div> <!--row--> 
+	  
+	  
+	  <hr>
+	  
+	  <section id="tracking">
+	  
+
+<!--	  <div class="row text-center">
+	    <div class="span9">	    
+	      <img src="../img/logos/cvpr2016-logo.jpg" width="150" alt="CVPR 2016">
+	      <br>
+	    </div>	    
+	  </div>-->
+	  
+	  <div class="row">
+	  <div class="span9">	  
+	  <h1>Joint Probabilistic Data Association Revisited</h1> 
+	  </div> <!--span9-->
+	  </div> <!--row--> 
+	  
+	  <div class="row text-center">
+	    <div class="span9">	    	      
+	      <img src="../img/JPDA.png" width="200" alt="Data Association" hspace="10">
+	      
+	    </div>	    
+	  </div> <!--row--> 
+	  
+
+
+
+	  </section>	
+	  
+	  <div class="row">
+	  <div class="span9">
+	  <hr>
+	  <br>
+	  <b>Abstract</b>
+	  <br>
+	  <div class="span7">
+In this paper, we revisit the joint probabilistic data association (JPDA) 
+technique and propose a novel solution based on recent developments in finding 
+the m-best solutions to an integer linear program. The key advantage of this 
+approach is that it makes JPDA computationally tractable in applications with 
+high target and/or clutter density, such as spot tracking in fluorescence 
+microscopy sequences and pedestrian tracking in surveillance footage. We also 
+show that our JPDA algorithm embedded in a simple tracking framework is 
+surprisingly competitive with state-of-the-art global tracking methods in these 
+two applications, while needing considerably less processing time.
+</div> <!--span7-->
+	    </div> <!--span9-->
+	    </div> <!--row-->
+		
+	  <div class="row">
+	  <div class="span9">
+	  <br>
+	  <b>References</b>
+	  <br>
+		
+		
+			<h4><a class="paper_link" href="files/iccv2015/iccv2015-hamid.pdf">Joint Probabilistic Data Association Revisited</a>
+			</h4>
+			<p>
+			<a href="http://users.cecs.anu.edu.au/~hrezatofighi/index.htm">S. H. Rezatofighi</a>,
+			<a href="http://www.milanton.de">A. Milan</a>,
+			<a href="https://scholar.google.de/citations?user=4X6Hqg0AAAAJ&hl=en">Z. Zhang</a>,						
+			<a href="http://cs.adelaide.edu.au/~ard/">A. Dick</a>,
+			<a href="http://cs.adelaide.edu.au/~javen/">Q. Shi</a>,
+			<a href="http://cs.adelaide.edu.au/~ianr/">I. Reid</a>
+			<br><a href="http://www.pamitc.org/iccv15/">ICCV 2015</a>
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(Rezatofighi2015ICCVbibtex);" />bibtex</a> |			
+			<a class="paper_link" href="../files/iccv2015/iccv2015-hamid.pdf">paper</a> |
+			<a href="http://research.milanton.net/files/iccv2015/jpda_m.zip">code</a> |
+			<a class="youtube_link" target="_blank" href="https://youtu.be/labjLU02ros">video 1</a>
+			<a class="youtube_link" target="_blank" href="https://youtu.be/mIGZiI7-glw">video 2</a>
+			<br>
+			<pre id="Rezatofighi2015ICCVbibtex" class="invisible_bibtex">
+@inproceedings{Rezatofighi:2015:ICCV,
+	Author = {Rezatofighi, S. H. and Milan, A. and Zhang, Z. and Shi, Q. and Dick, A. and Reid, I.},
+	Booktitle = {ICCV},
+	Title = {Joint Probabilistic Data Association Revisited},
+	Year = {2015}
+}
+			</pre>
+			</p>
+
+			</div> <!--span9-->
+		
+	<br>	
+
+</div> <!--row-->	
+
+	  <div class="row">
+	  <div class="span9">	  
+	  <h2>Code</h2>	  
+		  
+	    <a href="../files/iccv2015/jpda_m.zip">here</a>
+	  </div> <!--span9-->
+	  </div> <!--row-->
+	  
+	  <div class="row">
+	  <div class="span9">	  
+	  <h2>Data</h2>	  
+		  
+	    <a href="../files/iccv2015/Fluorescence_Tracking_Data.zip">Fluorescence spot sequence</a>
+	  </div> <!--span9-->
+	  </div> <!--row--> 
+	
+    </div>
+  </div>
+  
+  
+</div>
+
+  
+  
+    <!-- Footer
+    ================================================== -->
+    <footer class="footer">
+      <div class="container">
+        <p>Back to <a href="../index.html">main page</a></p>
+      </div>
+    </footer>
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="./js/widgets.js"></script>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/bootstrap-transition.js"></script>
+    <script src="./js/bootstrap-alert.js"></script>
+    <script src="./js/bootstrap-modal.js"></script>
+    <script src="./js/bootstrap-dropdown.js"></script>
+    <script src="./js/bootstrap-scrollspy.js"></script>
+    <script src="./js/bootstrap-tab.js"></script>
+    <script src="./js/bootstrap-tooltip.js"></script>
+    <script src="./js/bootstrap-popover.js"></script>
+    <script src="./js/bootstrap-button.js"></script>
+    <script src="./js/bootstrap-collapse.js"></script>
+    <script src="./js/bootstrap-carousel.js"></script>
+    <script src="./js/bootstrap-typeahead.js"></script>
+    <script src="./js/bootstrap-affix.js"></script>
+
+    <script src="./js/holder.js"></script>
+    <script src="./js/prettify.js"></script>
+
+    <script src="./js/application.js"></script>
+
+
+
+
+  
+
+<autoscroll_cursor hidden=""></autoscroll_cursor>
+</body>
+</html>

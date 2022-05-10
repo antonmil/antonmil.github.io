@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Anton Milan - Discrete-Continuous Tracking</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Anton Milan">
+	<link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico" />
+
+    <!-- Le styles -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="../css/docs.css" rel="stylesheet">
+    <link href="../css/prettify.css" rel="stylesheet">
+    <link href="../css/gh-fork-ribbon.css" rel="stylesheet">
+    
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        background-color: #FAFAFA;
+      }
+      
+      .topbar {
+		  font-size: 1.5em;
+	  }
+	  
+	  
+	  .container-fluid > .sidebar li {
+		  padding: 0.5em;
+	  }
+	  
+	  section {
+		  margin-top: 48px;
+	  }
+	  
+	  .master-head h1 {
+		  margin-bottom: 0px;
+		  /*color: #C33;*/
+	  }
+	  
+	  .master-head p.lead {
+		 margin-top: 18px;
+		 font-size: 18px;
+	  }
+	  
+	  
+	  .shadow-title {
+		  text-shadow: 0 1px 2px rgba(0, 0, 0, .5);
+	  }
+	  
+	  img.thumbnail {
+		  width: 150px;
+		  /*height: 150px;*/
+	  }
+	  
+	  
+	div.container-fluid a:link, div.container-fluid a:visited {
+		color: #09c;
+		text-decoration: none;
+	}
+		
+	div.container-fluid a:hover {
+		color: #c33;
+	}
+	
+	a.paper_link {
+		display:inline-block;
+		background: url("../img/pdf.png") center right no-repeat;
+		padding-right: 22px;
+	}		
+	
+	a.youtube_link {
+		display:inline-block;
+		background: url("../img/youtube_sb.png") center right no-repeat;
+		padding-right: 22px;
+	}
+	a.data_link {
+		display:inline-block;
+		background: url("../img/opendata.png") center right no-repeat;
+		padding-right: 22px;
+	}		
+	
+	img.bibtex_link {
+		cursor:pointer;
+	}
+	
+	a.bibtex_link {
+		cursor:pointer;
+		background: url("../img/bibtex.png") center right no-repeat;
+		padding-right: 22px;		
+	}
+	a.abstract_link {
+		cursor:pointer;
+	}	
+	pre.invisible_bibtex {
+		display: none;
+		font-size: 12px;
+	}
+	pre.invisible_abstract {
+		display: none;
+		font-size: 12px;
+	}
+
+        a.source_code_link {
+                font-family: Courier New, Courrier;
+        }
+    </style>
+
+	<!-- Place this tag in your head or just before your close body tag. -->
+	<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+
+	
+	</head>
+  	<script language="javascript" type="text/javascript">
+	function toggle(element) {
+		if(element.style.display=="block") {
+			element.style.display="none";
+		} else {
+			element.style.display="block";
+		}
+	}
+	</script>
+	
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+  
+  <!-- Facebook button -->
+  <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+    <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="">
+                <a href="../index.html">Home</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="container">
+  
+      <!-- Docs nav
+    ================================================== -->
+    <div class="row">
+      <div class="span3 bs-docs-sidebar">
+        <ul class="nav nav-list bs-docs-sidenav affix-top">
+          <li><a href="#dco"><i class="icon-chevron-right"></i> Dicrete-Continuous Tracking</a></li>
+          <li><a href="#code"><i class="icon-chevron-right"></i> Code</a></li>
+          <li><a href="#detections"><i class="icon-chevron-right"></i> Detections</a></li>
+          <li><a href="#results"><i class="icon-chevron-right"></i> Tracking Output</a></li>
+          <li><a href="#videos"><i class="icon-chevron-right"></i> Videos</a></li>		            
+		  </ul>
+      </div>
+      
+          <!-- TOP RIGHT RIBBON: START COPYING HERE -->
+    <div class="github-fork-ribbon-wrapper right">
+        <div class="github-fork-ribbon">
+            <a href="https://bitbucket.org/amilan/dctracking">Fork me on Bitbucket</a>
+        </div>
+    </div> 
+    
+	  <div class="span9">
+	  <div class="page-header">
+	    <h1>Discrete-Continuous Energy Minimization for Multi-Target Tracking</h1>
+	  </div>
+	  <section id="con">
+	  <div class="row.text-center">
+	    <div class="span9">	    
+	      <img src="../img/dc-tracking.png" alt="Discrete-Continuous Optimization"/>	    
+	    </div>	    
+	  </div>
+	  </section>
+	  
+	  
+	  <div class="row">
+	  <div class="span9">
+	  <hr>
+	  <br>
+	  <b>Abstract</b>
+	  <br>
+	  <div class="span7">
+	  The problem of multi-target tracking is comprised of two distinct, but 
+tightly coupled challenges: (i) the naturally discrete problem of data 
+association, i.e. assigning image observations to the appropriate 
+target; (ii) the naturally continuous problem of trajectory estimation, 
+i.e. recovering the trajectories of all targets. To go beyond simple 
+greedy solutions for data association, recent approaches often perform 
+multi-target tracking using discrete optimization. This has the 
+disadvantage that trajectories need to be pre-computed or represented 
+discretely, thus limiting accuracy. In this paper we instead formulate 
+multi-target tracking as a discretecontinuous optimization problem that 
+handles each aspect in its natural domain and allows leveraging powerful 
+methods for multi-model fitting. Data association is performed using 
+discrete optimization with label costs, yielding near optimality. 
+Trajectory estimation is posed as a continuous fitting problem with a 
+simple closed-form solution, which is used in turn to update the label 
+costs. We demonstrate the accuracy and robustness of our approach with 
+state-of-theart performance on several standard datasets. 
+</div>
+	    </div>
+	    </div>
+		
+	  <div class="row">
+	  <div class="span9">
+	  <br>
+	  <b>References</b>
+	  <br>
+		
+
+		<div class="span7">
+			<h4><a class="paper_link" href="files/pami2016/pami2016-anton.pdf">
+				Multi-Target Tracking by Discrete-Continuous Energy Minimization
+				</a>
+			</h4>
+			<p>
+			<a href="http://research.milanton.net">A. Milan</a>,			
+			<a href="http://www.igp.ethz.ch/photogrammetry/people/Schindler">K. Schindler</a> and
+			<a href="http://www.gris.informatik.tu-darmstadt.de/~sroth/">S. Roth</a>			
+			<br><a href="http://www.computer.org/portal/web/tpami/home">PAMI</a>, 2016
+			<br>			
+			<a class="bibtex_link" onclick="javascript:toggle(Milan2015DCO);" />bibtex</a> |			
+			<a class="abstract_link" onclick="javascript:toggle(Milan2015DCOabstract);" />abstract</a> |
+			<a class="paper_link" href="files/pami2016/pami2016-anton.pdf">paper</a> |
+			<a class="youtube_link" target="_blank" href="https://youtu.be/lZRzhZSDYKs">video</a> 
+			<a href="files/pami2016/pami2016.mp4"><img src="../img/vdload.png"/></a> |
+			<br>
+			<pre id="Milan2015DCO" class="invisible_bibtex">
+@article{Milan:2016:PAMI,
+	author = {Milan, A. and Schindler, K. and Roth, S.},	
+	title = {Multi-Target Tracking by Discrete-Continuous Energy Minimization},
+	volume = {?},
+	number = {?},
+	journal = {IEEE TPAMI},
+	year = {2016}
+}
+			</pre>
+			<pre id="Milan2015DCOabstract" class="invisible_abstract">
+The task of tracking multiple targets is often addressed with the 
+so-called tracking-by-detection paradigm, where the first step is to 
+obtain a set of target hypotheses for each frame independently. Tracking 
+can then be regarded as solving two separate, but tightly coupled 
+problems. The first is to carry out data association, i.e. to determine 
+the origin of each of the available observations. The second problem is 
+to reconstruct the actual trajectories that describe the spatio-temporal 
+motion pattern of each individual target. The former is inherently a 
+discrete problem, while the latter should intuitively be modeled in 
+continuous space. Having to deal with an unknown number of targets, 
+complex dependencies, and physical constraints, both are challenging 
+tasks on their own and thus most previous work focuses on one of these 
+subproblems. Here, we present a multi-target tracking approach that 
+explicitly models both tasks as minimization of a unified 
+discrete-continuous energy function. Trajectory properties are captured 
+through global label costs, a recent concept from multi-model fitting, 
+which we introduce to tracking. Specifically, label costs describe 
+physical properties of individual tracks, e.g. linear and angular 
+dynamics, or entry and exit points. We further introduce pairwise label 
+costs to describe mutual interactions between targets in order to avoid 
+collisions. By choosing appropriate forms for the individual energy 
+components, powerful discrete optimization techniques can be leveraged 
+to address data association, while the shapes of individual trajectories 
+are updated by gradient-based continuous energy minimization. The 
+proposed method achieves state-of-the-art results on diverse benchmark 
+sequences.
+			</pre>
+			</p>
+		</div>
+	<!-- /row -->
+	
+		
+	<div class="span7">
+	<hr>
+			<h4><a class="paper_link" href="../files/cvpr2013/cvpr2013-anton.pdf">
+				Detection- and Trajectory-Level Exclusion in Multiple Object Tracking
+				</a>
+			</h4>
+			<p>
+			<a href="http://www.milanton.de">A. Milan</a>,
+			<a href="http://www.igp.ethz.ch/photogrammetry/people/Schindler">K. Schindler</a> and
+			<a href="http://www.gris.informatik.tu-darmstadt.de/~sroth/">S. Roth</a>
+			<br><a href="http://www.pamitc.org/cvpr13/">CVPR 2013</a>
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(Milan2013DTE);" />bibtex</a> |
+			<a class="paper_link" href="../files/cvpr2013/cvpr2013-poster.pdf">poster</a> |
+			<a class="youtube_link" target="_blank" href="http://www.youtube.com/watch?v=zUQfsjkLfyY">video</a>
+			<a href="../files/cvpr2013/cvpr2013.mp4"><img src="../img/vdload.png"/></a> |
+			<a class="data_link" href="../files/cvpr2013/evaluation.zip">data</a>
+			<br>
+			<pre id="Milan2013DTE" class="invisible_bibtex">
+@inproceedings{Milan:2013:DTE,
+	Author = {Anton Milan and Konrad Schindler and Stefan Roth},
+	Booktitle = {CVPR},
+	Title = {Detection- and Trajectory-Level Exclusion in Multiple Object Tracking},
+	Year = {2013}
+}
+			</pre>
+			</p>
+
+			</div>
+		
+	<br>	
+	
+
+		<!-- CVPR 2012 -->
+		<div class="span7">
+		<hr>
+			<h4><a class="paper_link" href="../files/cvpr2012/cvpr2012-anton.pdf">
+				Discrete-Continuous Optimization for Multi-Target Tracking
+				</a>
+			</h4>
+			<p>
+			<a href="http://www.milanton.de">A. Andriyenko</a>,
+			<a href="http://www.igp.ethz.ch/photogrammetry/people/Schindler">K. Schindler</a> and
+			<a href="http://www.gris.informatik.tu-darmstadt.de/~sroth/">S. Roth</a>
+			<br><a href="https://sites.google.com/a/cvpr2012.org/home/">CVPR 2012</a>
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(Andriyenko2012DCO);" />bibtex</a> |
+			<a class="abstract_link" onclick="javascript:toggle(Andriyenko2012DCOabstract);" />
+			<a class="paper_link" href="../files/cvpr2012/cvpr2012-poster.pdf">poster</a> |
+			<a class="youtube_link" target="_blank" href="http://www.youtube.com/watch?v=Z9X3IhHytrQ">video</a> |
+			<a class="data_link" href="../files/cvpr2012/evaluation.zip">data</a> 			
+			<br>
+			<pre id="Andriyenko2012DCO" class="invisible_bibtex">
+@inproceedings{Andriyenko:2012:DCO,
+	Author = {Anton Andriyenko and Konrad Schindler and Stefan Roth},
+	Booktitle = {CVPR},
+	Title = {Discrete-Continuous Optimization for Multi-Target Tracking},
+	Year = {2012}
+}
+			</pre>
+			</p>
+		</div>
+</div>
+
+
+        <!-- Code
+        ================================================== -->
+        <section id="code">	  
+		  <div>
+			<h2>Code</h2>
+		  </div>
+		  <hr>
+
+Download: <a href="../../files/software/dctracking-v1.0.zip">dctracking-v1.0.zip</a> (6.6 MB)<br />
+By downloading the software you agree to the specified <a href="./../files/LICENSE.txt">terms</a>.<br />
+<br />
+The above MATLAB code package accompanies our CVPR 2012 paper.
+This code contains minor modifications compared to the one that was used to produce results for the paper.
+<br><br>
+A version of the code for our CVPR 2013 and the PAMI paper is available on <a href="https://bitbucket.org/amilan/dctracking">bitbucket</a>
+
+</section>
+
+
+        <!-- Detections
+        ================================================== -->
+        <section id="detections">	 
+		  <div>
+			<h2>Detections</h2>
+		  </div>
+		  <hr>
+Plese note that our code does not include a person detector. Due to various reasons we are unable to provide the exact same version that we used in our publications.  
+However, you can download a state-of-the-art HOG detector <a href="http://www.d2.mpi-inf.mpg.de/node/443">here</a>.
+Alternatively, you can use the well-known <a href="http://people.cs.uchicago.edu/~rbg/latent/">DPM detector</a>.
+You can download the same detector output that we used for our tracker from <a href="../data.html">here</a>.
+		
+
+		</section> <!-- / detections -->
+
+        <!-- Results
+        ================================================== -->
+        <section id="results">	  
+		  <div>
+			<h2>Tracking output</h2>
+		  </div>
+		  <hr>
+		  <strong>CVPR 2013</strong>
+		  <br>
+The file <a href="../files/cvpr2013/evaluation.zip">evaluation.zip</a> contains our tracking results (3D tracking only), the ground truth and the evaluation scripts.
+<br> <b>IMPORTANT:</b>
+Note that the results for S2L2 and S1L2-1 reported in Table 2 of the <a class="paper_link" href="../files/cvpr2013/cvpr2013-anton.pdf">paper</a> are
+evaluated with a wrong ground truth. This script produces the correct numbers:
+<br>
+<table border="1" cellpadding="1" cellspacing="0">
+   <tbody>
+      <tr>
+         <td style="horizontal-align: center;">Sequence</td>
+         <td style="horizontal-align: center;">MOTA</td>
+         <td style="horizontal-align: center;">MOTP</td>
+         <td style="horizontal-align: center;">MT</td>
+         <td style="horizontal-align: center;">PT</td>
+         <td style="horizontal-align: center;">ML</td>
+         <td style="horizontal-align: center;">FP</td>
+         <td style="horizontal-align: center;">FN</td>
+         <td style="horizontal-align: center;">IDs</td>
+         <td style="horizontal-align: center;">FM</td>
+         <td style="horizontal-align: center;">Recall</td>
+         <td style="horizontal-align: center;">Precision</td>
+      </tr>
+      <tr>
+         <td style="horizontal-align: center;">S2.L1</td>
+         <td style="horizontal-align: center;">90.3</td>
+         <td style="horizontal-align: center;">74.3</td>
+         <td style="horizontal-align: center;">18</td>
+         <td style="horizontal-align: center;">1</td>
+         <td style="horizontal-align: center;">0</td>
+         <td style="horizontal-align: center;">282</td>
+         <td style="horizontal-align: center;">148</td>
+         <td style="horizontal-align: center;">22</td>
+         <td style="horizontal-align: center;">15</td>
+         <td style="horizontal-align: center;">96.8</td>
+         <td style="horizontal-align: center;">94.1</td>
+      </tr>
+      <tr bgcolor="#FFBBBB">
+         <td style="horizontal-align: center;">S2.L2</td>
+         <td style="horizontal-align: center;">58.1</td>
+         <td style="horizontal-align: center;">59.8</td>
+         <td style="horizontal-align: center;">11</td>
+         <td style="horizontal-align: center;">31</td>
+         <td style="horizontal-align: center;">1</td>
+         <td style="horizontal-align: center;">549</td>
+         <td style="horizontal-align: center;">3592</td>
+         <td style="horizontal-align: center;">167</td>
+         <td style="horizontal-align: center;">153</td>
+         <td style="horizontal-align: center;">65.1</td>
+         <td style="horizontal-align: center;">92.4</td>
+      </tr>
+      <tr>
+         <td style="horizontal-align: center;">S2.L3</td>
+         <td style="horizontal-align: center;">39.8</td>
+         <td style="horizontal-align: center;">65.0</td>
+         <td style="horizontal-align: center;">8</td>
+         <td style="horizontal-align: center;">17</td>
+         <td style="horizontal-align: center;">19</td>
+         <td style="horizontal-align: center;">115</td>
+         <td style="horizontal-align: center;">2493</td>
+         <td style="horizontal-align: center;">27</td>
+         <td style="horizontal-align: center;">22</td>
+         <td style="horizontal-align: center;">43.0</td>
+         <td style="horizontal-align: center;">94.2</td>
+      </tr>
+      <tr>
+         <td style="horizontal-align: center;">S1.L1-2</td>
+         <td style="horizontal-align: center;">60.0</td>
+         <td style="horizontal-align: center;">61.9</td>
+         <td style="horizontal-align: center;">21</td>
+         <td style="horizontal-align: center;">12</td>
+         <td style="horizontal-align: center;">11</td>
+         <td style="horizontal-align: center;">169</td>
+         <td style="horizontal-align: center;">1349</td>
+         <td style="horizontal-align: center;">22</td>
+         <td style="horizontal-align: center;">19</td>
+         <td style="horizontal-align: center;">64.9</td>
+         <td style="horizontal-align: center;">93.7</td>
+      </tr>
+      <tr bgcolor="#EEBBBB">
+         <td style="horizontal-align: center;">S1.L2-1</td>
+         <td style="horizontal-align: center;">29.6</td>
+         <td style="horizontal-align: center;">58.8</td>
+         <td style="horizontal-align: center;">2</td>
+         <td style="horizontal-align: center;">19</td>
+         <td style="horizontal-align: center;">21</td>
+         <td style="horizontal-align: center;">27</td>
+         <td style="horizontal-align: center;">3494</td>
+         <td style="horizontal-align: center;">42</td>
+         <td style="horizontal-align: center;">34</td>
+         <td style="horizontal-align: center;">30.9</td>
+         <td style="horizontal-align: center;">98.3</td>
+      </tr>
+      <tr>
+         <td style="horizontal-align: center;">Stadtmitte</td>
+         <td style="horizontal-align: center;">56.2</td>
+         <td style="horizontal-align: center;">61.6</td>
+         <td style="horizontal-align: center;">4</td>
+         <td style="horizontal-align: center;">6</td>
+         <td style="horizontal-align: center;">0</td>
+         <td style="horizontal-align: center;">134</td>
+         <td style="horizontal-align: center;">357</td>
+         <td style="horizontal-align: center;">15</td>
+         <td style="horizontal-align: center;">13</td>
+         <td style="horizontal-align: center;">69.1</td>
+         <td style="horizontal-align: center;">85.6</td>
+      </tr>
+   </tbody>
+</table>
+
+		  <hr>
+		  <strong>CVPR 2012</strong>
+		  <br>
+The file <a href="../files/cvpr2012/evaluation.zip">evaluation.zip</a> contains our tracking results (3D tracking only) for TUD-Stadtmitte and PETS S2.L2, 
+the ground truth and the evaluation script used to produce the numbers in Table 3 in <a class="paper_link" href="files/cvpr2012/cvpr2012-anton.pdf">this paper</a>. 
+Note that both the results and the ground truth are cropped to a rectangular tracking area in order to enable a comparison to our <a href="../contracking/">previous work</a>.
+
+
+<br>
+<table border="1" cellpadding="1" cellspacing="0">
+   <tbody>
+      <tr>
+         <td style="horizontal-align: center;">Sequence</td>
+         <td style="horizontal-align: center;">MOTA</td>
+         <td style="horizontal-align: center;">MOTP</td>
+         <td style="horizontal-align: center;">MT</td>
+         <td style="horizontal-align: center;">PT</td>
+         <td style="horizontal-align: center;">ML</td>
+         <td style="horizontal-align: center;">FP</td>
+         <td style="horizontal-align: center;">FN</td>
+         <td style="horizontal-align: center;">IDs</td>
+         <td style="horizontal-align: center;">FM</td>
+         <td style="horizontal-align: center;">Recall</td>
+         <td style="horizontal-align: center;">Precision</td>
+      </tr>
+      <tr>
+         <td style="horizontal-align: center;">S2.L1</td>
+         <td style="horizontal-align: center;">95.9</td>
+         <td style="horizontal-align: center;">78.7</td>
+         <td style="horizontal-align: center;">22</td>
+         <td style="horizontal-align: center;">1</td>
+         <td style="horizontal-align: center;">0</td>
+         <td style="horizontal-align: center;">35</td>
+         <td style="horizontal-align: center;">119</td>
+         <td style="horizontal-align: center;">10</td>
+         <td style="horizontal-align: center;">8</td>
+         <td style="horizontal-align: center;">97.0</td>
+         <td style="horizontal-align: center;">99.1</td>
+      </tr>
+      <tr>
+         <td style="horizontal-align: center;">TUD-Stadtmitte</td>
+         <td style="horizontal-align: center;">61.8</td>
+         <td style="horizontal-align: center;">63.2</td>
+         <td style="horizontal-align: center;">6</td>
+         <td style="horizontal-align: center;">3</td>
+         <td style="horizontal-align: center;">0</td>
+         <td style="horizontal-align: center;">130</td>
+         <td style="horizontal-align: center;">131</td>
+         <td style="horizontal-align: center;">4</td>
+         <td style="horizontal-align: center;">1</td>
+         <td style="horizontal-align: center;">81.1</td>
+         <td style="horizontal-align: center;">81.2</td>
+      </tr>	  
+	  </tbody>
+</table>
+
+<br><br>
+The files PETS-S2L1.xml and PETS-S2L1-cvml.xml contain our tracking result that was evaluated by the PETS organizers with unpublished ground truth. The numbers are listed in Table 2 of the paper.
+
+<table border="1" cellpadding="1" cellspacing="0">
+   <tbody>
+      <tr>
+         <td style="horizontal-align: center;">Sequence</td>
+         <td style="horizontal-align: center;">MOTA</td>
+         <td style="horizontal-align: center;">MOTP</td>
+         <td style="horizontal-align: center;">MODA</td>
+         <td style="horizontal-align: center;">MODP</td>
+      </tr>
+      <tr>
+         <td style="horizontal-align: center;">S2.L1</td>
+         <td style="horizontal-align: center;">89.3</td>
+         <td style="horizontal-align: center;">56.4</td>
+         <td style="horizontal-align: center;">90.8</td>
+         <td style="horizontal-align: center;">57.3</td>
+      </tr>
+	  </tbody>
+</table>
+		</section> <!-- / Results -->
+
+        <!-- Videos
+        ================================================== -->
+        <section id="videos">	  
+		  <div>
+			<h2>Videos</h2>
+		  </div>
+		  <hr>
+		<iframe width="420" height="315" src="http://www.youtube.com/embed/lZRzhZSDYKs" frameborder="0" allowfullscreen></iframe>
+		<iframe width="420" height="315" src="http://www.youtube.com/embed/Z9X3IhHytrQ" frameborder="0" allowfullscreen></iframe>
+		<iframe width="420" height="315" src="http://www.youtube.com/embed/zUQfsjkLfyY" frameborder="0" allowfullscreen></iframe>
+<br />
+
+		</section> <!-- / videos -->
+		
+
+		
+		</div>
+	  </div>
+	  
+	</div>
+	
+  </div>
+
+  
+  
+    <!-- Footer
+    ================================================== -->
+    <footer class="footer">
+      <div class="container">
+        <p>Back to <a href="../index.html">main page</a></p>
+      </div>
+    </footer>
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="./js/widgets.js"></script>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/bootstrap-transition.js"></script>
+    <script src="./js/bootstrap-alert.js"></script>
+    <script src="./js/bootstrap-modal.js"></script>
+    <script src="./js/bootstrap-dropdown.js"></script>
+    <script src="./js/bootstrap-scrollspy.js"></script>
+    <script src="./js/bootstrap-tab.js"></script>
+    <script src="./js/bootstrap-tooltip.js"></script>
+    <script src="./js/bootstrap-popover.js"></script>
+    <script src="./js/bootstrap-button.js"></script>
+    <script src="./js/bootstrap-collapse.js"></script>
+    <script src="./js/bootstrap-carousel.js"></script>
+    <script src="./js/bootstrap-typeahead.js"></script>
+    <script src="./js/bootstrap-affix.js"></script>
+
+    <script src="./js/holder.js"></script>
+    <script src="./js/prettify.js"></script>
+
+    <script src="./js/application.js"></script>
+
+
+
+
+  
+
+<autoscroll_cursor hidden=""></autoscroll_cursor>
+</body>
+</html>

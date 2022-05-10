@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Anton Milan - Continuous Energy Minimization for Multi-Target Tracking</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Anton Milan">
+	<link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico" />
+
+    <!-- Le styles -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="../css/docs.css" rel="stylesheet">
+    <link href="../css/prettify.css" rel="stylesheet">
+    <link href="../css/gh-fork-ribbon.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <style type="text/css">
+      body {
+	padding-top: 60px;
+	background-color: #FAFAFA;
+      }
+      
+      .topbar {
+		  font-size: 1.5em;
+	  }
+	  
+	  
+	  .container-fluid > .sidebar li {
+		  padding: 0.5em;
+	  }
+	  
+	  section {
+		  margin-top: 48px;
+	  }
+	  
+	  .master-head h1 {
+		  margin-bottom: 0px;
+		  /*color: #C33;*/
+	  }
+	  
+	  .master-head p.lead {
+		margin-top: 18px;
+		font-size: 18px;
+	  }
+	  
+	  
+	  .shadow-title {
+		  text-shadow: 0 1px 2px rgba(0, 0, 0, .5);
+	  }
+	  
+	  img.thumbnail {
+		  width: 150px;
+		  /*height: 150px;*/
+	  }
+	  
+	  
+	div.container-fluid a:link, div.container-fluid a:visited {
+		color: #09c;
+		text-decoration: none;
+	}
+		
+	div.container-fluid a:hover {
+		color: #c33;
+	}
+	
+	a.paper_link {
+		display:inline-block;
+		background: url("../img/pdf.png") center right no-repeat;
+		padding-right: 22px;
+	}		
+	
+	a.youtube_link {
+		display:inline-block;
+		background: url("../img/youtube_sb.png") center right no-repeat;
+		padding-right: 22px;
+	}
+	a.data_link {
+		display:inline-block;
+		background: url("../img/opendata.png") center right no-repeat;
+		padding-right: 22px;
+	}		
+	
+	img.bibtex_link {
+		cursor:pointer;
+	}
+	
+	a.bibtex_link {
+		cursor:pointer;
+		background: url("../img/bibtex.png") center right no-repeat;
+		padding-right: 22px;		
+	}
+	a.abstract_link {
+		cursor:pointer;
+	}	
+	pre.invisible_bibtex {
+		display: none;
+		font-size: 12px;
+	}
+	pre.invisible_abstract {
+		display: none;
+		font-size: 12px;
+	}
+
+	a.source_code_link {
+		font-family: Courier New, Courrier;
+	}
+    </style>
+
+	<!-- Place this tag in your head or just before your close body tag. -->
+	<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+
+	
+	</head>
+	<script language="javascript" type="text/javascript">
+	function toggle(element) {
+		if(element.style.display=="block") {
+			element.style.display="none";
+		} else {
+			element.style.display="block";
+		}
+	}
+	</script>
+	
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+  
+  
+  <!-- Facebook button -->
+  <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+    <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+	<div class="container">
+	  <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+	    <span class="icon-bar"></span>
+	    <span class="icon-bar"></span>
+	    <span class="icon-bar"></span>
+	  </button>
+	  <div class="nav-collapse collapse">
+	    <ul class="nav">
+	      <li class="">
+		<a href="../index.html">Home</a>
+	      </li>
+	    </ul>
+	  </div>
+	</div>
+      </div>
+    </div>
+
+  <div class="container">
+  
+      <!-- Docs nav
+    ================================================== -->
+    <div class="row">
+      <div class="span3 bs-docs-sidebar">
+	<ul class="nav nav-list bs-docs-sidenav affix-top">
+	  <li><a href="#con"><i class="icon-chevron-right"></i> Project Home</a></li>
+	  <li><a href="#code"><i class="icon-chevron-right"></i> Code</a></li>
+	  <li><a href="#detections"><i class="icon-chevron-right"></i> Detections</a></li>
+	  <li><a href="#videos"><i class="icon-chevron-right"></i> Videos</a></li>		  
+	  <li><a href="#share"><i class="icon-chevron-right"></i> Share</a></li>
+	  <li><a href="index.html"><i class="icon-chevron-right"></i> Back to Main Page</a></li>		  		  
+		  </ul>
+      </div>
+      <div class="span9">
+      
+    <!-- TOP RIGHT RIBBON: START COPYING HERE -->
+    <div class="github-fork-ribbon-wrapper right">
+        <div class="github-fork-ribbon">
+            <a href="https://bitbucket.org/amilan/contracking">Fork me on Bitbucket</a>
+        </div>
+    </div> 
+   
+	  <div class="page-header">
+	    <h1>Continuous Energy Minimization for Multi-Target Tracking</h1>
+	  </div>
+	  
+	  <section id="con">
+	  <div class="row.text-center">
+	    <div class="span6">	    
+	      <img src="../img/cont-en-min.png" alt="Continuous energy minimization"/>	    
+	    </div>	    
+	  </div>
+	  </section>
+	      
+  		  
+		  
+	  
+	  
+	  <div class="row">
+	  <div class="span9">
+	  <hr>
+	  <br>
+	  <b>Abstract</b>
+	  <br>
+	  	  <div class="span7">
+	    Many recent advances in multiple target tracking aim at finding a 
+	    (nearly) optimal set of trajectories within a temporal window. To handle 
+	    the large space of possible trajectory hypotheses, it is typically 
+	    reduced to a finite set by some form of data-driven or regular 
+	    discretization. In this work we propose an alternative formulation of 
+	    multi-target tracking as minimization of a continuous energy. Contrary 
+	    to recent approaches, we focus on designing an energy that corresponds 
+	    to a more complete representation of the problem, rather than one that 
+	    is amenable to global optimization. Besides the image evidence, the 
+	    energy function takes into account physical constraints, such as target 
+	    dynamics, mutual exclusion, and track persistence. In addition, partial 
+	    image evidence is handled with explicit occlusion reasoning, and 
+	    different targets are disambiguated with an appearance model. To 
+	    nevertheless find strong local minima of the proposed non-convex energy 
+	    we construct a suitable optimization scheme that alternates between 
+	    continuous conjugate gradient descent and discrete trans-dimensional 
+	    jump moves. These moves, which are executed such that they always reduce 
+	    the energy, allow the search to escape weak minima and explore a much 
+	    larger portion of the search space of varying dimensionality. We 
+	    demonstrate the validity of our approach with an extensive quantitative 
+	    evaluation on several public datasets.
+		</div>
+	    </div>
+	    </div>
+		
+	  <div class="row">
+	  <div class="span9">
+	  <br>
+	  <b>References</b>
+	  <br>
+	<div class="span7">
+			<h4><a class="paper_link" href="../files/pami2014/pami2014-anton.pdf">
+				Continuous Energy Minimization for Multi-Target Tracking
+				</a>
+			</h4>
+			<p>
+			<a href="http://www.milanton.de">A. Milan</a>,
+			<a href="http://www.gris.informatik.tu-darmstadt.de/~sroth/">S. Roth</a> and
+			<a href="http://www.igp.ethz.ch/photogrammetry/people/Schindler">K. Schindler</a>
+			<br><a href="http://www.computer.org/portal/web/tpami/home">PAMI</a> 36(1), 2014
+			<br>			
+			<a class="bibtex_link" onclick="javascript:toggle(Milan2014CEM);" />bibtex</a> |
+			<a class="youtube_link" target="_blank" href="http://youtu.be/Gs9FuH07Vnc">video</a> 
+			<a href="../files/pami2014/pami2014.avi"><img src="../img/vdload.png"/></a>
+			<br>
+			<pre id="Milan2014CEM" class="invisible_bibtex">
+@article{Milan:2014:CEM,
+	author = {Milan, A. and Roth, S. and Schindler, K.},	
+	title = {Continuous Energy Minimization for Multitarget Tracking},
+	volume = {36},
+	issn = {0162-8828},
+	doi = {10.1109/TPAMI.2013.103},
+	number = {1},
+	journal = {IEEE TPAMI},
+	year = {2014},
+	pages = {58--72}
+}
+			</pre>
+			</p>
+	</div>
+	
+
+		<div class="span7">
+		<hr>
+			<h4><a class="paper_link" href="../files/vs2011/vs2011-anton.pdf">
+				An Analytical Formulation of Global Occlusion Reasoning for Multi-Target Tracking
+				</a>
+			</h4>
+			<p>
+			<a href="http://www.milanton.de">A. Andriyenko</a>,
+			<a href="http://www.gris.informatik.tu-darmstadt.de/~sroth/">S. Roth</a> and
+			<a href="http://www.igp.ethz.ch/photogrammetry/people/Schindler">K. Schindler</a>
+			<br><a href="http://dircweb.kingston.ac.uk/vs2011/">ICCV Workshop on Visual Surveillance</a>
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(Andriyenko2011AFG);" />bibtex</a> |
+			<a class="paper_link" href="../files/vs2011/vs2011-poster.pdf">poster</a> |
+			<a class="youtube_link" target="_blank" href="http://www.youtube.com/watch?v=9pl4tsqVwdc">video</a>
+			<br>
+			<pre id="Andriyenko2011AFG" class="invisible_bibtex">
+@inproceedings{Andriyenko:2011:AFG,
+	Author = {Anton Milan and Stefan Roth and Konrad Schindler},
+	Booktitle = {Proc. of the 11th International IEEE Workshop on Visual Surveillance},
+	Title = {An Analytical Formulation of Global Occlusion Reasoning for Multi-Target Tracking},
+	Year = {2011}
+}
+			</pre>
+			</p>
+		</div>
+		
+		<div class="span7">
+		<hr>
+			<h4><a class="paper_link" href="../files/cvpr2011/cvpr2011-anton.pdf">
+				Multi-target Tracking by Continuous Energy Minimization
+				</a>
+			</h4>
+			<p>
+			<a href="http://www.milanton.de">A. Andriyenko</a> and
+			<a href="http://www.igp.ethz.ch/photogrammetry/people/Schindler">K. Schindler</a>
+			<br><a href="http://dircweb.kingston.ac.uk/vs2011/">CVPR 2011</a>
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(Andriyenko2011MTT);" />bibtex</a> |
+			<a class="paper_link" href="../files/cvpr2011/cvpr2011-poster.pdf">poster</a> |
+			<a class="youtube_link" target="_blank" href="http://www.youtube.com/watch?v=bZtkgkRJB0w">video</a> 
+			<br>
+			<pre id="Andriyenko2011MTT" class="invisible_bibtex">
+@inproceedings{Andriyenko:2011:MTT,
+	Author = {Anton Andriyenko and Konrad Schindler},
+	Booktitle = {CVPR},
+	Title = {Multi-target Tracking by Continuous Energy Minimization},
+	Year = {2011}
+}
+			</pre>
+			</p>
+		</div>
+</div>
+</div>
+	<!-- Code
+	================================================== -->
+	<section id="code">	  
+		  <div>
+			<h2>Code</h2>
+		  </div>
+		  <hr>
+		  <p><img src="../img/new.png" alt="tracking code" width="25"/>
+		  A new version of the code is now on <a href="https://bitbucket.org/amilan/contracking" target="_blank">bitbucket</a>
+		  </p>
+		  <p> The original release is still available:
+		  <a href="../files/software/contracking-v1.0.zip">contracking-v1.0.zip</a> (6.3 MB)<br />
+		  </p>
+
+</section>
+
+
+
+	<!-- Detections
+	================================================== -->
+	<section id="detections">	 
+		  <div>
+			<h2>Detections</h2>
+		  </div>
+		  <hr>
+Plese note that our code does not include a person detector. 
+Due to various reasons we are unable to provide the exact same version that we used in our publications. 
+However, you can download a state-of-the-art HOG detector <a href="http://www.d2.mpi-inf.mpg.de/node/443">here</a>.
+Alternatively, you can use the well-known <a href="http://people.cs.uchicago.edu/~rbg/latent/">DPM detector</a>.
+		
+
+		</section> <!-- / detections -->
+
+	<!-- Videos
+	================================================== -->
+	<section id="videos">	  
+		  <div>
+			<h2>Videos</h2>
+		  </div>
+		  <hr>
+<iframe width="420" height="315" src="http://www.youtube.com/embed/bZtkgkRJB0w" frameborder="0" allowfullscreen></iframe>
+<iframe width="420" height="315" src="http://www.youtube.com/embed/9pl4tsqVwdc" frameborder="0" allowfullscreen></iframe>
+<iframe width="420" height="315" src="http://www.youtube.com/embed/Gs9FuH07Vnc" frameborder="0" allowfullscreen></iframe>
+<br />
+		</section> <!-- / videos -->
+		
+	<!-- Share
+	================================================== -->
+	<section id="share">	  
+		  <hr>
+		  
+		<div class="row">
+		
+		<!-- Facebook -->
+		<div class="span1">
+			<div class="fb-like" data-colorscheme="light" data-layout="button_count" data-action="like" data-show-faces="true" data-send="false">
+			</div>
+		</div>
+		
+		<!-- Twitter -->
+		<div class="span1">
+			<a href="https://twitter.com/share" class="twitter-share-button" data-text="Multi-Target Tracking by Continuous Energy Minimization" data-via="antonmil" data-hashtags="CVPR">Tweet
+			</a>
+			<script>
+			!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+			</script>
+		</div>
+
+		<!-- G+ -->
+		<div class="span1">
+			<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+			<g:plusone></g:plusone>
+		</div>
+
+		<!-- flattr -->
+		<div class="span1">		
+		<script id='fbxorqn'>(function(i){var f,s=document.getElementById(i);f=document.createElement('iframe');f.src='//api.flattr.com/button/view/?uid=antonandri&button=compact&url='+encodeURIComponent(document.URL);f.title='Flattr';f.height=20;f.width=110;f.style.borderWidth=0;s.parentNode.insertBefore(f,s);})('fbxorqn');</script>
+		</div>
+
+		</section> <!-- / share -->
+		
+		</div>
+	  </div>
+	  
+	</div>
+	
+  </div>
+
+      <!-- Footer
+    ================================================== -->
+    <footer class="footer">
+      <div class="container">
+	<p>Back to <a href="../index.html">main page</a></p>
+      </div>
+    </footer>
+  
+
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="./js/widgets.js"></script>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/bootstrap-transition.js"></script>
+    <script src="./js/bootstrap-alert.js"></script>
+    <script src="./js/bootstrap-modal.js"></script>
+    <script src="./js/bootstrap-dropdown.js"></script>
+    <script src="./js/bootstrap-scrollspy.js"></script>
+    <script src="./js/bootstrap-tab.js"></script>
+    <script src="./js/bootstrap-tooltip.js"></script>
+    <script src="./js/bootstrap-popover.js"></script>
+    <script src="./js/bootstrap-button.js"></script>
+    <script src="./js/bootstrap-collapse.js"></script>
+    <script src="./js/bootstrap-carousel.js"></script>
+    <script src="./js/bootstrap-typeahead.js"></script>
+    <script src="./js/bootstrap-affix.js"></script>
+
+    <script src="./js/holder.js"></script>
+    <script src="./js/prettify.js"></script>
+
+    <script src="./js/application.js"></script>
+
+
+
+
+    <!-- Analytics
+    ================================================== -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46281708-1', 'milanton.de');
+  ga('send', 'pageview');
+
+</script>  
+
+<autoscroll_cursor hidden=""></autoscroll_cursor>
+</body>
+</html>

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Learning People Detectors for Tracking in Crowded Scenes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Anton Milan">
+	<link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico" />
+
+    <!-- Le styles -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="../css/docs.css" rel="stylesheet">
+    <link href="../css/prettify.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        background-color: #FAFAFA;
+      }
+      
+      .topbar {
+		  font-size: 1.5em;
+	  }
+	  
+	  
+	  .container-fluid > .sidebar li {
+		  padding: 0.5em;
+	  }
+	  
+	  section {
+		  margin-top: 48px;
+	  }
+	  
+	  .master-head h1 {
+		  margin-bottom: 0px;
+		  /*color: #C33;*/
+	  }
+	  
+	  .master-head p.lead {
+		 margin-top: 18px;
+		 font-size: 18px;
+	  }
+	  
+	  
+	  .shadow-title {
+		  text-shadow: 0 1px 2px rgba(0, 0, 0, .5);
+	  }
+	  
+	  img.thumbnail {
+		  width: 150px;
+		  /*height: 150px;*/
+	  }
+	  
+	  
+	div.container-fluid a:link, div.container-fluid a:visited {
+		color: #09c;
+		text-decoration: none;
+	}
+		
+	div.container-fluid a:hover {
+		color: #c33;
+	}
+	
+	a.paper_link {
+		display:inline-block;
+		background: url("../img/pdf.png") center right no-repeat;
+		padding-right: 22px;
+	}		
+	
+	a.youtube_link {
+		display:inline-block;
+		background: url("../img/youtube_sb.png") center right no-repeat;
+		padding-right: 22px;
+	}
+	a.data_link {
+		display:inline-block;
+		background: url("../img/opendata.png") center right no-repeat;
+		padding-right: 22px;
+	}		
+	
+	img.bibtex_link {
+		cursor:pointer;
+	}
+	
+	a.bibtex_link {
+		cursor:pointer;
+		background: url("../img/bibtex.png") center right no-repeat;
+		padding-right: 22px;		
+	}
+	a.abstract_link {
+		cursor:pointer;
+	}	
+	pre.invisible_bibtex {
+		display: none;
+		font-size: 12px;
+	}
+	pre.invisible_abstract {
+		display: none;
+		font-size: 12px;
+	}
+
+        a.source_code_link {
+                font-family: Courier New, Courrier;
+        }
+    </style>
+
+	<!-- Place this tag in your head or just before your close body tag. -->
+	<script type="text/javascript" src="https://apis.google.com/js/platform.js"></script>
+
+	
+	</head>
+  	<script language="javascript" type="text/javascript">
+	function toggle(element) {
+		if(element.style.display=="block") {
+			element.style.display="none";
+		} else {
+			element.style.display="block";
+		}
+	}
+	</script>
+	
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+  
+  <!-- Facebook button -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+    <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="">
+                <a href="../index.html">Home</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="container">
+  
+      <!-- Docs nav
+    ================================================== -->
+    <div class="row">
+      <div class="span3 bs-docs-sidebar">
+        <ul class="nav nav-list bs-docs-sidenav affix-top">
+          <li><a href="#mp"><i class="icon-chevron-right"></i>Project Main</a></li>
+          <li><a href="#code"><i class="icon-chevron-right"></i> Code</a></li>
+          <li><a href="#data"><i class="icon-chevron-right"></i> Data</a></li>
+          <li><a href="#videos"><i class="icon-chevron-right"></i> Videos</a></li>
+          <li><a href="#share"><i class="icon-chevron-right"></i> Share</a></li>		  		  
+		  </ul>
+      </div>
+	  <div class="span9">
+	  <div class="page-header">
+	    <h1>Learning People Detectors for Tracking in Crowded Scenes</h1>
+	  </div>
+	  <section id="mp">
+	  <div class="row.text-center">
+	    <div class="span9">	    
+	      <img src="../img/occpatt.jpg" alt="Learning People Detectors for Tracking in Crowded Scenes" width="200"/>
+	      <img src="img/loop1.jpg" alt="Occlusion Pattern 1" width="68"/>
+	      <img src="img/loop2.jpg" alt="Occlusion Pattern 2" width="54"/>
+	    </div>	    
+	  </div>
+	  </section>
+	  
+	  
+	  <div class="row">
+	  <div class="span9">
+	  <hr>
+	  <br>
+	  <b>Abstract</b>
+	  <br>
+	  <div class="span7">
+People tracking in crowded real-world scenes is challenging due to 
+frequent and long-term occlusions. Recent tracking methods obtain the 
+image evidence from object (people) detectors, but typically use 
+off-the-shelf detectors and treat them as black box components. In this 
+paper we argue that for best performance one should explicitly train 
+people detectors on failure cases of the overall tracker instead. To 
+that end, we first propose a novel joint people detector that combines a 
+state-of-the-art single person detector with a detector for pairs of 
+people, which explicitly exploits common patterns of person-person 
+occlusions across multiple viewpoints that are a common failure case for 
+tracking in crowded scenes. To explicitly address remaining failure 
+cases of the tracker we explore two methods. First, we analyze typical 
+failure cases of trackers and train a detector explicitly on those 
+failure cases. And second, we train the detector with the people tracker 
+in the loop, focusing on the most common tracker failures. We show that 
+our joint multi-person detector significantly improves both detection 
+accuracy as well as tracker performance, improving the state-of-the-art 
+on standard benchmarks. 
+</div>
+	    </div>
+	    </div>
+		
+	  <div class="row">
+	  <div class="span9">
+	  <br>
+	  <b>Reference</b>
+	  <br>
+		
+		
+	<div class="span7">
+			<h4><a class="paper_link" href="../files/iccv2013/iccv2013-siyu.pdf">
+				Learning People Detectors for Tracking in Crowded Scenes
+				</a>
+			</h4>
+			<p>
+			<a href="http://www.d2.mpi-inf.mpg.de/People/tang">S. Tang</a>,
+			<a href="http://www.d2.mpi-inf.mpg.de/People/andriluka">M. Andriluka</a>,
+			<a href="http://www.milanton.de">A. Milan</a>,
+			<a href="http://www.igp.ethz.ch/photogrammetry/people/Schindler">K. Schindler</a>,
+			<a href="http://www.gris.informatik.tu-darmstadt.de/~sroth/">S. Roth</a> and 
+			<a href="http://www.d2.mpi-inf.mpg.de/People/schiele">B. Schiele</a>
+			<br><a href="http://www.iccv2013.org/">ICCV 2013</a>
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(Siyu2013ICCV);" />bibtex</a>			
+			<a class="paper_link" href="../files/iccv2013/iccv2013-siyu.pdf">paper</a> |
+			<a class="paper_link" href=../"files/iccv2013/iccv2013-siyu-poster.pdf">poster</a> |
+			<a class="youtube_link" target="_blank" href="http://youtu.be/HOtoUe0z2tI">video</a> 		
+			<a href="files/iccv2013/iccv2013.mp4"><img src="../img/vdload.png"/></a> |
+			<br>
+			<pre id="Siyu2013ICCV" class="invisible_bibtex">
+@INPROCEEDINGS{Tang:20013:LPD,
+  author = {S. Tang and M. Andriluka and A. Milan and K. Schindler and S. Roth and B. Schiele},
+  title = {Learning People Detectors for Tracking in Crowded Scenes},
+  booktitle = {ICCV},
+  year = {2013}
+}
+			</pre>
+			</p>
+
+	</div>
+	
+</div>
+</div>
+
+
+        <!-- Code
+        ================================================== -->
+        <section id="code">	  
+		  <div>
+			<h2>Code</h2>
+		  </div>
+		  <hr>
+		  You can download the tracking code <a href="../contracking/">here</a>
+	</section>
+
+
+        <!-- Data
+        ================================================== -->
+        <section id="data">	  
+		  <div>
+			<h2>Data</h2>
+		  </div>
+ 		  <hr>
+ 		  ... to come
+
+
+	</section> <!-- / Data -->
+
+        <!-- Videos
+        ================================================== -->
+        <section id="videos">	  
+		  <div>
+			<h2>Videos</h2>
+		  </div>
+		  <hr>
+		<iframe width="420" height="315" src="http://www.youtube.com/embed/HOtoUe0z2tI" frameborder="0" allowfullscreen></iframe>		
+	      <br />
+
+		</section> <!-- / videos -->
+
+		
+        <!-- Share
+        ================================================== -->
+        <section id="share">	  
+		  <hr>
+		  
+		<div class="row">
+		
+		<!-- Facebook -->
+		<div class="span1">
+			<div class="fb-like" data-href="http://research.milanton.de/multipeople/" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
+		</div>
+		
+		<!-- Twitter -->
+		<div class="span1">
+			<a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-text="Learning People Detectors for Tracking in Crowded Scenes" data-via="antonmil" data-hashtags="ICCV">Tweet
+			</a>
+			<script>
+			!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+			</script>
+		</div>
+
+		<!-- G+ -->
+		<div class="span1">
+			<div class="g-plusone" data-annotation="none"></div>			
+		</div>
+
+		<!-- flattr -->
+		<div class="span1">		
+		<script id='fbxorqn'>(function(i){var f,s=document.getElementById(i);f=document.createElement('iframe');f.src='//api.flattr.com/button/view/?uid=antonandri&button=compact&url='+encodeURIComponent(document.URL);f.title='Flattr';f.height=20;f.width=110;f.style.borderWidth=0;s.parentNode.insertBefore(f,s);})('fbxorqn');</script>
+		</div>
+
+		</section> <!-- / share -->
+		
+		</div>
+	  </div>
+	  
+	</div>
+	
+  </div>
+
+  
+  
+    <!-- Footer
+    ================================================== -->
+    <footer class="footer">
+      <div class="container">
+        <p>Back to <a href="../index.html">main page</a></p>
+      </div>
+    </footer>
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="./js/widgets.js"></script>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/bootstrap-transition.js"></script>
+    <script src="./js/bootstrap-alert.js"></script>
+    <script src="./js/bootstrap-modal.js"></script>
+    <script src="./js/bootstrap-dropdown.js"></script>
+    <script src="./js/bootstrap-scrollspy.js"></script>
+    <script src="./js/bootstrap-tab.js"></script>
+    <script src="./js/bootstrap-tooltip.js"></script>
+    <script src="./js/bootstrap-popover.js"></script>
+    <script src="./js/bootstrap-button.js"></script>
+    <script src="./js/bootstrap-collapse.js"></script>
+    <script src="./js/bootstrap-carousel.js"></script>
+    <script src="./js/bootstrap-typeahead.js"></script>
+    <script src="./js/bootstrap-affix.js"></script>
+
+    <script src="./js/holder.js"></script>
+    <script src="./js/prettify.js"></script>
+
+    <script src="./js/application.js"></script>
+
+
+
+
+      <!-- Analytics
+    ================================================== -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46281708-1', 'milanton.de');
+  ga('send', 'pageview');
+
+</script>
+
+<autoscroll_cursor hidden=""></autoscroll_cursor>
+</body>
+</html>
