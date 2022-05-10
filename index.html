@@ -1,0 +1,2588 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Anton Milan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Anton Milan">
+	<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
+
+    <!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/docs.css" rel="stylesheet">
+    <link href="css/prettify.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        background-color: #FAFAFA;
+      }
+
+      .topbar {
+		  font-size: 1.5em;
+	  }
+
+
+	  .container-fluid > .sidebar li {
+		  padding: 0.5em;
+	  }
+
+	  section {
+		  margin-top: 48px;
+	  }
+
+	  .master-head h1 {
+		  margin-bottom: 0px;
+		  /*color: #C33;*/
+	  }
+
+	  .master-head p.lead {
+		 margin-top: 18px;
+		 font-size: 18px;
+	  }
+
+
+	  .shadow-title {
+		  text-shadow: 0 1px 2px rgba(0, 0, 0, .5);
+	  }
+
+	  img.thumbnail {
+		  width: 150px;
+		  /*height: 150px;*/
+	  }
+
+
+	div.container-fluid a:link, div.container-fluid a:visited {
+		color: #09c;
+		text-decoration: none;
+	}
+
+	div.container-fluid a:hover {
+		color: #c33;
+	}
+
+	a.paper_link {
+		display:inline-block;
+		background: url("img/pdf.png") center right no-repeat;
+		padding-right: 22px;
+	}
+
+	a.slides_link {
+		display:inline-block;
+		background: url("img/pres.png") center right no-repeat;
+		padding-right: 22px;
+	}
+
+	a.youtube_link {
+		display:inline-block;
+		background: url("img/youtube_sb.png") bottom right no-repeat;
+		padding-right: 22px;
+	}
+	a.data_link {
+		display:inline-block;
+		background: url("img/opendata.png") center right no-repeat;
+		padding-right: 22px;
+	}
+
+	img.bibtex_link {
+		cursor:pointer;
+	}
+
+	a.bibtex_link {
+		cursor:pointer;
+		background: url("img/bibtex.png") center right no-repeat;
+		padding-right: 22px;
+	}
+	a.abstract_link {
+		cursor:pointer;
+	}
+	pre.invisible_bibtex {
+		display: none;
+		font-size: 12px;
+	}
+	pre.invisible_abstract {
+		display: none;
+		font-size: 12px;
+	}
+
+        a.source_code_link {
+                font-family: Courier New, Courrier;
+        }
+    </style>
+	<!-- Place this tag in your head or just before your close body tag. -->
+	<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+
+
+	</head>
+  	<script language="javascript" type="text/javascript">
+	function toggle(element) {
+		if(element.style.display=="block") {
+			element.style.display="none";
+		} else {
+			element.style.display="block";
+		}
+	}
+	</script>
+
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+  <!-- Facebook button -->
+  <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+    <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="">
+                <a href="./index.html">Home</a>
+              </li>
+              <li>
+                <a href="http://motchallenge.net" target="_blank">MOT Challenge</a>
+              </li>
+              <li>
+                <a href="./data/">Data</a>
+              </li>
+              <li class="">
+                <a href="./contracking/">Continuous Tracking</a>
+              </li>
+              <li class="">
+                <a href="./dctracking/">Discrete-Continuous Tracking</a>
+              </li>
+              <li class="">
+                <a href="./segtracking/index.html">Segmentation-Tracking</a>
+              </li>
+              <li class="">
+                <a href="about.html">Bio / CV</a>
+              </li>
+			  </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="container">
+
+    <!-- Docs nav
+    ================================================== -->
+    <div class="row">
+      <div class="span3 bs-docs-sidebar">
+        <ul class="nav nav-list bs-docs-sidenav affix-top">
+          <li><a href="#"><i class="icon-chevron-right"></i> About Me</a></li>
+          <li><a href="#news"><i class="icon-chevron-right"></i>News</a></li>
+          <li><a href="#publications"><i class="icon-chevron-right"></i> Publications</a></li>
+          <li><a href="#code"><i class="icon-chevron-right"></i> Code</a></li>
+          <li><a href="#data"><i class="icon-chevron-right"></i> Data</a></li>
+          <li><a href="#contact"><i class="icon-chevron-right"></i> Contact</a></li>
+		  </ul>
+      </div>
+      <div class="span9">
+        <!-- About
+        ================================================== -->
+
+          <div class="page-header">
+			<a href="http://research.milanton.net><img src="img/logo-milanton.png" alt="Anton Milan"></a>
+		  </div>
+
+		  <div class="row">
+		  <div class="span2">
+			<img src="img/me.jpg" alt="Anton Milan" width="150px"  class="img-rounded">
+		  </div>
+		  <div class="span6">
+		  <strong>Anton Milan</strong>
+		  (n&eacute; Andriyenko)<br>
+		   I am doing research in machine learning, computer vision and robotics at the Amazon Research and Development Center in Berlin. You can find more information about me <a href="about.html">here</a>.
+
+		  </div>
+		  </div>
+
+
+
+
+
+        <!-- Contact
+        ================================================== -->
+        <section id="news">
+          <div class="page-header">
+		  <h1>News</h1>
+		  </div>
+		  <div class="row">
+		  <div class="span9">
+		  <ul>
+      <li>11/01/2019 - PAMI <a href="https://doi.org/10.1109/TPAMI.2019.2893630">paper</a> on RefineNet accepted.</li>
+		  <li>21/12/2018 - We will hold another <a href="https://motchallenge.net/workshops/bmtt-pets2019/">MOTChallenge Workshop</a> at CVPR 2019 in Los Angeles. </li>
+      <li>19/02/2018 - PoseTrack <a href="https://arxiv.org/abs/1710.10000">paper</a> accepted to CVPR.</li>
+      <li>15/01/2018 - Two ICRA papers accepted on ARC <a href="https://arxiv.org/abs/1709.06283">system</a> and <a href="https://arxiv.org/abs/1709.07665">perception</a>.</li>
+		  <li>09/11/2017 - AAAI'18 <a href="https://arxiv.org/abs/1709.04093">paper</a> accepted.</li>
+		  <li>15/08/2017 - I joined the Amazon Core Machine Learning Group in Berlin.</li>
+		  <li>30/07/2017 - <a href="http://juxi.net/projects/AmazonRoboticsChallenge/">Our team</a> won the Final Round at the <a href="https://www.amazonrobotics.com/#/roboticschallenge">Amazon Robotics Challenge</a>.</li>
+      <!--
+      <li>20/09/2017 - Cartman <a href="https://arxiv.org/abs/1709.06283">system</a> and <a href="https://arxiv.org/abs/1709.07665">vision</a> papers are online.</li>
+		  <li>16/07/2017 - One ICCV <a class="paper_link" href="https://arxiv.org/abs/1611.08998">paper</a> accepted.</li>
+		  <li>26/04/2017 - A paper accepted to IJRR.</li>
+		  <li>11/04/2017 - New <a class="paper_link" href="https://arxiv.org/abs/1704.02781">state-of-the-art report</a> on multi-object tracking. </li>
+		  <li>07/04/2017 - PoseTrack <a class="paper_link" href="files/cvpr2017/cvpr2017-iqbal.pdf">paper</a> and <a href="http://pages.iai.uni-bonn.de/iqbal_umar/PoseTrack/">code</a></li>
+		  <li>07/04/2017 - RefineNet <a class="paper_link" href="files/cvpr2017/cvpr2017-lin.pdf">paper</a> and <a href="https://github.com/guosheng/refinenet">code</a></li>
+		  <li>03/04/2017 - We will hold a <a href="http://posetrack.net/workshops/iccv2017/">PoseTrack Workshop</a> at ICCV 2017 in Venice, Italy. </li>
+			<li>27/02/2017 - Two CVPR papers accepted</li>
+		  <li>15/01/2017 - Our APC paper got accepted to ICRA 2017.</li>
+		  <li>21/12/2016 - We will hold a joint <a href="https://motchallenge.net/workshops/bmtt-pets2017/">BMTT-PETS Workshop</a> at CVPR 2017 in Hawaii. </li>
+		  <li>29/11/2016 - New <a href="https://arxiv.org/abs/1611.08998">arxiv</a> paper on set learning. </li>
+		  <li>25/11/2016 - New <a href="https://arxiv.org/abs/1611.07727">arxiv</a> paper on pose tracking. </li>
+		  <li>22/11/2016 - New <a href="https://arxiv.org/abs/1611.06612">arxiv</a> paper on semantic segmentation. </li>
+		  <li>12/11/2016 - Two AAAI papers accepted. </li>
+		  <li>04/07/2016 - <a href="http://www.nimbro.net/Picking/">Our team</a> achieved 2nd and 3rd places at the <a href="http://amazonpickingchallenge.org/">Amazon Picking Challenge</a>.</li>
+		  <li>31/05/2016 - The <a href="https://motchallenge.net/workshops/bmtt2016/index.html">workshop website</a> is online.</li>
+		  <li>12/05/2016 - I joined the <a href="http://www.ais.uni-bonn.de/index.html">AIS</a> group as a visiting researcher.</li>
+		  <li>13/04/2016 - New <a href="https://arxiv.org/abs/1604.03635">paper</a> on tracking with RNNs.</li>
+		  <li>12/04/2016 - We will be organizing a <a href="https://motchallenge.net">MOTChallenge</a> workshop at ECCV 2016 in Amsterdam! <img src="img/new.png" alt="Anton Milan News" width="15"/> </li> -->
+		  <!-- <li>12/04/2016 - I'll be visiting the <a href="http://www.ais.uni-bonn.de/index.html">AIS</a> lab in Bonn May-September</li>
+		  <li>03/03/2016 - One CVPR <a class="paper_link" href="files/cvpr2016/cvpr2016-hamid.pdf">paper</a> (oral) accepted  </li>
+		  <li>01/03/2016 - <a href="https://motchallenge.net/data/MOT16/">MOT16</a>: a new benchmark <a class="paper_link" href="http://arxiv.org/abs/1603.00831">published</a> </li>
+		  <li>19/11/2015 - JPDA code <a href="http://research.milanton.net/files/iccv2015/jpda_m.zip">released</a> </li>
+		  <li>18/11/2015 - <a href="files/pami2016/pami2016-anton.pdf">PAMI paper</a> accepted</li>
+
+		  <li>29/08/2015 - One ICCV paper accepted: <a class="paper_link" href="files/iccv2015/iccv2015-hamid.pdf">"JPDA Revisited"</a> </li>
+		  <li>24/04/2015 - Segmentation-Tracking code <a href="https://bitbucket.org/amilan/segtracking">released</a>  </li>
+		  <li>10/04/2015 - The CVPR 2015 paper is now <a class="paper_link" href="files/cvpr2015/cvpr2015-anton.pdf">accessible</a> </li>
+		  <li>09/04/2015 - The <a href="http://motchallenge.net">MOTChallenge</a> paper has been <a class="paper_link" href="http://arxiv.org/pdf/1504.01942v1">published</a>  </li>
+
+		  <li>10/03/2015 - Segmentation-Tracking video <a class="youtube_link" href="http://youtu.be/_0WrLy641F0">online</a>  </li>
+		  <li>02/03/2015 - One CVPR <a href="./segtracking/index.html">paper</a> accepted. Our <a href="http://www.acvt.com.au/">group</a> has a total of 12 (!) papers accepted at CVPR this year.
+		  </li>
+		  <li>13/12/2014 - A new, simplified version of the  <a href="./dctracking/">discrete-continuous tracker</a> released.
+		  </li>
+		  <li>15/11/2014 - We have officially launched the <a href="http://motchallenge.net" target="_blank">MOT Challenge</a> website. Have a look.
+		  </li>
+		  <li>15/10/2014 -  I will be co-organizing the <a href="http://www.igp.ethz.ch/photogrammetry/bmtt2015/home.html" target="_blank">1st Workshop on Benchmarking Multi-Target Tracking</a>, held at WACV 2015, on Jan. 9, 2015.
+		  </li>
+		  -->
+		  </ul>
+		  </div>
+		  </div>
+	</section> <!-- / Contact -->
+
+
+        <!-- Publications
+        ================================================== -->
+        <section id="publications">
+          <div class="page-header">
+		  <h1>Publications</h1>
+		  </div>
+
+		  <p>
+		  <script type="text/javascript" src="scripts/jquery.min.js"></script>
+		  See also <a href="http://scholar.google.com/citations?user=LGx06n8AAAAJ">Google Scholar</a>
+
+</script>
+
+		  </p>
+	<h3 id="year2019">2019</h3>
+	<!-- PAMI RefineNet 2019 -->
+	<div class="row">
+		<div class="span2">
+			<ul class="media-grid">
+			<li><a href="https://github.com/guosheng/refinenet">
+				<img class="thumbnail"
+					src="img/refinenet.jpg"
+					alt="RefineNet" /></a>
+			</li>
+			</ul>
+		</div>
+		<div class="span7">
+			<h4> <a href="https://doi.org/10.1109/TPAMI.2019.2893630">
+				RefineNet: Multi-Path Refinement Networks <br> for Dense Prediction
+				</a>
+			</h4>
+			<p>
+			<a href="https://sites.google.com/site/guoshenglin/">G. Lin</a>,
+			<a href="https://sites.google.com/site/fayaoliu/">F. Liu</a>,
+			<a href="http://www.milanton.de">A. Milan</a>,
+			<a href="http://cs.adelaide.edu.au/~chhshen/">C. Shen</a>,
+			<a href="http://cs.adelaide.edu.au/~ianr/">I. Reid</a>.
+			In <a href="https://doi.org/10.1109/TPAMI.2019.2893630">PAMI 2019</a>
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(Lin2019PAMIrefinenet);" />bibtex</a> |
+			<a class="abstract_link" onclick="javascript:toggle(Lin2019CVPRrefinenetabstract);" />abstract</a> |
+			<a href="https://doi.org/10.1109/TPAMI.2019.2893630">paper</a> |
+			<a href="https://github.com/guosheng/refinenet">code</a>
+			<br>
+			<pre id="Lin2019PAMIrefinenet" class="invisible_bibtex">
+@article{Lin:2019:PAMI,
+        Author = {Lin, G. and Liu, F. and Milan, A. and Shen, C. and Reid, I.},
+	Title = {Refine{N}et: {M}ulti-Path Refinement Networks for Dense Prediction},
+	volume = {41},
+	number = {1},
+	month={Jan},
+	pages={1-1},
+	doi={10.1109/TPAMI.2019.2893630},
+	journal = {IEEE TPAMI},
+	year = {2019}
+}
+			</pre>
+			<pre id="Lin2019CVPRrefinenetabstract" class="invisible_abstract">
+Recently, very deep convolutional neural networks (CNNs) have shown outstanding performance in object recognition and have also been the first choice for dense prediction problems such as semantic segmentation and depth estimation. However, repeated sub-sampling operations like pooling or convolution striding in deep CNNs lead to a significant decrease in the initial image resolution. Here, we present RefineNet, a generic multi-path refinement network that explicitly exploits all the information available along the down-sampling process to enable high-resolution prediction using long-range residual connections. In this way, the deeper layers that capture high-level semantic features can be directly refined using fine-grained features from earlier convolutions. The individual components of RefineNet employ residual connections following the identity mapping mindset, which allows for effective end-to-end training. Further, we introduce chained residual pooling, which captures rich background context in an efficient manner. We carry out comprehensive experiments on semantic segmentation which is a dense classification problem and set new state-of-the-art results on seven public datasets. We further apply our method for depth estimation and demonstrate the effectiveness of our method on dense regression problems.
+			</pre>
+			</p>
+		</div>
+	</div> <!-- /row -->
+  
+  
+
+	<h3 id="year2018">2018</h3>
+  <!-- PoseTrack: Benchmark -->
+	<div class="row">
+		<div class="span2">
+			<ul class="media-grid">
+			<li><a href="https://arxiv.org/abs/1710.10000">
+				<img class="thumbnail"
+					src="img/posetrack_logo.png"
+					alt="PoseTrack" /></a>
+			</li>
+			</ul>
+		</div>
+		<div class="span7">
+			<h4> <a class="paper_link" href="https://arxiv.org/abs/1710.10000">
+				PoseTrack: A Benchmark for Human Pose Estimation and Tracking
+				</a>
+			</h4>
+			<p>
+      Iqbal, U. and Milan, A. and Andriluka, M. and Ensafutdinov, E. and Pishchulin, L. and Gall, J. and Schiele B.
+			In CVPR 2018
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(PoseTrack);" />bibtex</a> |
+			<a class="abstract_link" onclick="javascript:toggle(PoseTrackAbstract);" />abstract</a> |
+			<a class="paper_link" href="https://arxiv.org/abs/1710.10000">paper</a> |
+			<br>
+			<pre id="PoseTrack" class="invisible_bibtex">
+@inproceedings{PoseTrack,
+	Title = {Pose{T}rack: {A} Benchmark for Human Pose Estimation and Tracking},
+	booktitle = {CVPR},
+	Author = {Iqbal, U. and Milan, A. and Andriluka, M. and Ensafutdinov, E. and Pishchulin, L. and Gall, J. and Schiele B.},
+	Year = {2018}
+}
+			</pre>
+			<pre id="PoseTrackAbstract" class="invisible_abstract">
+Human poses and motions are important cues for analysis of videos
+with people and there is strong evidence that representations based
+on body pose are highly effective for a variety of tasks such as
+activity recognition, content retrieval and social signal processing.
+In this work, we aim to further advance the state of the art by
+establishing "PoseTrack" , a new large-scale benchmark for video-based
+human pose estimation and articulated tracking, and bringing together
+the community of researchers working on visual human analysis. The
+benchmark encompasses three competition tracks focusing on
+i) single-frame multi-person pose estimation, ii) multi-person pose
+estimation in videos, and iii) multi-person articulated tracking.
+To facilitate the benchmark and challenge we collect, annotate and
+release a new %large-scale benchmark dataset that features videos
+with multiple people labeled with person tracks and articulated pose.
+A centralized evaluation server is provided to allow participants to
+evaluate on a held-out test set. We envision that the proposed benchmark
+will stimulate productive research both by providing a large and
+representative training dataset as well as providing a platform to
+objectively evaluate and compare the proposed methods. The benchmark
+is freely accessible at posetrack.net.
+			</pre>
+			</p>
+		</div>
+	</div> <!-- /row -->
+
+
+
+  <!-- Cartman Vision -->
+	<div class="row">
+		<div class="span2">
+			<ul class="media-grid">
+			<li><a href="https://arxiv.org/abs/1709.07665">
+				<img class="thumbnail"
+					src="img/cartman_vision.jpg"
+					alt="Cartman" /></a>
+			</li>
+			</ul>
+		</div>
+		<div class="span7">
+			<h4> <a class="paper_link" href="https://arxiv.org/abs/1709.07665">
+				Semantic Segmentation from Limited Training Data
+				</a>
+			</h4>
+			<p>
+      A. Milan et al.
+			In ICRA 2018
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(CartmanVision);" />bibtex</a> |
+			<a class="abstract_link" onclick="javascript:toggle(CartmanVisionAbstract);" />abstract</a> |
+			<a class="paper_link" href="https://arxiv.org/abs/1709.07665">paper</a> |
+      <a class="youtube_link" target="_blank" href="https://www.youtube.com/watch?v=a5C3wWvd5fw">video</a>
+			<br>
+			<pre id="CartmanVision" class="invisible_bibtex">
+@inproceedings{Milan:2018:ICRA,
+	Title = {Semantic Segmentation from Limited Training Data},
+  Booktitle = {ICRA}
+	Author = {Milan, A. and Pham, T. and Vijay, K. and Morrison, D and Tow, A. W. and Liu, L. and
+    Erskine, J. and Grinover, R. and Gurman, A. and Hunn, T. and Kelly-Boxall, N. and Lee, D. and
+    McTaggart, M. and Rallos, G. and Razjigaev, A. and Rowntree, T. and Shen T. and Smith, R. and
+    Wade-McCue, S. and Zhuang, Z. and Lehnert, C. and Lin, G. and Reid, I. and Corke, P. and Leitner, J.},
+  Month = {May},
+  Year = {2018}
+}
+			</pre>
+			<pre id="CartmanVisionAbstract" class="invisible_abstract">
+We present our approach for robotic perception in cluttered scenes that
+led to winning the recent Amazon Robotics Challenge (ARC) 2017. Next to
+small objects with shiny and transparent surfaces, the biggest challenge
+of the 2017 competition was the introduction of unseen categories. In
+contrast to traditional approaches which require large collections of
+annotated data and many hours of training, the task here was to obtain
+a robust perception pipeline with only few minutes of data acquisition
+and training time. To that end, we present two strategies that we explored.
+One is a deep metric learning approach that works in three separate steps:
+semantic-agnostic boundary detection, patch classification and pixel-wise
+voting. The other is a fully-supervised semantic segmentation approach with
+efficient dataset collection. We conduct an extensive analysis of the two
+methods on our ARC 2017 dataset. Interestingly, only few examples of each
+class are sufficient to fine-tune even very deep convolutional neural
+networks for this specific task.
+			</pre>
+			</p>
+		</div>
+	</div> <!-- /row -->
+
+
+	<!-- Cartman System -->
+	<div class="row">
+		<div class="span2">
+			<ul class="media-grid">
+			<li><a href="https://arxiv.org/abs/1709.06283">
+				<img class="thumbnail"
+					src="img/cartman.jpg"
+					alt="Cartman" /></a>
+			</li>
+			</ul>
+		</div>
+		<div class="span7">
+			<h4> <a class="paper_link" href="https://arxiv.org/abs/1709.06283">
+				Cartman: The low-cost Cartesian Manipulator that won the Amazon Robotics Challenge
+				</a>
+			</h4>
+			<p>
+      D. Morrison et al.
+			In ICRA 2018
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(CartmanSystem);" />bibtex</a> |
+			<a class="abstract_link" onclick="javascript:toggle(CartmanSystemAbstract);" />abstract</a> |
+			<a class="paper_link" href="https://arxiv.org/abs/1709.06283">paper</a> |
+      <a class="youtube_link" target="_blank" href="https://www.youtube.com/watch?v=AljePt7Mh6U">video</a>
+
+
+			<br>
+			<pre id="CartmanSystem" class="invisible_bibtex">
+@inproceedings{Morrison:2018:ICRA,
+	Title = {Cartman: {T}he low-cost Cartesian Manipulator that won the {A}mazon {R}obotics {C}hallenge},
+  booktitle = {ICRA}
+	Author = {Morrison, D. and others},
+  month = {May},
+  year = {2018}
+}
+			</pre>
+			<pre id="CartmanSystemAbstract" class="invisible_abstract">
+The Amazon Robotics Challenge enlisted sixteen teams to each design a
+pick-and-place robot for autonomous warehousing, addressing development
+in robotic vision and manipulation. This paper presents the design of our
+custom-built. cost-effective robot system Cartman, which won first place
+in the competition finals by stowing 14 (out of 16) and picking all 9 items
+ in 27 minutes, scoring a total of 272 points. We highlight our experience-
+ centred design methodology and key aspects of our system that contributed
+ to our competitiveness. We believe these aspects are crucial to building
+ robust and effective robotic systems.
+			</pre>
+			</p>
+		</div>
+	</div> <!-- /row -->
+
+
+
+	<!-- Joint DeepSetNet AAAI 18 2018 -->
+	<div class="row">
+		<div class="span2">
+			<ul class="media-grid">
+			<li><a href="https://arxiv.org/abs/1709.04093">
+				<img class="thumbnail"
+					src="img/pgm_JDS.jpg"
+					alt="Joined Deep Set Net" /></a>
+			</li>
+			</ul>
+		</div>
+		<div class="span7">
+			<h4> <a class="paper_link" href="https://arxiv.org/abs/1709.04093">
+				Joint Learning of Set Cardinality and State Distribution
+				</a>
+			</h4>
+			<p>
+			<a href="http://users.cecs.anu.edu.au/~hrezatofighi/index.htm">S. H. Rezatofighi</a>,
+			<a href="http://www.milanton.de">A. Milan</a>,
+			<a href="http://cs.adelaide.edu.au/~javen/">Q. Shi</a>,
+			<a href="http://cs.adelaide.edu.au/~ard/">A. Dick</a>,
+			<a href="http://cs.adelaide.edu.au/~ianr/">I. Reid</a>.
+			In AAAI
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(Hamid2017JDS);" />bibtex</a> |
+			<a class="abstract_link" onclick="javascript:toggle(Hamid2017JDSabstract);" />abstract</a> |
+			<a class="paper_link" href="https://arxiv.org/abs/1709.04093">paper</a> |
+			<br>
+			<pre id="Hamid2017JDS" class="invisible_bibtex">
+@inproceedings{Rezatofighi:2018:JDS,
+	Title = {Joint Learning of Set Cardinality and State Distribution},
+	url = {https://arxiv.org/abs/1709.04093},
+	booktitle = {AAAI},
+	Author = {Rezatofighi, S. H. and Milan, A. and Shi, Q. and Dick, A. and Reid, I.},
+	Year = {2018}
+}
+			</pre>
+			<pre id="Hamid2017JDSabstract" class="invisible_abstract">
+We present a novel approach for learning to predict sets using deep learning.
+In recent years, deep neural networks have shown remarkable results in computer
+vision, natural language processing and other related problems. Despite their success,
+traditional architectures suffer from a serious limitation in that they are built to
+deal with structured input and output data, i.e. vectors or matrices. Many real-world
+problems, however, are naturally described as sets, rather than vectors. Existing
+techniques that allow for sequential data, such as recurrent neural networks,
+typically heavily depend on the input and output order and do not guarantee a valid
+solution. Here, we derive in a principled way, a mathematical formulation for set
+prediction which is permutation invariant. In particular, our approach jointly learns
+both the cardinality and the state distribution of the target set. We demonstrate the
+validity of our method on the task of multi-label image classification and achieve a new
+state of the art on the PASCAL VOC and MS COCO datasets.
+			</pre>
+			</p>
+		</div>
+	</div> <!-- /row -->
+
+  <hr>
+
+	<h3 id="year2017">2017</h3>
+    <!-- ICCV 2017 -->
+	<div class="row">
+		<div class="span2">
+			<ul class="media-grid">
+			<li><a href="https://arxiv.org/abs/1611.08998">
+				<img class="thumbnail"
+					src="img/deepsetnet.jpg"
+					alt="DeepSetNet" /></a>
+			</li>
+			</ul>
+		</div>
+		<div class="span7">
+			<h4> <a class="paper_link" href="https://arxiv.org/abs/1611.08998">
+				DeepSetNet: Predicting Sets with Deep Neural Networks
+				</a>
+			</h4>
+			<p>
+			<a href="http://users.cecs.anu.edu.au/~hrezatofighi/index.htm">S. H. Rezatofighi</a>,
+			<a href="http://roboticvision.org/vijay-kumar/">V. Kumar</a>,
+			<a href="http://www.milanton.de">A. Milan</a>,
+			<a href="https://scholar.google.com/citations?user=OdlVfTsAAAAJ&hl=en">E. Abbasnejad</a>,
+			<a href="http://cs.adelaide.edu.au/~ard/">A. Dick</a>,
+			<a href="http://cs.adelaide.edu.au/~ianr/">I. Reid</a>.
+			In ICCV 2017
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(Hamid2017iccv);" />bibtex</a> |
+			<a class="abstract_link" onclick="javascript:toggle(Hamid2017iccvabstract);" />abstract</a> |
+			<a class="paper_link" href="https://arxiv.org/abs/1611.08998">paper</a> |
+      <a href="http://demo.cs.adelaide.edu.au/tagging">demo</a>
+			<br>
+			<pre id="Hamid2017iccv" class="invisible_bibtex">
+@inproceedings{Rezatofighi:2017:ICCV,
+	Title = {Deep{S}et{N}et: {P}redicting Sets with Deep Neural Networks},
+	shorttitle = {DeepSetNet},
+	url = {https://arxiv.org/abs/1611.08998},
+	Author = {Rezatofighi, S. H. and Kumar BG, V. and Milan, A. and Abbasnejad, E. and Dick, A. and Reid, I.},
+	Booktitle = {ICCV},
+	Year = {2017}
+}
+			</pre>
+			<pre id="Hamid2017iccvabstract" class="invisible_abstract">
+This paper addresses the task of set prediction using deep learning. This is
+important because the output of many computer vision tasks, including image
+tagging and object detection, are naturally expressed as sets of entities rather
+than vectors. As opposed to a vector, the size of a set is not fixed in advance,
+and it is invariant to the ordering of entities within it. We define a
+likelihood for a set distribution and learn its parameters using a deep neural
+network. We also derive a loss for predicting a discrete distribution
+corresponding to set cardinality. Set prediction is demonstrated on the problems
+of multi-class image classification and pedestrian detection. Our approach
+yields state-of-the-art results in both cases on standard datasets.
+			</pre>
+			</p>
+		</div>
+	</div> <!-- /row -->
+
+
+	<!-- IJRR 2017 -->
+	<div class="row">
+		<div class="span2">
+			<ul class="media-grid">
+			<li><a>
+				<img class="thumbnail"
+					src="img/apc_perception.jpg"
+					alt="Multi-class RGB-D Object Detection and Semantic Segmentation for Autonomous Manipulation in Clutter" /></a>
+			</li>
+			</ul>
+		</div>
+		<div class="span7">
+			<h4>
+			<!-- <a class="paper_link" href="https://www.ais.uni-bonn.de/papers/IJRR_2017_Schwarz.pdf"> -->
+			<a>
+				Multi-class RGB-D Object Detection and Semantic Segmentation for Autonomous Manipulation in Clutter
+				</a>
+			</h4>
+			<p>
+			M. Schwarz,
+			A. Milan,
+			A. S. Periyasamy,
+			S. Behnke. <br>
+			Accepted to <a href="http://journals.sagepub.com/home/ijr">IJRR</a>
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(Schwarz2017IJRRbibtex);" />bibtex</a> |
+			<a class="abstract_link" onclick="javascript:toggle(Schwarz2017IJRRabstract);" />abstract</a>
+			<br>
+
+			<pre id="Schwarz2017IJRRbibtex" class="invisible_bibtex">
+@article{Schwarz:2017:IJRR,
+	title = {Multi-class RGB-D Object Detection and Semantic Segmentation for Autonomous Manipulation in Clutter},
+	booktitle = {IJRR},
+	author = {Schwarz, M. and Milan, A. and Periyasamy A. S. and Behnke S.},
+  volume = {37},
+  number = {4-5},
+	month = {Jun},
+	year = {2017}
+}
+			</pre>
+			<pre id="Schwarz2017IJRRabstract" class="invisible_abstract">
+Autonomous robotic manipulation in clutter is challenging. A large variety of objects must be perceived in complex scenes, where they are partially occluded and embedded among many distractors, often in restricted spaces. To tackle these challenges, we developed a deep-learning approach that combines object detection and semantic segmentation. The manipulation scenes are captured with RGB-D cameras, for which we developed a depth fusion method. Employing pretrained features makes learning from small annotated robotic data sets possible. We evaluate our approach on two challenging data sets: one captured for the Amazon Picking Challenge 2016, where our team NimbRo came in second in the Stowing and third in the Picking task, and one captured in disaster-response scenarios. The experiments show that object detection and semantic segmentation complement each other and can be combined to yield reliable object perception.
+			</pre>
+
+			</p>
+		</div>
+	</div> <!-- /row -->
+
+
+
+	<!-- MOTChallenge arxiv -->
+	<div class="row">
+		<div class="span2">
+			<ul class="media-grid">
+			<li><a href="http://arxiv.org/abs/1704.02781">
+				<img class="thumbnail"
+					src="img/motsoa.jpg"
+					alt="Tracking the Trackers" /></a>
+			</li>
+			</ul>
+		</div>
+		<div class="span7">
+			<h4> <a class="paper_link" href="https://arxiv.org/pdf/1704.02781">
+				Tracking the Trackers: <br>An Analysis of the State of the Art in Multiple Object Tracking
+				</a>
+			</h4>
+			<p>
+			<a href="https://sites.google.com/site/lealtaixe/home">L. Leal-Taixé</a>,
+			<a href="http://www.milanton.de">A. Milan</a>,
+			<a href="http://www.igp.ethz.ch/photogrammetry/people/Schindler">K. Schindler</a>,
+			<a href="http://vision.in.tum.de/members/cremers">D. Cremers</a>,
+			<a href="http://cs.adelaide.edu.au/~ianr/">I. Reid</a>,
+			<a href="http://www.gris.informatik.tu-darmstadt.de/~sroth/">S. Roth</a>
+			<br><a href="http://arxiv.org/abs/1704.02781">arXiv:1704.02781</a>
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(MOTSOAbibtex);" />bibtex</a> |
+			<a class="abstract_link" onclick="javascript:toggle(MOTSOAabstract);" />abstract</a> |
+			<a class="paper_link" href="http://arxiv.org/pdf/1704.02781v1">paper</a>
+			<br>
+			<pre id="MOTSOAbibtex" class="invisible_bibtex">
+@article{2017:Leal:arxiv,
+	title = {Tracking the Trackers: {A}n Analysis of the State of the Art in Multiple Object Tracking},
+	shorttitle = {Tracking the Trackers},
+	url = {http://arxiv.org/abs/1704.02781},
+	journal = {arXiv:1704.02781 [cs]},
+	author = {Leal-Taix\'{e}, Laura and Milan, Anton and Schindler, Konrad and Cremers, Daniel and Reid, Ian and Roth, Stefan},
+	month = apr,
+	year = {2017},
+	note = {arXiv: 1704.02781},
+	keywords = {Computer Science - Computer Vision and Pattern Recognition}
+}
+			</pre>
+			<pre id="MOTSOAabstract" class="invisible_abstract">
+Standardized benchmarks are crucial for the majority of
+computer vision applications. Although leaderboards and
+ranking tables should not be over-claimed, benchmarks often
+provide the most objective measure of performance and
+are therefore important guides for research. We present a
+benchmark for Multiple Object Tracking launched in the
+late 2014, with the goal of creating a framework for the
+standardized evaluation of multiple object tracking methods.
+This paper collects the two releases of the benchmark
+made so far, and provides an in-depth analysis of almost
+50 state-of-the-art trackers that were tested on over 11000
+frames. We show the current trends and weaknesses of multiple
+people tracking methods, and provide pointers of what
+researchers should be focusing on to push the field forward.
+			</pre>
+			</p>
+		</div>
+	</div>
+
+
+	<!-- CVPR RefineNet 2017 -->
+	<div class="row">
+		<div class="span2">
+			<ul class="media-grid">
+			<li><a href="https://github.com/guosheng/refinenet">
+				<img class="thumbnail"
+					src="img/refinenet.jpg"
+					alt="RefineNet" /></a>
+			</li>
+			</ul>
+		</div>
+		<div class="span7">
+			<h4> <a class="paper_link" href="files/cvpr2017/cvpr2017-lin.pdf">
+				RefineNet: Multi-Path Refinement Networks <br> for High-Resolution Semantic Segmentation
+				</a>
+			</h4>
+			<p>
+			<a href="https://sites.google.com/site/guoshenglin/">G. Lin</a>,
+			<a href="http://www.milanton.de">A. Milan</a>,
+			<a href="http://cs.adelaide.edu.au/~chhshen/">C. Shen</a>,
+			<a href="http://cs.adelaide.edu.au/~ianr/">I. Reid</a>.
+			In <a href="http://cvpr2017.thecvf.com/">CVPR 2017</a>
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(Lin2017CVPRrefinenet);" />bibtex</a> |
+			<a class="abstract_link" onclick="javascript:toggle(Lin2017CVPRrefinenetabstract);" />abstract</a> |
+			<a class="paper_link" href="files/cvpr2017/cvpr2017-lin.pdf">paper</a> |
+			<a href="https://github.com/guosheng/refinenet">code</a>
+			<br>
+			<pre id="Lin2017CVPRrefinenet" class="invisible_bibtex">
+@inproceedings{Lin:2017:CVPR,
+        Author = {Lin, G. and Milan, A. and Shen, C. and Reid, I.},
+	Title = {Refine{N}et: {M}ulti-Path Refinement Networks for High-Resolution Semantic Segmentation},
+	Booktitle = {CVPR},
+	Year = {2017}
+}
+			</pre>
+			<pre id="Lin2017CVPRrefinenetabstract" class="invisible_abstract">
+Recently, very deep convolutional neural networks (CNNs) have shown
+outstanding performance in object recognition and have also been the
+first choice for dense classification problems such as semantic
+segmentation. However, repeated subsampling operations like pooling or
+convolution striding in deep CNNs lead to a significant decrease in the
+initial image resolution. Here, we present RefineNet, a generic
+multi-path refinement network that explicitly exploits all the
+information available along the down-sampling process to enable
+high-resolution prediction using long-range residual connections. In
+this way, the deeper layers that capture high-level semantic features
+can be directly refined using fine-grained features from earlier
+convolutions. The individual components of RefineNet employ residual
+connections following the identity mapping mindset, which allows for
+effective end-to-end training. Further, we introduce chained residual
+pooling, which captures rich background context in an efficient manner.
+We carry out comprehensive experiments and set new state-of-the-art
+results on seven public datasets. In particular, we achieve an
+intersection-over-union score of 83.4 on the challenging PASCAL VOC 2012
+dataset, which is the best reported result to date.
+			</pre>
+			</p>
+		</div>
+	</div> <!-- /row -->
+
+	<div class="row">
+		<div class="span2">
+			<ul class="media-grid">
+			<li><a href="http://pages.iai.uni-bonn.de/iqbal_umar/PoseTrack/">
+				<img class="thumbnail"
+					src="img/posetrack.jpg"
+					alt="Pose-Track" /></a>
+			</li>
+			</ul>
+		</div>
+		<div class="span7">
+			<h4> <a class="paper_link" href="files/cvpr2017/cvpr2017-iqbal.pdf">
+				PoseTrack: Joint Multi-Person Pose Estimation and Tracking
+				</a>
+			</h4>
+			<p>
+			<a href="http://pages.iai.uni-bonn.de/iqbal_umar/">U. Iqbal</a>,
+			<a href="http://www.milanton.de">A. Milan</a>,
+			<a href="http://www.iai.uni-bonn.de/~gall">J. Gall</a>.
+			In <a href="http://cvpr2017.thecvf.com/">CVPR 2017</a>
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(Iqbal2017CVPR);" />bibtex</a> |
+			<a class="abstract_link" onclick="javascript:toggle(Iqbal2017CVPRabstract);" />abstract</a> |
+			<a class="paper_link" href="files/cvpr2017/cvpr2017-iqbal.pdf">paper</a> |
+			<a href="http://pages.iai.uni-bonn.de/iqbal_umar/PoseTrack/">project</a>
+			<br>
+			<pre id="Iqbal2017CVPR" class="invisible_bibtex">
+@inproceedings{Iqbal:2017:CVPR,
+        Author = {Iqbal, U. and Milan, A. and Gall, J.},
+	Title = {Pose{T}rack: {J}oint Multi-Person Pose Estimation and Tracking},
+	Booktitle = {CVPR},
+	Year = {2017}
+}
+			</pre>
+			<pre id="Iqbal2017CVPRabstract" class="invisible_abstract">
+In this work, we introduce the challenging problem of joint multi-person pose
+estimation and tracking of an unknown number of persons in unconstrained videos.
+Existing methods for multi-person pose estimation in images cannot be applied
+directly to this problem, since it also requires to solve the problem of person
+association over time in addition to the pose estimation for each person. We
+therefore propose a novel method that jointly models multi-person pose
+estimation and tracking in a single formulation. To this end, we represent body
+joint detections in a video by a spatio-temporal graph and solve an integer
+linear program to partition the graph into sub-graphs that correspond to
+plausible body pose trajectories for each person. The proposed approach
+implicitly handles occlusions and truncations of persons. Since the problem has
+not been addressed quantitatively in the literature, we introduce a challenging
+"Multi-Person Pose-Track" dataset, and also propose a completely unconstrained
+evaluation protocol that does not make any assumptions on the scale, size,
+location or the number of persons. Finally, we evaluate the proposed approach
+and several baseline methods on our new dataset.
+			</pre>
+			</p>
+		</div>
+	</div> <!-- /row -->
+
+
+
+
+	<!-- ICRA 2017 -->
+	<div class="row">
+		<div class="span2">
+			<ul class="media-grid">
+			<li><a>
+				<img class="thumbnail"
+					src="img/nimbro-picking.jpg"
+					alt="NimbRo Picking: Versatile Part Handling for Warehouse Automation" /></a>
+			</li>
+			</ul>
+		</div>
+		<div class="span7">
+			<h4>
+			<!-- <a class="paper_link" href="files/icra2017/icra2017-schwarz.pdf"> -->
+			<a>
+				NimbRo Picking: Versatile Part Handling for Warehouse Automation
+				</a>
+			</h4>
+			<p>
+			M. Schwarz,
+			A. Milan,
+			C. Lenz,
+			A. Muñoz,
+			A. S. Periyasamy,
+			M. Schreiber,
+			S. Schüller,
+			S. Behnke. <br>
+			In <a href="www.icra2017.org">ICRA 2017</a>
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(Schwarz2017ICRAbibtex);" />bibtex</a> |
+			<a class="abstract_link" onclick="javascript:toggle(Schwarz2017ICRAabstract);" />abstract</a> |
+			<a class="paper_link" href="files/icra2017/icra2017-schwarz.pdf">paper</a>
+			<br>
+
+			<pre id="Schwarz2017ICRAbibtex" class="invisible_bibtex">
+@inproceedings{Schwarz:2017:ICRA,
+	title = {Nimb{R}o {P}icking: {V}ersatile Part Handling for Warehouse Automation},
+	booktitle = {ICRA},
+	author = {Schwarz, M. and Milan, A. and Lenz C. and Mu{\~n}oz A. and Periyasamy A. S. and Schreiber M. and Sch{\"u}ller S. and Behnke S.},
+	month = {June},
+	year = {2017}
+}
+			</pre>
+			<pre id="Schwarz2017ICRAabstract" class="invisible_abstract">
+Part handling in warehouse automation is challenging if a large variety of items
+must be accommodated and items are stored in unordered piles. To foster research
+in this domain, Amazon holds picking challenges. We present our system which
+achieved second and third place in the Amazon Picking Challenge 2016 tasks. The
+challenge required participants to pick a list of items from a shelf or to stow
+items into the shelf. Using two deep-learning approaches for object detection
+and semantic segmentation and one item model registration method, our system
+localizes the requested item. Manipulation occurs using suction on points
+determined heuristically or from 6D item model registration. Parametrized motion
+primitives are chained to generate motions. We present a full-system evaluation
+during the APC 2016 and component level evaluations of the perception system on
+an annotated dataset.
+			</pre>
+
+			</p>
+		</div>
+	</div> <!-- /row -->
+
+
+	<!-- AAAI NP 2017 -->
+	<div class="row">
+		<div class="span2">
+			<ul class="media-grid">
+			<li><a>
+				<img class="thumbnail"
+					src="img/obj-based.png"
+					alt="Data-Driven Approximations to NP-Hard Problems" /></a>
+			</li>
+			</ul>
+		</div>
+		<div class="span7">
+			<h4> <a class="paper_link" href="files/aaai2017/aaai2017-anton-nphard.pdf">
+				Data-Driven Approximations to NP-Hard Problems
+				</a>
+			</h4>
+			<p>
+			<a href="http://www.milanton.de">A. Milan</a>,
+			<a href="http://users.cecs.anu.edu.au/~hrezatofighi/index.htm">S. H. Rezatofighi</a>,
+			<a href="https://scholar.google.com.au/citations?user=2dvDXjkAAAAJ&hl=en">R. Garg</a>,
+			<a href="http://cs.adelaide.edu.au/~ard/">A. Dick</a>,
+			<a href="http://cs.adelaide.edu.au/~ianr/">I. Reid</a>.
+			In <a href="https://www.aaai.org/Conferences/AAAI/aaai17.php">AAAI 2017</a>
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(Milan2017AAAINP);" />bibtex</a> |
+			<a class="abstract_link" onclick="javascript:toggle(Milan2017AAAINPabstract);" />abstract</a> |
+			<a class="paper_link" href="files/aaai2017/aaai2017-anton-nphard.pdf">paper</a>	|
+			<a class="slides_link" href="files/aaai2017/aaai2017-anton-nphard-slides.pdf">slides</a>	|
+			<a href="https://bitbucket.org/amilan/rnn-algapp">code</a>
+			<br>
+
+			<pre id="Milan2017AAAINP" class="invisible_bibtex">
+@inproceedings{Milan:2017:AAAI_NP,
+	title = {Data-driven approximations to {NP}-hard problems},
+	booktitle = {AAAI},
+	author = {Milan, A. and Rezatofighi, S. H. and Garg, R. and Dick, A. and Reid, I.},
+	month = {February},
+	year = {2017}
+}
+			</pre>
+			<pre id="Milan2017AAAINPabstract" class="invisible_abstract">
+There exist a number of problem classes, for which obtaining
+the exact solution becomes exponentially expensive with
+increasing problem size.  The quadratic assignment problem (QAP)
+or the travelling salesman problem (TSP) are just two examples of
+such NP-hard problems. In practice, approximate algorithms
+are employed to obtain a suboptimal solution, where one must
+face a trade-off between computational complexity and
+solution quality.
+In this paper, we propose to learn  to solve these problem from
+approximate examples, using recurrent neural networks (RNNs).
+Surprisingly, such architectures are capable of producing
+highly accurate solutions at minimal computational cost.
+Moreover, we introduce a simple,
+yet effective technique for improving the initial (weak) training
+set by incorporating the objective cost into the training procedure.
+We demonstrate the functionality of our approach on three
+exemplar applications: marginal distributions of a joint
+matching space, feature point matching and the travelling
+salesman problem. We show encouraging results on synthetic and real data
+in all three cases.
+			</pre>
+
+			</p>
+		</div>
+	</div> <!-- /row -->
+
+	<!-- AAAI RNN 2017 -->
+	<div class="row">
+		<div class="span2">
+			<ul class="media-grid">
+			<li><a>
+				<img class="thumbnail"
+					src="img/predupd.png"
+					alt="Multi-Target Tracking using RNNs" /></a>
+			</li>
+			</ul>
+		</div>
+		<div class="span7">
+			<h4> <a class="paper_link" href="files/aaai2017/aaai2017-anton-rnntracking.pdf">
+				Online Multi-Target Tracking Using Recurrent Neural Networks
+				</a>
+			</h4>
+			<p>
+			<a href="http://www.milanton.de">A. Milan</a>,
+			<a href="http://users.cecs.anu.edu.au/~hrezatofighi/index.htm">S. H. Rezatofighi</a>,
+			<a href="http://cs.adelaide.edu.au/~ard/">A. Dick</a>,
+			<a href="http://cs.adelaide.edu.au/~ianr/">I. Reid</a>,
+			<a href="http://www.igp.ethz.ch/photogrammetry/people/Schindler">K. Schindler</a>
+			<br>In <a href="https://www.aaai.org/Conferences/AAAI/aaai17.php">AAAI 2017</a>
+			<br><a class="bibtex_link" onclick="javascript:toggle(Milan2017AAAIRNN);" />bibtex</a> |
+			<a class="abstract_link" onclick="javascript:toggle(Milan2017AAAIRNNabstract);" />abstract</a> |
+			<a class="paper_link" href="files/aaai2017/aaai2017-anton-rnntracking.pdf">paper</a> |
+			<a class="paper_link" href="files/aaai2017/aaai2017-anton-rnntracking-poster.pdf">poster</a>	|
+			<a href="https://bitbucket.org/amilan/rnntracking">code</a>
+			<!--
+			<a class="youtube_link" target="_blank" href="https://youtu.be/mIGZiI7-glw">video 2</a>
+			-->
+			<br>
+			<pre id="Milan2017AAAIRNN" class="invisible_bibtex">
+@inproceedings{Milan:2017:AAAI_RNNTracking,
+	title = {Online Multi-Target Tracking using Recurrent Neural Networks},
+	booktitle = {AAAI},
+	author = {Milan, A. and Rezatofighi, S. H. and Dick, A. and Reid, I. and Schindler, K.},
+	month = {February},
+	year = {2017}
+}
+			</pre>
+			<pre id="Milan2017AAAIRNNabstract" class="invisible_abstract">
+We present a novel approach to online multi-target tracking based on
+recurrent neural networks (RNNs). Tracking multiple objects in
+real-world scenes involves many challenges, including a) an a-priori
+unknown and time-varying number of targets, b) a continuous state
+estimation of all present targets, and c) a discrete combinatorial
+problem of data association. Most previous methods involve complex
+models that require tedious tuning of parameters. Here, we propose for
+the first time, a full end-to-end learning approach for online
+multi-target tracking based on deep learning. Existing deep learning
+methods are not designed for the above challenges and cannot be
+trivially applied to the task. Our solution addresses all of the above
+points in a principled way. Experiments on both synthetic and real data
+show competitive results obtained at 300 Hz on a standard CPU, and pave
+the way towards future research in this direction.
+			</pre>
+			</p>
+		</div>
+	</div> <!-- /row -->
+
+	<hr>
+
+	<h3 id="year2016">2016</h3>
+
+
+	<!-- arxiv RefineNet 2016 -->
+	<!--
+	<div class="row">
+		<div class="span2">
+			<ul class="media-grid">
+			<li><a href="https://arxiv.org/abs/1611.06612">
+				<img class="thumbnail"
+					src="img/refinenet.png"
+					alt="RefineNet" /></a>
+			</li>
+			</ul>
+		</div>
+		<div class="span7">
+			<h4> <a class="paper_link" href="files/arxiv2016/arxiv2016-guosheng-refinenet.pdf">
+				RefineNet: Multi-Path Refinement Networks for High-Resolution Semantic Segmentation
+				</a>
+			</h4>
+			<p>
+			<a href="https://sites.google.com/site/guoshenglin/">G. Lin</a>,
+			<a href="http://www.milanton.de">A. Milan</a>,
+			<a href="http://cs.adelaide.edu.au/~chhshen/">C. Shen</a>,
+			<a href="http://cs.adelaide.edu.au/~ianr/">I. Reid</a>.
+			In <a href="http://arxiv.org/abs/1611.06612">arXiv:1611.06612</a>
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(Lin2016arxivrefinenet);" />bibtex</a> |
+			<a class="abstract_link" onclick="javascript:toggle(Lin2016arxivrefinenetabstract);" />abstract</a> |
+			<a class="paper_link" href="files/arxiv2016/arxiv2016-guosheng-refinenet.pdf">paper</a> |
+			<a href="https://github.com/guosheng/refinenet">code</a>
+			<br>
+			<pre id="Lin2016arxivrefinenet" class="invisible_bibtex">
+@article{Lin:2016:arxiv,
+	title = {Refine{N}et: {M}ulti-Path Refinement Networks for High-Resolution Semantic Segmentation},
+	shorttitle = {RefineNet: Multi-Path Refinement Networks},
+	url = {https://arxiv.org/abs/1611.06612},
+	journal = {arXiv:1611.06612 [cs]},
+	author = {Lin, G. and Milan, A. and Shen, C. and Reid, I.},
+	month = nov,
+	year = {2016},
+	note = {arXiv: 1611.06612},
+	keywords = {Computer Science - Computer Vision and Pattern Recognition}
+}
+			</pre>
+			<pre id="Lin2016arxivrefinenetabstract" class="invisible_abstract">
+Recently, very deep convolutional neural networks (CNNs) have shown
+outstanding performance in object recognition and have also been the
+first choice for dense classification problems such as semantic
+segmentation. However, repeated subsampling operations like pooling or
+convolution striding in deep CNNs lead to a significant decrease in the
+initial image resolution. Here, we present RefineNet, a generic
+multi-path refinement network that explicitly exploits all the
+information available along the down-sampling process to enable
+high-resolution prediction using long-range residual connections. In
+this way, the deeper layers that capture high-level semantic features
+can be directly refined using fine-grained features from earlier
+convolutions. The individual components of RefineNet employ residual
+connections following the identity mapping mindset, which allows for
+effective end-to-end training. Further, we introduce chained residual
+pooling, which captures rich background context in an efficient manner.
+We carry out comprehensive experiments and set new state-of-the-art
+results on seven public datasets. In particular, we achieve an
+intersection-over-union score of 83.4 on the challenging PASCAL VOC 2012
+dataset, which is the best reported result to date.
+			</pre>
+			</p>
+		</div>
+	</div>
+	-->
+	<!-- /row -->
+
+	<!--
+	<div class="row">
+		<div class="span2">
+			<ul class="media-grid">
+			<li><a href="https://arxiv.org/abs/1611.07727">
+				<img class="thumbnail"
+					src="img/posetrack.jpg"
+					alt="Pose-Track" /></a>
+			</li>
+			</ul>
+		</div>
+		<div class="span7">
+			<h4> <a class="paper_link" href="files/arxiv2016/arxiv2016-umar-posetrack.pdf">
+				Pose-Track: Joint Multi-Person Pose Estimation and Tracking
+				</a>
+			</h4>
+			<p>
+			<a href="http://pages.iai.uni-bonn.de/iqbal_umar/">U. Iqbal</a>,
+			<a href="http://www.milanton.de">A. Milan</a>,
+			<a href="http://www.iai.uni-bonn.de/~gall">J. Gall</a>.
+			In <a href="http://arxiv.org/abs/1611.07727">arXiv:1611.07727</a>
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(Iqbal2016arxiv);" />bibtex</a> |
+			<a class="abstract_link" onclick="javascript:toggle(Iqbal2016arxivabstract);" />abstract</a> |
+			<a class="paper_link" href="files/arxiv2016/arxiv2016-umar-posetrack.pdf">paper</a> |
+			<a href="http://pages.iai.uni-bonn.de/iqbal_umar/pose-track/">project</a>
+			<br>
+			<pre id="Iqbal2016arxiv" class="invisible_bibtex">
+@article{Iqbal:2016:arxiv,
+	title = {Pose-Track: {J}oint Multi-Person Pose Estimation and Tracking},
+	shorttitle = {Pose-Track},
+	url = {https://arxiv.org/abs/1611.07727},
+	journal = {arXiv:1611.07727 [cs]},
+	author = {Iqbal, U. and Milan, A. and Gall, J.},
+	month = nov,
+	year = {2016},
+	note = {arXiv: 1611.07727},
+	keywords = {Computer Science - Computer Vision and Pattern Recognition}
+}
+			</pre>
+			<pre id="Iqbal2016arxivabstract" class="invisible_abstract">
+In this work, we introduce the challenging problem of joint multi-person pose
+estimation and tracking of an unknown number of persons in unconstrained videos.
+Existing methods for multi-person pose estimation in images cannot be applied
+directly to this problem, since it also requires to solve the problem of person
+association over time in addition to the pose estimation for each person. We
+therefore propose a novel method that jointly models multi-person pose
+estimation and tracking in a single formulation. To this end, we represent body
+joint detections in a video by a spatio-temporal graph and solve an integer
+linear program to partition the graph into sub-graphs that correspond to
+plausible body pose trajectories for each person. The proposed approach
+implicitly handles occlusions and truncations of persons. Since the problem has
+not been addressed quantitatively in the literature, we introduce a challenging
+"Multi-Person Pose-Track" dataset, and also propose a completely unconstrained
+evaluation protocol that does not make any assumptions on the scale, size,
+location or the number of persons. Finally, we evaluate the proposed approach
+and several baseline methods on our new dataset.
+			</pre>
+			</p>
+		</div>
+	</div>
+	-->
+	<!-- /row -->
+
+
+
+
+	<!-- arxiv RNN 2016 -->
+	<!--
+	<div class="row">
+		<div class="span2">
+			<ul class="media-grid">
+			<li><a>
+				<img class="thumbnail"
+					src="img/predupd.png"
+					alt="Multi-target Tracking using RNNs" /></a>
+			</li>
+			</ul>
+		</div>
+		<div class="span7">
+			<h4> <a class="paper_link" href="files/arxiv2016/arxiv2016-anton-rnntracking.pdf">
+				Online Multi-target Tracking using Recurrent Neural Networks
+				</a>
+			</h4>
+			<p>
+			<a href="http://www.milanton.de">A. Milan</a>,
+			<a href="http://users.cecs.anu.edu.au/~hrezatofighi/index.htm">S. H. Rezatofighi</a>,
+			<a href="http://cs.adelaide.edu.au/~ard/">A. Dick</a>,
+			<a href="http://cs.adelaide.edu.au/~ianr/">I. Reid</a>,
+			<a href="http://www.igp.ethz.ch/photogrammetry/people/Schindler">K. Schindler</a>
+			<br><a href="http://arxiv.org/abs/1604.03635">arXiv:1604.03635</a>
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(Milan2016arxivrnn);" />bibtex</a> |
+			<a class="abstract_link" onclick="javascript:toggle(Milan2016arxivrnnabstract);" />abstract</a> |
+			<a class="paper_link" href="files/arxiv2016/arxiv2016-anton-rnntracking.pdf">paper</a> |
+			<a href="https://bitbucket.org/amilan/rnntracking">code</a> |
+			<br>
+			<pre id="Milan2016arxivrnn" class="invisible_bibtex">
+@article{Milan:2016:arxiv,
+	title = {Online Multi-target Tracking using Recurrent Neural Networks},
+	shorttitle = {Online Multi-target Tracking using RNNs},
+	url = {http://arxiv.org/abs/1604.03635},
+	journal = {arXiv:1604.03635 [cs]},
+	author = {Milan, A. and Rezatofighi, S. H. and Dick, A. and Reid, I. and Schindler, K.},
+	month = apr,
+	year = {2016},
+	note = {arXiv: 1604.03635},
+	keywords = {Computer Science - Computer Vision and Pattern Recognition}
+}
+			</pre>
+			<pre id="Milan2016arxivrnnabstract" class="invisible_abstract">
+We present a novel approach to online multi-target tracking based on
+recurrent neural networks (RNNs). Tracking multiple objects in
+real-world scenes involves many challenges, including a) an a-priori
+unknown and time-varying number of targets, b) a continuous state
+estimation of all present targets, and c) a discrete combinatorial
+problem of data association. Most previous methods involve complex
+models that require tedious tuning of parameters. Here, we propose for
+the first time, a full end-to-end learning approach for online
+multi-target tracking based on deep learning. Existing deep learning
+methods are not designed for the above challenges and cannot be
+trivially applied to the task. Our solution addresses all of the above
+points in a principled way. Experiments on both synthetic and real data
+show competitive results obtained at 300 Hz on a standard CPU, and pave
+the way towards future research in this direction.
+			</pre>
+			</p>
+		</div>
+	</div> <!-- /row -->
+
+
+
+	<!-- CVPR 2016 -->
+	<div class="row">
+		<div class="span2">
+			<ul class="media-grid">
+			<li><a href="./m-best/index.html">
+				<img class="thumbnail"
+					src="img/matching.jpg"
+					alt="Joint Probabilistic Matching" /></a>
+			</li>
+			</ul>
+		</div>
+		<div class="span7">
+			<h4> <a class="paper_link" href="files/cvpr2016/cvpr2016-hamid.pdf">
+				Joint Probabilistic Matching Using <i>m</i>-Best Solutions
+				</a>
+			</h4>
+			<p>
+			<a href="http://users.cecs.anu.edu.au/~hrezatofighi/index.htm">S. H. Rezatofighi</a>,
+			<a href="http://www.milanton.de">A. Milan</a>,
+			<a href="https://scholar.google.de/citations?user=4X6Hqg0AAAAJ&hl=en">Z. Zhang</a>,
+			<a href="http://cs.adelaide.edu.au/~ard/">A. Dick</a>,
+			<a href="http://cs.adelaide.edu.au/~javen/">Q. Shi</a>,
+			<a href="http://cs.adelaide.edu.au/~ianr/">I. Reid</a>
+			<br><a href="http://cvpr2016.thecvf.com">CVPR 2016</a> (oral presentation)
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(Rezatofighi2016CVPRbibtex);" />bibtex</a> |
+			<a class="abstract_link" onclick="javascript:toggle(Rezatofighi2016CVPRabstract);" />abstract</a> |
+			<a class="paper_link" href="files/cvpr2016/cvpr2016-hamid.pdf">paper</a> |
+			<a class="paper_link" href="files/cvpr2016/cvpr2016-hamid-suppmat.pdf">supplemental</a> |
+			<a class="slides_link" href="files/cvpr2016/cvpr2016-hamid-slides.pdf">slides</a> |
+			<a class="paper_link" href="files/cvpr2016/cvpr2016-hamid-poster.pdf">poster</a> |
+			<a class="youtube_link" target="_blank" href="https://youtu.be/rvgrTteb4xQ">video</a> |
+			<a href="./m-best/index.html">project</a>
+			<!--
+			<a class="youtube_link" target="_blank" href="https://youtu.be/mIGZiI7-glw">video 2</a>
+			-->
+			<br>
+			<pre id="Rezatofighi2016CVPRbibtex" class="invisible_bibtex">
+@inproceedings{Rezatofighi:2016:CVPR,
+	Author = {Rezatofighi, S. H. and Milan, A. and Zhang, Z. and Shi, Q. and Dick, A. and Reid, I.},
+	Booktitle = {CVPR},
+	Title = {Joint Probabilistic Matching Using m-Best Solutions},
+	Year = {2016}
+}
+			</pre>
+			<pre id="Rezatofighi2016CVPRabstract" class="invisible_abstract">
+Matching between two sets of objects is typically ap-
+proached by finding the object pairs that collectively maxi-
+mize the joint matching score. In this paper, we argue that
+this single solution does not necessarily lead to the opti-
+mal matching accuracy and that general one-to-one assign-
+ment problems can be improved by considering multiple hy-
+potheses before computing the final similarity measure. To
+that end, we propose to utilize the marginal distributions for
+each entity. Previously, this idea has been neglected mainly
+because exact marginalization is intractable due to a com-
+binatorial number of all possible matching permutations.
+Here, we propose a generic approach to efficiently approx-
+imate the marginal distributions by exploiting the m-best
+solutions of the original problem. This approach not only
+improves the matching solution, but also provides more ac-
+curate ranking of the results, because of the extra informa-
+tion included in the marginal distribution. We validate our
+claim on two distinct objectives: (i) person re-identification
+and temporal matching modeled as an integer linear pro-
+gram, and (ii) feature point matching using a quadratic cost
+function. Our experiments confirm that marginalization in-
+deed leads to superior performance compared to the single
+(nearly) optimal solution, yielding state-of-the-art
+results in both applications on standard benchmarks.
+
+			</pre>
+			</p>
+		</div>
+	</div> <!-- /row -->
+
+
+	<!-- MOT16 -->
+	<div class="row">
+		<div class="span2">
+			<ul class="media-grid">
+			<li><a href="http://motchallenge.net">
+				<img class="thumbnail"
+					src="img/MOT16-04-gt-mini.jpg"
+					alt="MOT16" /></a>
+			</li>
+			</ul>
+		</div>
+		<div class="span7">
+			<h4><a class="paper_link" href="http://arxiv.org/abs/1603.00831">
+				MOT16: A Benchmark for Multi-Object Tracking
+				</a>
+			</h4>
+			<p>
+			<a href="http://www.milanton.de">A. Milan</a>,
+			<a href="https://sites.google.com/site/lealtaixe/home">L. Leal-Taixé</a>,
+			<a href="http://cs.adelaide.edu.au/~ianr/">I. Reid</a>,
+			<a href="http://www.gris.informatik.tu-darmstadt.de/~sroth/">S. Roth</a>, and
+			<a href="http://www.igp.ethz.ch/photogrammetry/people/Schindler">K. Schindler</a>
+			<br><a href="http://arxiv.org/abs/1603.00831">arXiv:1603.00831</a>
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(MOT16bibtex);" />bibtex</a> |
+			<a class="abstract_link" onclick="javascript:toggle(MOT16abstract);" />abstract</a> |
+			<a class="paper_link" href="http://arxiv.org/abs/1603.00831">paper</a> |
+			<a href="http://motchallenge.net">project page</a>
+			<br>
+			<pre id="MOT16bibtex" class="invisible_bibtex">
+@article{MOT16,
+	title = {{MOT}16: {A} Benchmark for Multi-Object Tracking},
+	shorttitle = {MOT16},
+	url = {http://arxiv.org/abs/1603.00831},
+	journal = {arXiv:1603.00831 [cs]},
+	author = {Milan, A. and Leal-Taix\'{e}, L. and Reid, I. and Roth, S. and Schindler, K.},
+	month = mar,
+	year = {2016},
+	note = {arXiv: 1603.00831},
+	keywords = {Computer Science - Computer Vision and Pattern Recognition}
+}
+			</pre>
+			<pre id="MOT16abstract" class="invisible_abstract">
+Standardized benchmarks are crucial for the majority of computer vision
+applications. Although leaderboards and ranking tables should not be
+over-claimed, benchmarks often provide the most objective measure of
+performance and are therefore important guides for reseach. Recently, a
+new benchmark for Multiple Object Tracking, MOTChallenge, was launched
+with the goal of collecting existing and new data and creating a
+framework for the standardized evaluation of multiple object tracking
+methods. The first release of the benchmark focuses on multiple people
+tracking, since pedestrians are by far the most studied object in the
+tracking community. This paper accompanies a new release of the
+MOTChallenge benchmark. Unlike the initial release, all videos of MOT16
+have been carefully annotated following a consistent protocol. Moreover,
+it not only offers a significant increase in the number of labeled
+boxes, but also provides multiple object classes beside pedestrians and
+the level of visibility for every single object of interest.
+
+
+			</pre>
+			</p>
+		</div>
+	</div> <!-- /row -->
+
+
+	<!-- PAMI 2016 -->
+	<div class="row">
+		<div class="span2">
+			<ul class="media-grid">
+			<li><a href="./dctracking/index.html">
+				<img class="thumbnail"
+					src="img/fg.jpg"
+					alt="Multi-Target Tracking"/></a>
+			</li>
+			</ul>
+		</div>
+		<div class="span7">
+			<h4><a class="paper_link" href="files/pami2016/pami2016-anton.pdf">
+				Multi-Target Tracking by Discrete-Continuous Energy Minimization
+				</a>
+			</h4>
+			<p>
+			<a href="http://research.milanton.net">A. Milan</a>,
+			<a href="http://www.igp.ethz.ch/photogrammetry/people/Schindler">K. Schindler</a> and
+			<a href="http://www.gris.informatik.tu-darmstadt.de/~sroth/">S. Roth</a>
+			<br><a href="http://www.computer.org/portal/web/tpami/home">PAMI 38(1)</a>, 2016
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(Milan2016DCO);" />bibtex</a> |
+			<a class="abstract_link" onclick="javascript:toggle(Milan2016DCOabstract);" />abstract</a> |
+			<a class="paper_link" href="files/pami2016/pami2016-anton.pdf">paper</a> |
+			<a class="youtube_link" target="_blank" href="https://youtu.be/lZRzhZSDYKs">video</a>
+			<a href="files/pami2016/pami2016.mp4"><img src="img/vdload.png"/></a> |
+			<a href="./dctracking/index.html">project page</a>
+			<br>
+			<pre id="Milan2016DCO" class="invisible_bibtex">
+@article{Milan:2016:PAMI,
+	author = {Milan, A. and Schindler, K. and Roth, S.},
+	title = {Multi-Target Tracking by Discrete-Continuous Energy Minimization},
+	volume = {38},
+	number = {10},
+	month={Oct},
+	pages={2054-2068},
+	doi={10.1109/TPAMI.2015.2505309},
+	journal = {IEEE TPAMI},
+	year = {2016}
+}
+			</pre>
+			<pre id="Milan2016DCOabstract" class="invisible_abstract">
+The task of tracking multiple targets is often addressed with the
+so-called tracking-by-detection paradigm, where the first step is to
+obtain a set of target hypotheses for each frame independently. Tracking
+can then be regarded as solving two separate, but tightly coupled
+problems. The first is to carry out data association, i.e. to determine
+the origin of each of the available observations. The second problem is
+to reconstruct the actual trajectories that describe the spatio-temporal
+motion pattern of each individual target. The former is inherently a
+discrete problem, while the latter should intuitively be modeled in
+continuous space. Having to deal with an unknown number of targets,
+complex dependencies, and physical constraints, both are challenging
+tasks on their own and thus most previous work focuses on one of these
+subproblems. Here, we present a multi-target tracking approach that
+explicitly models both tasks as minimization of a unified
+discrete-continuous energy function. Trajectory properties are captured
+through global label costs, a recent concept from multi-model fitting,
+which we introduce to tracking. Specifically, label costs describe
+physical properties of individual tracks, e.g. linear and angular
+dynamics, or entry and exit points. We further introduce pairwise label
+costs to describe mutual interactions between targets in order to avoid
+collisions. By choosing appropriate forms for the individual energy
+components, powerful discrete optimization techniques can be leveraged
+to address data association, while the shapes of individual trajectories
+are updated by gradient-based continuous energy minimization. The
+proposed method achieves state-of-the-art results on diverse benchmark
+sequences.
+			</pre>
+			</p>
+		</div>
+	</div>
+	<!-- /row -->
+
+	<hr>
+	<h3 id="year2015">2015</h3>
+
+	<!-- ICCV 2015 -->
+	<div class="row">
+		<div class="span2">
+			<ul class="media-grid">
+			<li><a>
+				<img class="thumbnail"
+					src="img/JPDA.png"
+					alt="Joint Probabilistic Data Association Revisited" /></a>
+			</li>
+			</ul>
+		</div>
+		<div class="span7">
+			<h4><a class="paper_link" href="files/iccv2015/iccv2015-hamid.pdf">Joint Probabilistic Data Association Revisited</a>
+			</h4>
+			<p>
+			<a href="http://users.cecs.anu.edu.au/~hrezatofighi/index.htm">S. H. Rezatofighi</a>,
+			<a href="http://www.milanton.de">A. Milan</a>,
+			<a href="https://scholar.google.de/citations?user=4X6Hqg0AAAAJ&hl=en">Z. Zhang</a>,
+			<a href="http://cs.adelaide.edu.au/~ard/">A. Dick</a>,
+			<a href="http://cs.adelaide.edu.au/~javen/">Q. Shi</a>,
+			<a href="http://cs.adelaide.edu.au/~ianr/">I. Reid</a>
+			<br><a href="http://www.pamitc.org/iccv15/">ICCV 2015</a>
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(Rezatofighi2015ICCVbibtex);" />bibtex</a> |
+			<a class="abstract_link" onclick="javascript:toggle(Rezatofighi2015ICCVabstract);" />abstract</a> |
+			<a class="paper_link" href="files/iccv2015/iccv2015-hamid.pdf">paper</a> |
+			<a href="http://research.milanton.net/files/iccv2015/jpda_m.zip">code</a> |
+			<a class="youtube_link" target="_blank" href="https://youtu.be/labjLU02ros">video 1</a>
+			<a class="youtube_link" target="_blank" href="https://youtu.be/mIGZiI7-glw">video 2</a>
+			<br>
+			<pre id="Rezatofighi2015ICCVbibtex" class="invisible_bibtex">
+@inproceedings{Rezatofighi:2015:ICCV,
+	Author = {Rezatofighi, S. H. and Milan, A. and Zhang, Z. and Shi, Q. and Dick, A. and Reid, I.},
+	Booktitle = {ICCV},
+	Title = {Joint Probabilistic Data Association Revisited},
+	Year = {2015}
+}
+			</pre>
+			<pre id="Rezatofighi2015ICCVabstract" class="invisible_abstract">
+In this paper, we revisit the joint probabilistic data association (JPDA) technique and propose a novel solution based on recent developments in finding the m-best solutions to an integer linear program. The key advantage of this approach is that it makes JPDA computationally tractable in applications with high target and/or clutter density, such as spot tracking in fluorescence microscopy sequences and pedestrian tracking in surveillance footage. We also show that our JPDA algorithm embedded in a simple tracking framework is surprisingly competitive with state-of-the-art global tracking methods in these two applications, while needing considerably less processing time.
+			</pre>
+			</p>
+		</div>
+	</div> <!-- /row -->
+
+	<!-- MOTChallenge arxiv -->
+	<div class="row">
+		<div class="span2">
+			<ul class="media-grid">
+			<li><a href="http://motchallenge.net">
+				<img class="thumbnail"
+					src="img/MOTChallenge-table.jpg"
+					alt="MOTChallenge 2015" /></a>
+			</li>
+			</ul>
+		</div>
+		<div class="span7">
+			<h4><a class="paper_link" href="http://arxiv.org/pdf/1504.01942v1">
+				MOTChallenge 2015: Towards a Benchmark for Multi-Target Tracking
+				</a>
+			</h4>
+			<p>
+			<a href="https://sites.google.com/site/lealtaixe/home">L. Leal-Taixé</a>,
+			<a href="http://www.milanton.de">A. Milan</a>,
+			<a href="http://cs.adelaide.edu.au/~ianr/">I. Reid</a>,
+			<a href="http://www.gris.informatik.tu-darmstadt.de/~sroth/">S. Roth</a>, and
+			<a href="http://www.igp.ethz.ch/photogrammetry/people/Schindler">K. Schindler</a>
+			<br><a href="http://arxiv.org/abs/1504.01942">arXiv:1504.01942</a>
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(MOTChallengebibtex);" />bibtex</a> |
+			<a class="abstract_link" onclick="javascript:toggle(MOTChallengeabstract);" />abstract</a> |
+			<a class="paper_link" href="http://arxiv.org/pdf/1504.01942v1">paper</a> |
+			<a href="http://motchallenge.net">project page</a>
+			<br>
+			<pre id="MOTChallengebibtex" class="invisible_bibtex">
+@article{MOTChallenge2015,
+	title = {MOTChallenge 2015: Towards a Benchmark for Multi-Target Tracking},
+	shorttitle = {MOTChallenge 2015},
+	url = {http://arxiv.org/abs/1504.01942},
+	journal = {arXiv:1504.01942 [cs]},
+	author = {Leal-Taix\'{e}, Laura and Milan, Anton and Reid, Ian and Roth, Stefan and Schindler, Konrad},
+	month = apr,
+	year = {2015},
+	note = {arXiv: 1504.01942},
+	keywords = {Computer Science - Computer Vision and Pattern Recognition}
+}
+			</pre>
+			<pre id="MOTChallengeabstract" class="invisible_abstract">
+In the recent past, the computer vision community has developed
+centralized benchmarks for the performance evaluation of a variety of
+tasks, including generic object and pedestrian detection, 3D
+reconstruction, optical flow, single-object short-term tracking, and
+stereo estimation. Despite potential pitfalls of such benchmarks, they
+have proved to be extremely helpful to advance the state of the art in
+the respective area. Interestingly, there has been rather limited work
+on the standardization of quantitative benchmarks for multiple target
+tracking. One of the few exceptions is the well-known PETS dataset,
+targeted primarily at surveillance applications. Despite being widely
+used, it is often applied inconsistently, for example involving using
+different subsets of the available data, different ways of training the
+models, or differing evaluation scripts. This paper describes our work
+toward a novel multiple object tracking benchmark aimed to address such
+issues. We discuss the challenges of creating such a framework,
+collecting existing and new data, gathering state-of-the-art methods to
+be tested on the datasets, and finally creating a unified evaluation
+system. With MOTChallenge we aim to pave the way toward a unified
+evaluation framework for a more meaningful quantification of
+multi-target tracking.
+
+
+			</pre>
+			</p>
+		</div>
+	</div> <!-- /row -->
+
+
+
+	<!-- CVPR 2015 -->
+	<div class="row">
+		<div class="span2">
+			<ul class="media-grid">
+			<li><a href="./segtracking/index.html">
+				<img class="thumbnail"
+					src="segtracking/s25-seg-f0069.jpg"
+					alt="Joint Segmentation and Tracking" /></a>
+			</li>
+			</ul>
+		</div>
+		<div class="span7">
+			<h4><a class="paper_link" href="files/cvpr2015/cvpr2015-anton.pdf">
+				Joint Tracking and Segmentation of Multiple Targets
+				</a>
+			</h4>
+			<p>
+			<a href="http://www.milanton.de">A. Milan</a>,
+			<a href="https://sites.google.com/site/lealtaixe/home">L. Leal-Taixé</a>,
+			<a href="http://www.igp.ethz.ch/photogrammetry/people/Schindler">K. Schindler</a> and
+			<a href="http://cs.adelaide.edu.au/~ianr/">I. Reid</a>
+			<br><a href="http://www.pamitc.org/cvpr15/">CVPR 2015</a>
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(Milan2015CVPRbibtex);" />bibtex</a> |
+			<a class="abstract_link" onclick="javascript:toggle(Milan2015CVPRabstract);" />abstract</a> |
+			<a class="paper_link" href="files/cvpr2015/cvpr2015-ext-abstr-anton.pdf">ext. abstract</a> |
+			<a class="paper_link" href="files/cvpr2015/cvpr2015-anton.pdf">paper</a> |
+			<a class="youtube_link" target="_blank" href="http://youtu.be/_0WrLy641F0">video</a>
+			<a href="files/cvpr2015/cvpr2015.mp4"><img src="img/vdload.png"/></a> |
+			<a href="./segtracking/index.html">project page</a>
+			<br>
+			<pre id="Milan2015CVPRbibtex" class="invisible_bibtex">
+@inproceedings{Milan:2015:CVPR,
+	Author = {Anton Milan and Laura Leal-Taixé and Konrad Schindler and Ian Reid},
+	Booktitle = {CVPR},
+	Title = {Joint Tracking and Segmentation of Multiple Targets},
+	Year = {2015}
+}
+			</pre>
+			<pre id="Milan2015CVPRabstract" class="invisible_abstract">
+Tracking-by-detection has proven to be the most successful strategy to
+address the task of tracking multiple targets in unconstrained
+scenarios. Traditionally, a set of sparse detections, generated in a
+preprocessing step, serves as input to a high-level tracker whose goal
+is to correctly associate these “dots” over time. An obvious shortcoming
+of this approach is that most information available in image sequences
+is simply ignored by thresholding weak detection responses and applying
+non-maximum suppression. We propose a multi-target tracker that exploits
+low level image information and associates every (super)-pixel to a
+specific target or classifies it as background. As a result, we obtain a
+video segmentation in addition to the classical bounding-box
+representation in unconstrained, realworld videos. Our method shows
+encouraging results on many standard benchmark sequences and
+significantly outperforms state-of-the-art tracking-by-detection
+approaches in crowded scenes with long-term partial occlusions.
+			</pre>
+			</p>
+		</div>
+	</div> <!-- /row -->
+	<hr>
+
+
+	<h3 id="year2014">2014</h3>
+
+	<!-- ACCV Workshop -->
+	<div class="row">
+		<div class="span2">
+			<ul class="media-grid">
+			<li><a href="./irtracking/index.html">
+				<img class="thumbnail"
+					src="img/sensor.jpg"
+					alt="Privacy Preserving Multi-target Tracking" /></a>
+			</li>
+			</ul>
+		</div>
+		<div class="span7">
+			<h4><a class="paper_link" href="files/accvws2014/accvws2014-anton.pdf">
+				Privacy Preserving Multi-target Tracking
+				</a>
+			</h4>
+			<p>
+			<a href="http://research.milanton.net">A. Milan</a>,
+			<a href="http://www.gris.informatik.tu-darmstadt.de/~sroth/">S. Roth</a>,
+			<a href="http://www.igp.ethz.ch/photogrammetry/people/Schindler">K. Schindler</a> and
+			<a href="http://www.gcoe.ist.hokudai.ac.jp/arts/english/member/research06.html">M. Kudo</a>
+			<br><a href="http://vipl.ict.ac.cn/homepage/accv14his/HIS.htm">Workshop on Human Identification for Surveillance (HIS)</a>
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(Milan2014PPM);" />bibtex</a> |
+			<a class="abstract_link" onclick="javascript:toggle(Milan2014PPMabstract);" />abstract</a> |
+			<a class="paper_link" href="files/accvws2014/accvws2014-anton.pdf">paper</a> |
+			<a class="youtube_link" target="_blank" href="http://youtu.be/3Pzz6y8NieA">video</a>
+			<a href="files/accvws2014/accvws2014-video.mp4"><img src="img/vdload.png"/></a> |
+			<a class="slides_link" href="files/accvws2014/accvws2014-slides.pdf">slides</a> |
+			<a href="./irtracking/">project page</a>
+			<br>
+			<pre id="Milan2014PPM" class="invisible_bibtex">
+@INPROCEEDINGS{Milan:2014:ACCVWS,
+  author = {A.Milan and S. Roth and K. Schindler and M. Kudo},
+  title = {Privacy Preserving Multi-target Tracking},
+  booktitle = {Workshop on Human Identification for Surveillance},
+  year = {2014}
+}
+			</pre>
+			<pre id="Milan2014PPMabstract" class="invisible_abstract">
+Automated people tracking is important for a wide range
+of applications. However, typical surveillance cameras are controversial
+in their use, mainly due to the harsh intrusion of the tracked individ-
+uals’ privacy. In this paper, we explore a privacy-preserving alternative
+for multi-target tracking. A network of infrared sensors attached to the
+ceiling acts as a low-resolution, monochromatic camera in an indoor en-
+vironment. Using only this low-level information about the presence of
+a target, we are able to reconstruct entire trajectories of several peo-
+ple. Inspired by the recent success of offline approaches to multi-target
+tracking [1–3], we apply an energy minimization technique to the novel
+setting of infrared motion sensors. To cope with the very weak data term
+from the infrared sensor network we track in a continuous state space
+with soft, implicit data association. Our experimental evaluation on both
+synthetic and real-world data shows that our principled method clearly
+outperforms previous techniques.
+			</pre>
+			</p>
+		</div>
+	</div> <!-- /row -->
+	<hr>
+
+	<!-- ECCV Workshop -->
+	<div class="row">
+		<div class="span2">
+			<ul class="media-grid">
+			<li><a>
+				<img class="thumbnail"
+					src="img/local-update.png"
+					alt="Improving Global Multi-target Tracking" /></a>
+			</li>
+			</ul>
+		</div>
+		<div class="span7">
+			<h4><a class="paper_link" href="files/eccvws2014/eccvws2014-anton.pdf">
+				Improving Global Multi-target Tracking with Local Updates
+				</a>
+			</h4>
+			<p>
+			<a href="http://research.milanton.net">A. Milan</a>,
+			<a href="http://www.create.aau.dk/rg/">R. Gade</a>,
+			<a href="https://cs.adelaide.edu.au/~ard/">A. Dick</a>,
+			<a href="http://www.create.aau.dk/tbm/">T. B. Moeslund</a>,
+			<a href="http://cs.adelaide.edu.au/~ianr/">I. Reid</a>
+			<br><a href="http://www.vs-re-id-2014.org">Workshop on Visual Surveillance and Re-Identification</a>
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(Milan2014IGM);" />bibtex</a> |
+			<a class="abstract_link" onclick="javascript:toggle(Milan2014IGMabstract);" />abstract</a> |
+			<a class="paper_link" href="files/eccvws2014/eccvws2014-anton.pdf">paper</a> |
+			<a class="youtube_link" target="_blank" href="http://youtu.be/7b91ArLQMso">video</a>
+			<a href="files/eccvws2014/eccvws2014-video.mp4"><img src="img/vdload.png"/></a> |
+			<a class="slides_link" href="files/eccvws2014/eccvws2014-slides.pdf">slides</a>
+			<br>
+			<pre id="Milan2014IGM" class="invisible_bibtex">
+@INPROCEEDINGS{Milan:2014:IGM,
+  author = {A. Milan and R. Gade and A. Dick and T. B. Moeslund and I. Reid},
+  title = {Improving Global Multi-target Tracking with Local Updates},
+  booktitle = {Workshop on Visual Surveillance and Re-Identification},
+  year = {2014}
+}
+			</pre>
+			<pre id="Milan2014IGMabstract" class="invisible_abstract">
+We propose a scheme to explicitly detect and resolve ambiguous
+situations in multiple target tracking. During periods of uncertainty,
+our method applies multiple local single target trackers to hypothesise
+short term tracks. These tracks are combined with the tracks obtained
+by a global multi-target tracker, if they result in a reduction in the global
+cost function. Since tracking failures typically arise when targets become
+occluded, we propose a local data association scheme to maintain the
+target identities in these situations. We demonstrate a reduction of up
+to 50% in the global cost function, which in turn leads to superior
+performance on several challenging benchmark sequences. Additionally, we
+show tracking result in sports videos where poor video quality and
+frequent and severe occlusion
+			</pre>
+			</p>
+		</div>
+	</div> <!-- /row -->
+	<hr>
+
+	<!-- PhD -->
+	<div class="row">
+		<div class="span2">
+			<ul class="media-grid">
+			<li><a href="files/phd/milan-phd.pdf">
+				<img class="thumbnail"
+					src="img/enmin.jpg"
+					alt="Energy Minimization for Multiple Object Tracking"/></a>
+			</li>
+			</ul>
+		</div>
+		<div class="span7">
+			<h4><a class="paper_link" href="files/phd/milan-phd.pdf">
+				Energy Minimization for Multiple Object Tracking
+				</a>
+			</h4>
+			<p>
+			<a href="http://research.milanton.net">A. Milan</a>
+			<br> PhD Thesis
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(Milan2014EMM);" />bibtex</a> |
+			<a class="paper_link" href="files/phd/milan-phd.pdf">thesis</a> |
+			<a class="slides_link" href="files/phd/phd-slides.pdf">slides</a> |
+			<br>
+
+			<pre id="Milan2014EMM" class="invisible_bibtex">
+@phdthesis{Milan:2014:EMM,
+	address = {Darmstadt},
+	type = {{PhD}},
+	title = {Energy Minimization for Multiple Object Tracking},
+	url = {http://tuprints.ulb.tu-darmstadt.de/3463/},
+	school = {{TU} Darmstadt},
+	author = {Milan, Anton},
+	year = {2014},
+}
+			</pre>
+			</p>
+		</div>
+	</div> <!-- /row -->
+	<hr>
+
+	<!-- PAMI 2014 -->
+	<div class="row">
+		<div class="span2">
+			<ul class="media-grid">
+			<li><a href="./contracking/index.html">
+				<img class="thumbnail"
+					src="img/pami.jpg"
+					alt="Continuous Energy Minimization for Multi-Target Tracking"/></a>
+			</li>
+			</ul>
+		</div>
+		<div class="span7">
+			<h4><a class="paper_link" href="files/pami2014/pami2014-anton.pdf">
+				Continuous Energy Minimization for Multitarget Tracking
+				</a>
+			</h4>
+			<p>
+			<a href="http://research.milanton.net">A. Milan</a>,
+			<a href="http://www.gris.informatik.tu-darmstadt.de/~sroth/">S. Roth</a> and
+			<a href="http://www.igp.ethz.ch/photogrammetry/people/Schindler">K. Schindler</a>
+			<br><a href="http://www.computer.org/portal/web/tpami/home">PAMI</a> 36(1), 2014
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(Milan2014CEM);" />bibtex</a> |
+			<a class="abstract_link" onclick="javascript:toggle(Milan2014CEMabstract);" />abstract</a> |
+			<a class="paper_link" href="files/pami2014/pami2014-anton.pdf">paper</a> |
+			<a class="youtube_link" target="_blank" href="http://youtu.be/Gs9FuH07Vnc">video</a>
+			<a href="files/pami2014/pami2014.avi"><img src="img/vdload.png"/></a> |
+			<a class="slides_link" href="files/vs2011/2011-CEM.pdf">slides</a> |
+			<a href="./contracking/index.html">project page</a>
+			<br>
+			<pre id="Milan2014CEM" class="invisible_bibtex">
+@article{Milan:2014:CEM,
+	author = {Milan, A. and Roth, S. and Schindler, K.},
+	title = {Continuous Energy Minimization for Multitarget Tracking},
+	volume = {36},
+	issn = {0162-8828},
+	doi = {10.1109/TPAMI.2013.103},
+	number = {1},
+	journal = {IEEE TPAMI},
+	year = {2014},
+	pages = {58--72}
+}
+			</pre>
+			<pre id="Milan2014CEMabstract" class="invisible_abstract">
+Many recent advances in multiple target tracking aim at finding a
+(nearly) optimal set of trajectories within a temporal window. To handle
+the large space of possible trajectory hypotheses, it is typically
+reduced to a finite set by some form of data-driven or regular
+discretization. In this work we propose an alternative formulation of
+multi-target tracking as minimization of a continuous energy. Contrary
+to recent approaches, we focus on designing an energy that corresponds
+to a more complete representation of the problem, rather than one that
+is amenable to global optimization. Besides the image evidence, the
+energy function takes into account physical constraints, such as target
+dynamics, mutual exclusion, and track persistence. In addition, partial
+image evidence is handled with explicit occlusion reasoning, and
+different targets are disambiguated with an appearance model. To
+nevertheless find strong local minima of the proposed non-convex energy
+we construct a suitable optimization scheme that alternates between
+continuous conjugate gradient descent and discrete trans-dimensional
+jump moves. These moves, which are executed such that they always reduce
+the energy, allow the search to escape weak minima and explore a much
+larger portion of the search space of varying dimensionality. We
+demonstrate the validity of our approach with an extensive quantitative
+evaluation on several public datasets.
+			</pre>
+			</p>
+		</div>
+	</div> <!-- /row -->
+	<hr>
+
+	<h3 id="year2013">2013</h3>
+	<!-- ICCV 2013 -->
+	<div class="row">
+		<div class="span2">
+			<ul class="media-grid">
+			<li><a href="./multipeople/">
+				<img class="thumbnail"
+					src="img/occpatt.jpg"
+					alt="Learning occlusion patterns for tracking" /></a>
+			</li>
+			</ul>
+		</div>
+		<div class="span7">
+			<h4><a class="paper_link" href="files/iccv2013/iccv2013-siyu.pdf">
+				Learning People Detectors for Tracking in Crowded Scenes
+				</a>
+			</h4>
+			<p>
+			<a href="http://www.d2.mpi-inf.mpg.de/People/tang">S. Tang</a>,
+			<a href="http://www.d2.mpi-inf.mpg.de/People/andriluka">M. Andriluka</a>,
+			<a href="http://research.milanton.net">A. Milan</a>,
+			<a href="http://www.igp.ethz.ch/photogrammetry/people/Schindler">K. Schindler</a>,
+			<a href="http://www.gris.informatik.tu-darmstadt.de/~sroth/">S. Roth</a> and
+			<a href="http://www.d2.mpi-inf.mpg.de/People/schiele">B. Schiele</a>
+			<br><a href="http://www.iccv2013.org/">ICCV 2013</a>
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(Siyu2013ICCV);" />bibtex</a> |
+			<a class="abstract_link" onclick="javascript:toggle(Siyu2013ICCVabstract);" />abstract</a> |
+			<a class="paper_link" href="files/iccv2013/iccv2013-siyu.pdf">paper</a> |
+			<a class="paper_link" href="files/iccv2013/iccv2013-siyu-poster.pdf">poster</a> |
+			<a class="youtube_link" target="_blank" href="http://youtu.be/HOtoUe0z2tI">video</a>
+			<a href="files/iccv2013/iccv2013.mp4"><img src="img/vdload.png"/></a> |
+			<a href="http://www.d2.mpi-inf.mpg.de/tang_iccv13">project page</a>
+			<br>
+			<pre id="Siyu2013ICCV" class="invisible_bibtex">
+@INPROCEEDINGS{Tang:2013:LPD,
+  author = {S. Tang and M. Andriluka and A. Milan and K. Schindler and S. Roth and B. Schiele},
+  title = {Learning People Detectors for Tracking in Crowded Scenes},
+  booktitle = {ICCV},
+  year = {2013}
+}
+			</pre>
+			<pre id="Siyu2013ICCVabstract" class="invisible_abstract">
+People tracking in crowded real-world scenes is challenging due to
+frequent and long-term occlusions. Recent tracking methods obtain the
+image evidence from object (people) detectors, but typically use
+off-the-shelf detectors and treat them as black box components. In this
+paper we argue that for best performance one should explicitly train
+people detectors on failure cases of the overall tracker instead. To
+that end, we first propose a novel joint people detector that combines a
+state-of-the-art single person detector with a detector for pairs of
+people, which explicitly exploits common patterns of person-person
+occlusions across multiple viewpoints that are a common failure case for
+tracking in crowded scenes. To explicitly address remaining failure
+cases of the tracker we explore two methods. First, we analyze typical
+failure cases of trackers and train a detector explicitly on those
+failure cases. And second, we train the detector with the people tracker
+in the loop, focusing on the most common tracker failures. We show that
+our joint multi-person detector significantly improves both detection
+accuracy as well as tracker performance, improving the state-of-the-art
+on standard benchmarks.
+			</pre>
+			</p>
+		</div>
+	</div> <!-- /row -->
+	<hr>
+
+
+	<!-- CVPR WS 2013 -->
+	<div class="row">
+		<div class="span2">
+			<ul class="media-grid">
+			<li><a href="files/cvprws2013/cvprws2013-anton.pdf">
+				<img class="thumbnail"
+					src="img/gtws.png"
+					alt="Different ground truth for the same sequence" /></a>
+			</li>
+			</ul>
+		</div>
+		<div class="span7">
+			<h4><a class="paper_link" href="files/cvprws2013/cvprws2013-anton.pdf">
+				Challenges of Ground Truth Evaluation of Multi-Target Tracking
+				</a>
+			</h4>
+			<p>
+			<a href="http://research.milanton.net">A. Milan</a>,
+			<a href="http://www.igp.ethz.ch/photogrammetry/people/Schindler">K. Schindler</a> and
+			<a href="http://www.gris.informatik.tu-darmstadt.de/~sroth/">S. Roth</a>
+			<br><a href="http://hci.iwr.uni-heidelberg.de/Static/cvpr2013/">CVPR Workshop on Ground Truth</a>
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(Milan2013CGT);" />bibtex</a> |
+			<a class="abstract_link" onclick="javascript:toggle(Milan2013CGTabstract);" />abstract</a> |
+			<a class="paper_link" href="files/cvprws2013/cvprws2013-anton.pdf">paper</a> |
+			<a class="paper_link" href="files/cvprws2013/cvprws2013-poster.pdf">poster</a>
+			<br>
+			<pre id="Milan2013CGT" class="invisible_bibtex">
+@inproceedings{Milan:2013:CGT,
+	Author = {Anton Milan and Konrad Schindler and Stefan Roth},
+	Booktitle = {Proc. of the CVPR 2013 Workshop on Ground Truth - What is a good dataset?},
+	Title = {Challenges of Ground Truth Evaluation of Multi-Target Tracking},
+	Year = {2013}
+}
+			</pre>
+			<pre id="Milan2013CGTabstract" class="invisible_abstract">
+Evaluating multi-target tracking based on ground truth data is a
+surprisingly challenging task. Erroneous or ambiguous ground truth
+annotations, numerous evaluation protocols, and the lack of standardized
+benchmarks make a direct quantitative comparison of different tracking
+approaches rather difficult. The goal of this paper is to raise
+awareness of common pitfalls related to objective ground truth
+evaluation. We investigate the influence of different annotations,
+evaluation software, and training procedures using several publicly
+available resources, and point out the limitations of current
+definitions of evaluation metrics. Finally, we argue that the
+development an extensive standardized benchmark for multi-target
+tracking is an essential step toward more objective comparison of
+tracking approaches.
+			</pre>
+			</p>
+		</div>
+	</div> <!-- /row -->
+	<hr>
+
+	<!-- CVPR 2013 -->
+	<div class="row">
+		<div class="span2">
+			<ul class="media-grid">
+			<li><a href="./dctracking/index.html">
+				<img class="thumbnail"
+					src="img/exclusion.png"
+					alt="Target Exclusion in Multi-Target Tracking" /></a>
+			</li>
+			</ul>
+		</div>
+		<div class="span7">
+			<h4><a class="paper_link" href="files/cvpr2013/cvpr2013-anton.pdf">
+				Detection- and Trajectory-Level Exclusion in Multiple Object Tracking
+				</a>
+			</h4>
+			<p>
+			<a href="http://research.milanton.net">A. Milan</a>,
+			<a href="http://www.igp.ethz.ch/photogrammetry/people/Schindler">K. Schindler</a> and
+			<a href="http://www.gris.informatik.tu-darmstadt.de/~sroth/">S. Roth</a>
+			<br><a href="http://www.pamitc.org/cvpr13/">CVPR 2013</a>
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(Milan2013DTE);" />bibtex</a> |
+			<a class="abstract_link" onclick="javascript:toggle(Milan2013DTEabstract);" />abstract</a> |
+			<a class="paper_link" href="files/cvpr2013/cvpr2013-anton.pdf">paper</a> |
+			<a class="paper_link" href="files/cvpr2013/cvpr2013-poster.pdf">poster</a> |
+			<a class="youtube_link" target="_blank" href="http://www.youtube.com/watch?v=zUQfsjkLfyY">video</a>
+			<a href="files/cvpr2013/cvpr2013.mp4"><img src="img/vdload.png"/></a> |
+			<a class="slides_link" href="files/cvpr2013/2013-DTE.pdf">slides</a> |
+			<a class="data_link" href="files/cvpr2013/evaluation.zip">data</a> |
+			<a href="./dctracking/index.html">project page</a>
+			<br>
+			<pre id="Milan2013DTE" class="invisible_bibtex">
+@inproceedings{Milan:2013:DTE,
+	Author = {Anton Milan and Konrad Schindler and Stefan Roth},
+	Booktitle = {CVPR},
+	Title = {Detection- and Trajectory-Level Exclusion in Multiple Object Tracking},
+	Year = {2013}
+}
+			</pre>
+			<pre id="Milan2013DTEabstract" class="invisible_abstract">
+When tracking multiple targets in crowded scenarios, modeling mutual
+exclusion between distinct targets becomes important at two levels: (1)
+in data association, each target observation should support at most one
+trajectory and each trajectory should be assigned at most one
+observation per frame; (2) in trajectory estimation, two trajectories
+should remain spatially separated at all times to avoid collisions. Yet,
+existing trackers often sidestep these important constraints. We address
+this using a mixed discrete-continuous conditional random field (CRF)
+that explicitly models both types of constraints: Exclusion between
+conflicting observations with supermodular pairwise terms, and exclusion
+between trajectories by generalizing global label costs to suppress the
+co-occurrence of incompatible labels (trajectories). We develop an
+expansion move-based MAP estimation scheme that handles both
+non-submodular constraints and pairwise global label costs. Furthermore,
+we perform a statistical analysis of ground-truth trajectories to derive
+appropriate CRF potentials for modeling data fidelity, target dynamics,
+and inter-target occlusion.
+			</pre>
+			</p>
+		</div>
+	</div> <!-- /row -->
+	<hr>
+
+	<h3 id="year2012">2012</h3>
+	<!-- CVPR 2012 -->
+	<div class="row">
+		<div class="span2">
+			<ul class="media-grid">
+			<li><a href="./contracking/index.html">
+				<img class="thumbnail"
+					src="img/labeling.png"
+					alt="Discrete-Continuous Optimization for Multi-Target Tracking" /></a>
+			</li>
+			</ul>
+		</div>
+		<div class="span7">
+			<h4><a class="paper_link" href="files/cvpr2012/cvpr2012-anton.pdf">
+				Discrete-Continuous Optimization for Multi-Target Tracking
+				</a>
+			</h4>
+			<p>
+			<a href="http://research.milanton.net">A. Andriyenko</a>,
+			<a href="http://www.igp.ethz.ch/photogrammetry/people/Schindler">K. Schindler</a> and
+			<a href="http://www.gris.informatik.tu-darmstadt.de/~sroth/">S. Roth</a>
+			<br><a href="https://sites.google.com/a/cvpr2012.org/home/">CVPR 2012</a>
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(Andriyenko2012DCO);" />bibtex</a> |
+			<a class="abstract_link" onclick="javascript:toggle(Andriyenko2012DCOabstract);" />abstract</a> |
+			<a class="paper_link" href="files/cvpr2012/cvpr2012-anton.pdf">paper</a> |
+			<a class="paper_link" href="files/cvpr2012/cvpr2012-poster.pdf">poster</a> |
+			<a class="youtube_link" target="_blank" href="http://www.youtube.com/watch?v=Z9X3IhHytrQ">video</a> |
+			<a class="data_link" href="files/cvpr2012/evaluation.zip">data</a> |
+			<a href="./dctracking/index.html">project page</a>
+			<br>
+			<pre id="Andriyenko2012DCO" class="invisible_bibtex">
+@inproceedings{Andriyenko:2012:DCO,
+	Author = {Anton Andriyenko and Konrad Schindler and Stefan Roth},
+	Booktitle = {CVPR},
+	Title = {Discrete-Continuous Optimization for Multi-Target Tracking},
+	Year = {2012}
+}
+			</pre>
+			<pre id="Andriyenko2012DCOabstract" class="invisible_abstract">
+The problem of multi-target tracking is comprised of two distinct, but
+tightly coupled challenges: (i) the naturally discrete problem of data
+association, i.e. assigning image observations to the appropriate
+target; (ii) the naturally continuous problem of trajectory estimation,
+i.e. recovering the trajectories of all targets. To go beyond simple
+greedy solutions for data association, recent approaches often perform
+multi-target tracking using discrete optimization. This has the
+disadvantage that trajectories need to be pre-computed or represented
+discretely, thus limiting accuracy. In this paper we instead formulate
+multi-target tracking as a discretecontinuous optimization problem that
+handles each aspect in its natural domain and allows leveraging powerful
+methods for multi-model fitting. Data association is performed using
+discrete optimization with label costs, yielding near optimality.
+Trajectory estimation is posed as a continuous fitting problem with a
+simple closed-form solution, which is used in turn to update the label
+costs. We demonstrate the accuracy and robustness of our approach with
+state-of-theart performance on several standard datasets.
+			</pre>
+			</p>
+		</div>
+	</div> <!-- /row -->
+	<hr>
+
+	<h3 id="year2011">2011</h3>
+	<!-- VS 2011 -->
+	<div class="row">
+		<div class="span2">
+			<ul class="media-grid">
+			<li><a href="./contracking/index.html">
+				<img class="thumbnail"
+					src="img/gauss1d.png"
+					alt="Occlusion modelling using Gaussians" /></a>
+			</li>
+			</ul>
+		</div>
+		<div class="span7">
+			<h4><a class="paper_link" href="files/vs2011/vs2011-anton.pdf">
+				An Analytical Formulation of Global Occlusion Reasoning for Multi-Target Tracking
+				</a>
+			</h4>
+			<p>
+			<a href="http://research.milanton.net">A. Andriyenko</a>,
+			<a href="http://www.gris.informatik.tu-darmstadt.de/~sroth/">S. Roth</a> and
+			<a href="http://www.igp.ethz.ch/photogrammetry/people/Schindler">K. Schindler</a>
+			<br><a href="http://dircweb.kingston.ac.uk/vs2011/">ICCV Workshop on Visual Surveillance</a>
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(Andriyenko2011AFG);" />bibtex</a> |
+			<a class="abstract_link" onclick="javascript:toggle(Andriyenko2011AFGabstract);" />abstract</a> |
+			<a class="paper_link" href="files/vs2011/vs2011-anton.pdf">paper</a> |
+			<a class="paper_link" href="files/vs2011/vs2011-poster.pdf">poster</a> |
+			<a class="youtube_link" target="_blank" href="http://www.youtube.com/watch?v=9pl4tsqVwdc">video</a> |
+			<a class="slides_link" href="files/vs2011/2011-CEM.pdf">slides</a> |
+			<a href="./contracking/index.html">project page</a>
+			<br>
+			<pre id="Andriyenko2011AFG" class="invisible_bibtex">
+@inproceedings{Andriyenko:2011:AFG,
+	Author = {Anton Andriyenko and Stefan Roth and Konrad Schindler},
+	Booktitle = {Proc. of the 11th International IEEE Workshop on Visual Surveillance},
+	Title = {An Analytical Formulation of Global Occlusion Reasoning for Multi-Target Tracking},
+	Year = {2011}
+}
+			</pre>
+			<pre id="Andriyenko2011AFGabstract" class="invisible_abstract">
+We present a principled model for occlusion reasoning in complex
+scenarios with frequent inter-object occlusions, and its application to
+multi-target tracking. To compute the putative overlap between pairs of
+targets, we represent each target with a Gaussian. Conveniently, this
+leads to an analytical form for the relative overlap – another Gaussian
+– which is combined with a sigmoidal term for modeling depth relations.
+Our global occlusion model bears several advantages: Global target
+visibility can be computed efficiently in closed-form, and varying
+degrees of partial occlusion can be naturally accounted for. Moreover,
+the dependence of the occlusion on the target locations – i.e. the
+gradient of the overlap – can also be computed in closedform, which
+makes it possible to efficiently include the proposed occlusion model in
+a continuous energy minimization framework. Experimental results on
+seven datasets confirm that the proposed formulation consistently
+reduces missed targets and lost trajectories, especially in challenging
+scenarios with crowds and severe inter-object occlusions.
+			</pre>
+			</p>
+		</div>
+	</div> <!-- /row -->
+	<hr>
+
+	<!-- CVPR 2011 -->
+	<div class="row">
+		<div class="span2">
+			<ul class="media-grid">
+			<li><a href="./contracking/index.html">
+				<img class="thumbnail"
+					src="img/nonconvex.png"
+					alt="Occlusion modelling using Gaussians" /></a>
+			</li>
+			</ul>
+		</div>
+		<div class="span7">
+			<h4><a class="paper_link" href="files/cvpr2011/cvpr2011-anton.pdf">
+				Multi-target Tracking by Continuous Energy Minimization
+				</a>
+			</h4>
+			<p>
+			<a href="http://research.milanton.net">A. Andriyenko</a> and
+			<a href="http://www.igp.ethz.ch/photogrammetry/people/Schindler">K. Schindler</a>
+			<br><a href="http://dircweb.kingston.ac.uk/vs2011/">CVPR 2011</a>
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(Andriyenko2011MTT);" />bibtex</a> |
+			<a class="abstract_link" onclick="javascript:toggle(Andriyenko2011MTTabstract);" />abstract</a> |
+			<a class="paper_link" href="files/cvpr2011/cvpr2011-anton.pdf">paper</a> |
+			<a class="paper_link" href="files/cvpr2011/cvpr2011-poster.pdf">poster</a> |
+			<a class="youtube_link" target="_blank" href="http://www.youtube.com/watch?v=bZtkgkRJB0w">video</a> |
+			<a class="slides_link" href="files/vs2011/2011-CEM.pdf">slides</a> |
+			<a href="./contracking/index.html">project page</a>
+			<br>
+			<pre id="Andriyenko2011MTT" class="invisible_bibtex">
+@inproceedings{Andriyenko:2011:MTT,
+	Author = {Anton Andriyenko and Konrad Schindler},
+	Booktitle = {CVPR},
+	Title = {Multi-target Tracking by Continuous Energy Minimization},
+	Year = {2011}
+}
+			</pre>
+			<pre id="Andriyenko2011MTTabstract" class="invisible_abstract">
+We propose to formulate multi-target tracking as minimization of a
+continuous energy function. Other than a number of recent approaches we
+focus on designing an energy function that represents the problem as
+faithfully as possible, rather than one that is amenable to elegant
+optimization. We then go on to construct a suitable optimization scheme
+to find strong local minima of the proposed energy. The scheme extends
+the conjugate gradient method with periodic trans-dimensional jumps.
+These moves allow the search to escape weak minima and explore a much
+larger portion of the variable-dimensional search space, while still
+always reducing the energy. To demonstrate the validity of this approach
+we present an extensive quantitative evaluation both on synthetic data
+and on six different real video sequences. In both cases we achieve a
+significant performance improvement over an extended Kalman filter
+baseline as well as an ILP-based state-of-the-art tracker.
+			</pre>
+			</p>
+		</div>
+	</div> <!-- /row -->
+	<hr>
+
+	<h3 id="year2010">2010</h3>
+	<!-- ECCV 2010 -->
+	<div class="row">
+		<div class="span2">
+			<ul class="media-grid">
+			<li><a href="files/eccv2010/eccv2010-anton.pdf">
+				<img class="thumbnail"
+					src="img/hextiling.png"
+					alt="Multi-target Tracking on a Hexagonal Lattice" /></a>
+			</li>
+			</ul>
+		</div>
+		<div class="span7">
+			<h4><a class="paper_link" href="files/eccv2010/eccv2010-anton.pdf">
+				Globally Optimal Multi-target Tracking on a Hexagonal Lattice
+				</a>
+			</h4>
+			<p>
+			<a href="http://research.milanton.net">A. Andriyenko</a> and
+			<a href="http://www.igp.ethz.ch/photogrammetry/people/Schindler">K. Schindler</a>
+			<br><a href="http://www.ics.forth.gr/eccv2010">ECCV 2010</a>
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(Andriyenko2010GOM);" />bibtex</a> |
+			<a class="abstract_link" onclick="javascript:toggle(Andriyenko2010GOMabstract);" />abstract</a> |
+			<a class="paper_link" href="files/eccv2010/eccv2010-poster.pdf">poster</a> |
+			<a class="youtube_link" target="_blank" href="http://www.youtube.com/watch?v=Q_7aSByz90Y">video</a>
+			<br>
+			<pre id="Andriyenko2010GOM" class="invisible_bibtex">
+@inproceedings{Andriyenko:2010:GOM,
+	Author = {Anton Andriyenko and Konrad Schindler},
+	Booktitle = {ECCV},
+	Title = {Globally Optimal Multi-target Tracking on a Hexagonal Lattice},
+	Year = {2010}
+}
+			</pre>
+			<pre id="Andriyenko2010GOMabstract" class="invisible_abstract">
+We propose a global optimisation approach to multi-target tracking. The
+method extends recent work which casts tracking as an integer linear
+program, by discretising the space of target locations. Our main
+contribution is to show how dynamic models can be integrated in such an
+approach. The dynamic model, which encodes prior expectations about
+object motion, has been an important component of tracking systems for a
+long time, but has recently been dropped to achieve globally optimisable
+objective functions. We re-introduce it by formulating the optimisation
+problem such that deviations from the prior can be measured
+independently for each variable. Furthermore, we propose to sample the
+location space on a hexagonal lattice to achieve smoother, more accurate
+trajectories in spite of the discrete setting. Finally, we argue that
+non-maxima suppression in the measured evidence should be performed
+during tracking, when the temporal context and the motion prior are
+available, rather than as a preprocessing step on a per-frame basis.
+Experiments on five different recent benchmark sequences demonstrate the
+validity of our approach.
+			</pre>
+			</p>
+		</div>
+	</div> <!-- /row -->
+	<hr>
+
+	<h3 id="year2009">2009</h3>
+	<!-- SIGGRAPH ASIA 2009 -->
+	<div class="row">
+		<div class="span2">
+			<ul class="media-grid">
+			<li><a>
+				<img class="thumbnail"
+					src="img/hair.jpg"
+					alt="Photometric Acquisition of Hair Color" /></a>
+			</li>
+			</ul>
+		</div>
+		<div class="span7">
+			<h4><a>
+				A Practical Approach for Photometric Acquisition of Hair Color
+				</a>
+			</h4>
+			<p>
+			<a href="http://cg.cs.uni-bonn.de/en/people/alumni/dr-arno-zinke/">A. Zinke</a>,
+			<a href="http://cg.cs.uni-bonn.de/en/people/dipl-inform-martin-rump/">M. Rump</a>,
+			<a href="http://cg.cs.uni-bonn.de/en/people/alumni/dr-tomas-lay-herrera/">T. Lay</a>,
+			<a href="http://cg.cs.uni-bonn.de/en/people/prof-dr-andreas-weber/">A. Weber</a>,
+			<a href="http://research.milanton.net">A. Andriyenko</a> and
+			<a href="http://cg.cs.uni-bonn.de/en/people/prof-dr-reinhard-klein/">R. Klein</a>
+			<br><a href="http://www.siggraph.org/asia2009/">SIGGRAPH ASIA 2009</a>
+			<br>
+			<a class="bibtex_link" onclick="javascript:toggle(Zinke2009PAP);" />bibtex</a> |
+			<a class="abstract_link" onclick="javascript:toggle(Zinke2009PAPabstract);" />abstract</a>
+			<br>
+			<pre id="Zinke2009PAP" class="invisible_bibtex">
+@inproceedings{Zinke:2009:PAP,
+	Author = {Zinke, Arno and Rump, Martin and Lay, Tom\'{a}s and Weber, Andreas and Andriyenko, Anton and Klein, Reinhard},
+	Booktitle = {ACM SIGGRAPH Asia 2009 papers},
+	Title = {A Practical Approach for Photometric Acquisition of Hair Color},
+	Year = {2009}
+}
+			</pre>
+			<pre id="Zinke2009PAPabstract" class="invisible_abstract">
+In this work a practical approach to photometric acquisition of hair
+color is presented. Based on a single input photograph of a simple setup
+we are able to extract physically plausible optical properties of hair
+and to render virtual hair closely matching the original. Our approach
+does not require any costly special hardware but a standard consumer
+camera only.
+			</pre>
+			</p>
+		</div>
+	</div> <!-- /row -->
+	<hr>
+
+		</section> <!-- / Publications -->
+
+
+
+
+        <!-- Projects
+        ================================================== -->
+		<!--
+        <section id="projects">
+		<div class="row">
+          <div class="page-header">
+            <h1>Projects</h1>
+          </div>
+
+		  <div class="span2">
+			<ul class="media-grid">
+			<li><a href="dctracking.html">
+				<img class="thumbnail"
+					src="img/labeling.png"
+					alt="Discrete-Continuous Tracking" /></a>
+			</li>
+			</ul>
+		  </div>
+		  <div class="span7">
+			<h3 id="dctracking">Discrete-Continuous Tracking</h3>
+		  </div>
+		</div>
+		<hr>
+
+		<div class="row">
+		  <div class="span2">
+			<ul class="media-grid">
+			<li><a>
+				<img class="thumbnail"
+					src="img/nonconvex.png"
+					alt="Discrete-Continuous Tracking" /></a>
+			</li>
+			</ul>
+		  </div>
+		  <div class="span7">
+			<h3 id="contracking">Continuous Tracking</h3>
+			<ul>
+			<li>
+				aaa
+			</li>
+			<li>
+				bbb
+			</li>
+			</ul>
+		  </div>
+		</div>
+		<hr>
+
+		<div class="row">
+		  <div class="span2">
+			<ul class="media-grid">
+			<li><a>
+				<img class="thumbnail"
+					src="img/hextiling.png"
+					alt="Discrete-Continuous Tracking" /></a>
+			</li>
+			</ul>
+		  </div>
+		  <div class="span7">
+			<h3 id="ilptracking">Tracking as Integer Linear Programming</h3>
+		  </div>
+		</div>
+
+
+        </section> --> <!-- / Projects -->
+
+        <!-- Code
+        ================================================== -->
+        <section id="code">
+
+		  <div>
+			<h2>Code</h2>
+		  </div>
+		  <hr>
+		  <div class="row">
+		  <div class="span9">
+			Our code is available for the following papers
+			<ul>
+			<li>
+<a class="paper_link" href="./files/cvpr2012/cvpr2012-anton.pdf"><strong>Discrete-Continuous Optimization for Multi-Target Tracking</strong></a><br />
+			Anton Andriyenko, Konrad Schindler, and Stefan Roth. CVPR 2012<br>
+			<a href="./dctracking/">project page</a>
+			</li>
+			<li>
+<a class="paper_link" href="./files/cvpr2011/cvpr2011-anton.pdf"><strong>Multi-target Tracking by Continuous Energy Minimization</strong></a><br />
+			Anton Andriyenko and Konrad Schindler. CVPR 2011 <br>
+			<a href="./contracking/">project page</a>
+			</li>
+			<li>
+<a class="paper_link" href="./files/accvws2014/accvws2014-anton.pdf"><strong>Privacy Preserving Multi-target Tracking</strong></a><br />
+			A.Milan, S. Roth, K. Schindler, and M. Kudo. ACCV Workshop 2014<br>
+			<a href="./irtracking/">project page</a>
+			</li>
+			</ul>
+		  </div>
+		  </div>
+
+        </section> <!-- / Code -->
+
+        <!-- Code
+        ================================================== -->
+        <section id="data">
+
+		  <div>
+			<h2>Data</h2>
+		  </div>
+		  <hr>
+		  <div class="row">
+		  <div class="span9">
+			Annotations, detections, and other data for selected
+			datasets are available <a href="./data/">here</a>.
+
+		  </div>
+		  </div>
+
+        </section> <!-- / Code -->
+
+
+
+        <!-- Contact
+        ================================================== -->
+        <section id="contact">
+		  <div>
+			<h2>Contact</h2>
+		  </div>
+		  <hr>
+		  <div class="row">
+		  <div class="span9">
+
+     	<br>Amazon Development Center
+			<br>Krausenstr. 38
+			<br>10117 Berlin, Germany
+<!--			<br>Phone: TBD
+			<br>Fax: TBD
+      -->
+			<br>E-Mail: antmila@amazon (replace amazon with amazon.com)
+<!--			<br>You're welcome to encrypt your message using this <a href="files/Anton-Milan-pub.asc">PGP key</a> -->
+		  </div>
+		  </div>
+		</section> <!-- / Contact -->
+
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- Footer
+    ================================================== -->
+    <footer class="footer">
+      <div class="container">
+        <p>Built with twitter's <a href="http://getbootstrap.com/2.3.2/index.html" target="_blank">Bootstrap</a></p>
+		<p>Design inspired by <a href="http://rodrigob.github.io" target="_blank">rodrigob</a></p>
+      </div>
+    </footer>
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="./js/widgets.js"></script>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/bootstrap-transition.js"></script>
+    <script src="./js/bootstrap-alert.js"></script>
+    <script src="./js/bootstrap-modal.js"></script>
+    <script src="./js/bootstrap-dropdown.js"></script>
+    <script src="./js/bootstrap-scrollspy.js"></script>
+    <script src="./js/bootstrap-tab.js"></script>
+    <script src="./js/bootstrap-tooltip.js"></script>
+    <script src="./js/bootstrap-popover.js"></script>
+    <script src="./js/bootstrap-button.js"></script>
+    <script src="./js/bootstrap-collapse.js"></script>
+    <script src="./js/bootstrap-carousel.js"></script>
+    <script src="./js/bootstrap-typeahead.js"></script>
+    <script src="./js/bootstrap-affix.js"></script>
+
+    <script src="./js/holder.js"></script>
+    <script src="./js/prettify.js"></script>
+
+    <script src="./js/application.js"></script>
+
+
+    <!-- Analytics
+    ================================================== -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46281708-1', 'milanton.de');
+  ga('send', 'pageview');
+
+</script>
+
+
+<autoscroll_cursor hidden=""></autoscroll_cursor>
+</body>
+</html>
